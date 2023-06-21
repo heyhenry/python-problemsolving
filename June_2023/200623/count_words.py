@@ -29,6 +29,7 @@ def main():
     print(count_words("fake_letters/test2.fakeletters"))
     print(count_words("fake_letters/test3.fakeletters"))
     print(count_words("fake_letters/test4.fakeletters"))
+    print(count_words("fake_letters/output.fakeletters"))
 
 if __name__ == "__main__":
     main()
