@@ -12,30 +12,30 @@ def row_sum(filename : str) -> list[int]:
 
     results = []
 
-    file = open(filename, 'r')
+    with open(filename, 'r') as file:
 
-    for row in file:
-        temp = []
-        number = ''
-        line = row.strip('\n')
-        for i in line:
-            if i != ',':
-                number += i
-            elif i == ',':
+        for row in file:
+            temp = []
+            number = ''
+            line = row.strip('\n')
+            for i in line:
+                if i != ',':
+                    number += i
+                elif i == ',':
+                    temp.append(int(number))
+                    number = ''
+            if number != '':
                 temp.append(int(number))
-                number = ''
-        if number != '':
-            temp.append(int(number))
 
-        results.append(temp)
-        
-    end_results = []
+            results.append(temp)
+            
+        end_results = []
 
-    for row in results:
-        sum_value = 0
-        for i in row:
-            sum_value += i
-        end_results.append(sum_value)
+        for row in results:
+            sum_value = 0
+            for i in row:
+                sum_value += i
+            end_results.append(sum_value)
 
     return end_results
 
