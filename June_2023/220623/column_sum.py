@@ -31,20 +31,23 @@ def column_mean(filename : str) -> list[float]:
 
     end_results = []
 
-    for col in range(len(results[0])):
-        sum_value = 0
-        counter = 0
-        mean_value = 0
-        for row in range(len(results)):
-            counter += 1
-            sum_value += results[row][col]
-        mean_value = sum_value / counter
-        end_results.append(mean_value)
+    if len(results) > 0:
+        for col in range(len(results[0])):
+            sum_value = 0
+            counter = 0
+            mean_value = 0
+            for row in range(len(results)):
+                counter += 1
+                sum_value += results[row][col]
+            mean_value = sum_value / counter
+            end_results.append(mean_value)
+
+    return end_results
     
-    print(end_results)
+    # print(end_results)
 
 def main():
-    # print(column_mean("csv_files/data1.csv"))
+    print(column_mean("csv_files/data1.csv"))
     # print(column_mean("csv_files/data2.csv"))
     print(column_mean("csv_files/data3.csv"))
     print(column_mean("csv_files/data4.csv"))
