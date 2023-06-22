@@ -43,14 +43,12 @@ def column_mean(filename : str) -> list[float]:
             end_results.append(mean_value)
 
     return end_results
-    
-    # print(end_results)
 
 def main():
-    print(column_mean("csv_files/data1.csv"))
-    # print(column_mean("csv_files/data2.csv"))
-    print(column_mean("csv_files/data3.csv"))
-    print(column_mean("csv_files/data4.csv"))
+    # print(column_mean("csv_files/data1.csv"))
+    print(column_mean("csv_files/data2.csv")) # Figure out how to realise different column size
+    # print(column_mean("csv_files/data3.csv"))
+    # print(column_mean("csv_files/data4.csv"))
 
 if __name__ == "__main__":
     main()
