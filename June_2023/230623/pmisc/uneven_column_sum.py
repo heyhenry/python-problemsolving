@@ -32,9 +32,7 @@ def uneven_column_sum(mat : list[list[int]]) -> list[int]:
         while len(row) != highest_col_num:
             row.append(0)
 
-    updated_mat = []
-    updated_mat += mat
-
+    # test to check row lengths
     # for row in updated_mat:
     #     print(len(row))
 
@@ -42,18 +40,18 @@ def uneven_column_sum(mat : list[list[int]]) -> list[int]:
 
     results = []
 
-    for col in range(len(updated_mat[0])):
+    for col in range(len(mat[0])):
         sum_value = 0
-        for row in range(len(updated_mat)):
-            sum_value += updated_mat[row][col]
+        for row in range(len(mat)):
+            sum_value += mat[row][col]
         results.append(sum_value)
   
     return results
 
 def main():
-    # print(uneven_column_sum([[1, 2, 3], [4, 5, 6]]))
-    # print(uneven_column_sum([[], []]))
-    # print(uneven_column_sum([[2, 2], [-1, -2], [3, 9]]))
+    print(uneven_column_sum([[1, 2, 3], [4, 5, 6]]))
+    print(uneven_column_sum([[], []]))
+    print(uneven_column_sum([[2, 2], [-1, -2], [3, 9]]))
     print(uneven_column_sum([[2, 2], [5], [1, 2, 3]])) # output -> [8, 4, 3]
 
 if __name__ == "__main__":
