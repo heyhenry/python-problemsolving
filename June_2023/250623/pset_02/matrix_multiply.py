@@ -10,48 +10,54 @@ https://matrix.reshish.com/multiplication.php <-- working reference
 """
 def matrix_multiply(mat1 : list[list[int]], mat2 : list[list[int]]) -> list[list[int]]:
 
-    reordered_list = []
+    # matrix_a = MxN
+    # matrix_b = NxP
+    # matrix_c = MxP
+    
+    mat1_rows = len(mat1)
+    mat1_cols = None
+    mat2_rows = len(mat2)
+    mat2_cols = None
+
+    for row in mat1:
+        if mat1_cols is None:
+            mat1_cols = len(row)
+        elif mat1_cols < len(row):
+            mat1_cols = len(row)    
+
+    for row in mat2:
+        if mat2_cols is None:
+            mat2_cols = len(row)
+        elif mat2_cols < len(row):
+            mat2_cols = len(row)
+
+    # matrix a => MxN => mat1_rows x mat1_cols
+    # print('MxN: ' + str(mat1_rows) + 'x' + str(mat1_cols))
+    # matrix b => NxP => mat2_rows x mat2_cols
+    # print('NxP: ' + str(mat2_rows) + 'x' + str(mat2_cols))
+    # matrix c => MxP => mat1_rows x mat2_cols
+    # print('MxP: ' + str(mat1_rows) + 'x' + str(mat2_cols))
+
+    # create empty prefilled list of lists with 0s values as placeholders
+    matrix_c = []
+
+    for row in range(mat1_rows):
+        temp = []
+        for cols in range(mat2_cols):
+            temp.append(0)
+        matrix_c.append(temp)
 
     for i in range(len(mat1)):
         for j in range(len(mat2[0])):
             for k in range(len(mat2)):
-                reordered_list.append(mat1[i][k] * mat2[k][j])
+                matrix_c[i][j] += mat1[i][k] * mat2[k][j]
 
-    sum_value = 0
-
-    mats = []
-
-    for i in range(0, len(reordered_list), 2):
-        value = reordered_list[i:i + 2]
-        mats.append(value)
-
-    results = []
-
-    for row in mats:
-        sum_value = 0
-        for i in row:
-            sum_value += i
-        results.append(sum_value)
-
-    updated_mat = []
-
-    for i in range(0, len(results), 2):
-        value = results[i:i + 2]
-        updated_mat.append(value)
-
-    return updated_mat
-
-# matrices a & b
-# [1a, 2a]        [1b, 2b]
-#             x              
-# [3a, 4a]        [3b, 4b]
-
-# First block = (1a x 1b) + (2a x 3b) = 7
+    return matrix_c
 
 def main():
-    print(matrix_multiply([[1, 2], [3, 4]], [[1, 2], [3, 4]])) # written to solve this specific one
-    print(matrix_multiply([[1, 2]], [[5], [6]])) # somehow works for this too?
-    print(matrix_multiply([[1], [2]], [[5, 6]])) # doesnt work out for this
+    print(matrix_multiply([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+    print(matrix_multiply([[1, 2]], [[5], [6]]))
+    print(matrix_multiply([[1], [2]], [[5, 6]])) 
 
 if __name__ == "__main__":
     main()
