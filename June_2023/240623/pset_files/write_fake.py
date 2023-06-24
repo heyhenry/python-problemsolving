@@ -48,7 +48,7 @@ def contains(filename : str, word : str) -> bool:
 
 def write_fake(filename : str, words : list[str]):
 
-    # save_path = 'csv_files/'
+    # save_path = 'text_files/'
 
     # full_directory = os.path.join(filename + '.fakeletters')
 
@@ -71,13 +71,13 @@ def write_fake(filename : str, words : list[str]):
 
 def main():
     
-    # print(write_fake("csv_files/output.fakeletters", ["test", "out"]))
+    # print(write_fake("text_files/output.fakeletters", ["test", "out"]))
 
     # testing
-    # print(write_fake("csv_files/output.boop", ["wont", "save"]))
-    print(contains("csv_files/output.fakeletters", "test"))
-    print(contains("csv_files/output.fakeletters", "other"))
-    print(count_words("csv_files/output.fakeletters"))
+    # print(write_fake("text_files/output.boop", ["wont", "save"]))
+    print(contains("text_files/output.fakeletters", "test"))
+    print(contains("text_files/output.fakeletters", "other"))
+    print(count_words("text_files/output.fakeletters"))
 
 if __name__ == "__main__":
     main()

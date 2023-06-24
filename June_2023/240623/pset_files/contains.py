@@ -25,11 +25,11 @@ def contains(filename : str, word : str) -> bool:
     return False
 
 def main():
-    print(contains("csv_files/test1.fakeletters", "b"))
-    print(contains("csv_files/test1.fakeletters", "d"))
-    print(contains("csv_files/test2.fakeletters", "wor"))
-    print(contains("csv_files/test2.fakeletters", "hello"))
-    print(contains("csv_files/test3.fakeletters", ""))
+    print(contains("text_files/test1.fakeletters", "b"))
+    print(contains("text_files/test1.fakeletters", "d"))
+    print(contains("text_files/test2.fakeletters", "wor"))
+    print(contains("text_files/test2.fakeletters", "hello"))
+    print(contains("text_files/test3.fakeletters", ""))
 
 if __name__ == "__main__":
     main()

@@ -25,10 +25,10 @@ def count_words(filename : str) -> int:
     return result
 
 def main():
-    print(count_words("csv_files/test1.fakeletters"))
-    print(count_words("csv_files/test2.fakeletters"))
-    print(count_words("csv_files/test3.fakeletters"))
-    print(count_words("csv_files/test4.fakeletters"))
+    print(count_words("text_files/test1.fakeletters"))
+    print(count_words("text_files/test2.fakeletters"))
+    print(count_words("text_files/test3.fakeletters"))
+    print(count_words("text_files/test4.fakeletters"))
 
 if __name__ == "__main__":
     main()
