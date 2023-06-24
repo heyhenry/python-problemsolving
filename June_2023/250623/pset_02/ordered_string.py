@@ -1,0 +1,11 @@
+def ordered_string(d : dict[str, int]) -> str:
+"""
+Returns the alphabetically-ordered string from a dictionary of letters and
+counts
+Note that each key of the dictionary must be a single lowercase letter
+Examples:
+ordered_string({}) -> ""
+ordered_string({'a' : 3, 'b' : 2}) -> "aaabb"
+ordered_string({'d' : 1, 'a' : 2', 'c' : 3}) -> "aacccd"
+ordered_string({'z' : 5, 'd' : 2, 'a' : 3, 'x' : 2} -> "aaaddxxzzzzz"
+"""
