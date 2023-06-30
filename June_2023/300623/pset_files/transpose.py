@@ -56,15 +56,31 @@ def transpose(filename : str):
                     for row in range(len(numbers)):
                         temp.append(numbers[row][col])
                     results.append(temp)
-                
+
+                text = ''
+
+                for row in range(len(results)):
+                    line = (str(results[row]).strip('[]'))
+                    if row != (len(results) - 1):
+                        text += (str(line) + '\n')
+                    else:
+                        text += str(line)
+
+                text = text.replace(' ', '')
+
                 with open(new_file, 'w') as file:
 
-                    for row in range(len(results)):
+                    file.write(text)
+
+                    # file.write(text)
+
+                    # for row in range(len(results)):
                         
-                        if row != (len(results) - 1):
-                            file.write(str(results[row])+'\n')
-                        else:
-                            file.write(str(results[row]))
+                    #     if row != (len(results) - 1):
+                    #         file.write(str(results[row])+'\n')
+                    #     else:
+                    #         file.write(str(results[row]))
+            
         else:
 
             with open(new_file, 'w') as file:
