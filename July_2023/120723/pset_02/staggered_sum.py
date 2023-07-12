@@ -8,7 +8,16 @@ staggered_sum([-4, [-3, 2, 1], 6, 8, [-1]]) -> 9
 """
 def staggered_sum(lst : list[int | list[int]]) -> int:
 
+    sum_value = 0
 
+    for i_row in lst:
+        if isinstance(i_row, list):
+            for i in i_row:
+                sum_value += i
+        else:
+            sum_value += i_row
+    
+    return sum_value
 
 def main():
     print(staggered_sum([1, 2, 3]))

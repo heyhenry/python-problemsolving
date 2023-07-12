@@ -10,7 +10,12 @@ ordered_string({'z' : 5, 'd' : 2, 'a' : 3, 'x' : 2} -> "aaaddxxzzzzz"
 """
 def ordered_string(d : dict[str, int]) -> str:
 
+    fused_str = ''
 
+    for v, k in sorted(d.items()):
+        fused_str += v * k
+
+    return fused_str
 
 def main():
     print(ordered_string({}))

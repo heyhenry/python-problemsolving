@@ -10,7 +10,34 @@ https://matrix.reshish.com/multiplication.php <-- working reference
 """
 def matrix_multiply(mat1 : list[list[int]], mat2 : list[list[int]]) -> list[list[int]]:
 
+    # mxn + nxp = mxp
+    mat1_num_of_rows = len(mat1)
 
+    mat2_length_of_cols = None
+
+    for row in mat2:
+        counter = 0
+        for _ in row:
+            counter += 1
+        if mat2_length_of_cols is None:
+            mat2_length_of_cols = counter
+        elif counter > mat2_length_of_cols:
+            mat2_length_of_cols = counter
+
+    mat3 = []
+
+    for row in range(mat1_num_of_rows):
+        temp = []
+        for i in range(mat2_length_of_cols):
+            temp.append(0)
+        mat3.append(temp)
+
+    for i in range(len(mat1)):
+        for j in range(len(mat2[0])):
+            for k in range(len(mat2)):
+                mat3[i][j] += mat1[i][k] * mat2[k][j]
+
+    return mat3
 
 def main():
     print(matrix_multiply([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
