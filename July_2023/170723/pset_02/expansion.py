@@ -7,7 +7,14 @@ expansion('abccba') -> ['a', 'ab', 'abc', 'abcc', 'abccb', 'abccba']
 """
 def expansion(s : str) -> list[str]:
 
+    expanded_gibberish = ''
+    results = []
 
+    for c in s:
+        expanded_gibberish += c
+        results.append(expanded_gibberish)
+
+    return results
 
 def main():
     print(expansion('test'))
