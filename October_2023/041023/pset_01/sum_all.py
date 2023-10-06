@@ -8,23 +8,14 @@ sum_all([[]]) -> []
 def sum_all(table : list[list[int]]) -> list[int]:
 
     result = []
-    isFullEmpty = False
-    counter = 0
 
     for i in table:
         sum_value = 0
         for x in i:
             sum_value += x
         result.append(sum_value)
-        if len(i) == 0:
-            counter += 1
-            if counter == len(table):
-                isFullEmpty = True
 
-    if isFullEmpty:
-        return []
-    else:
-        return result
+    return result
 
 def main():
 
