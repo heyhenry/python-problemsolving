@@ -28,51 +28,74 @@ def transpose(filename : str):
 
             read_content = file.read()
 
-            split_lines = read_content.splitlines()
-            lines = []
+            if read_content:
 
-            for row in split_lines:
-                temp = []
-                for i in row.split(','):
-                    temp.append(int(i))
-                lines.append(temp)
-            
-            transposed_list = []
+                split_lines = read_content.splitlines()
+                lines = []
 
-            for col in range(len(lines[0])):
-                temp = []
-                for row in range(len(lines)):
-                    temp.append(lines[row][col])
-                transposed_list.append(temp)
+                for row in split_lines:
+                    temp = []
+                    for i in row.split(','):
+                        temp.append(int(i))
+                    lines.append(temp)
 
-            # strtransposed_list = []
-            
-            # for row in transposed_list:
-            #     temp = []
-            #     for i in row:
-            #         temp.append(str(i))
-            #     strtransposed_list.append(temp)
+                equal_cols = None
+                isEqual = True
 
-            # print(strtransposed_list)
+                for row in lines:
+                    if equal_cols is None:
+                        equal_cols = len(row)
+                    elif len(row) != equal_cols:
+                        equal_cols = False
+                
+                if equal_cols:
 
+                    transposed_list = []
+
+                    for col in range(len(lines[0])):
+                        temp = []
+                        for row in range(len(lines)):
+                            temp.append(lines[row][col])
+                        transposed_list.append(temp)
+
+                    # strtransposed_list = []
+                    
+                    # for row in transposed_list:
+                    #     temp = []
+                    #     for i in row:
+                    #         temp.append(str(i))
+                    #     strtransposed_list.append(temp)
+
+                    # print(strtransposed_list)
+
+                    new_filename = filename[:-4] + '_tranposed.csv'
+                    
+                    with open(new_filename, 'w') as nfile:
+
+                        for row in transposed_list:
+                            for i in range(len(row)):
+                                if i != (len(row) - 1):
+                                    nfile.write(str(row[i]) + ',')
+                                else:
+                                    nfile.write(str(row[i]) + '\n')
+
+                else:
+
+                    return None
+                
             new_filename = filename[:-4] + '_tranposed.csv'
             
             with open(new_filename, 'w') as nfile:
 
-                for row in transposed_list:
-                    for i in range(len(row)):
-                        if i != (len(row) - 1):
-                            nfile.write(str(row[i]) + ',')
-                        else:
-                            nfile.write(str(row[i]) + '\n')
-
-    return 'Invalid file extension provided.'
+                nfile.write('')
+    else:
+        return 'Invalid file extension provided.'
 
 def main():
-    # print(transpose("data/data1.csv"))
-    # print(transpose("data/data2.csv"))
+    print(transpose("data/data1.csv"))
+    print(transpose("data/data2.csv"))
     print(transpose("data/data3.csv"))
-    # print(transpose("data/data4.csv"))
+    print(transpose("data/data4.csv"))
 
 if __name__ == "__main__":
     main()
