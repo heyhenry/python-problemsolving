@@ -78,18 +78,22 @@ def transpose(filename : str):
                                     nfile.write(str(row[i]) + ',')
                                 else:
                                     nfile.write(str(row[i]) + '\n')
+                    
+                    return 'A transposed csv file was created with the provided data.'
 
                 else:
 
-                    return None
+                    return 'No action taken'
                 
             new_filename = filename[:-4] + '_tranposed.csv'
             
             with open(new_filename, 'w') as nfile:
 
                 nfile.write('')
-    else:
-        return 'Invalid file extension provided.'
+
+                return 'An empty csv file was created.'
+
+    return 'Invalid file extension provided.'
 
 def main():
     print(transpose("data/data1.csv"))
