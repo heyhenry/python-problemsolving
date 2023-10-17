@@ -26,15 +26,15 @@ def contains_name(filename : str, name : str) -> bool:
                 for line in content_splitlines:
                     content.append(line.split(','))
 
-                containsName = False
+                contains_name = False
                 name_pos = 0
                 
                 for i in range(len(content[0])):
                     if content[0][i] == 'name' and len(content[0][i]) == 4:
                         name_pos = i
-                        containsName = True
+                        contains_name = True
 
-                if containsName:
+                if contains_name:
 
                     for row in range(len(content)):
                         if name in content[row][name_pos]:
