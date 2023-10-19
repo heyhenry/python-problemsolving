@@ -30,6 +30,7 @@ def main():
     print(second_vowel('pygmy'))   
     print(second_vowel('pYgmy')) # 4
     print(second_vowel('slOwlY')) # 5
+    print(second_vowel('yoghurt')) #4
 
 
 if __name__ == "__main__":
