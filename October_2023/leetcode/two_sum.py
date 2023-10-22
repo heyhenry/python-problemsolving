@@ -44,6 +44,8 @@ def two_sum(nums : list[int], target : int) -> list[int]:
 
 def main():
     print(two_sum([3,2,4],6))
+    print(two_sum([3,3], 6))
+    print(two_sum([2,7,11,15],9))
 
 if __name__ == "__main__":
     main()
