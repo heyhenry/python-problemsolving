@@ -27,7 +27,7 @@ def main():
     print(calc(1, 6, '+')) # 7
     print(calc(10, 3, '-')) # 7
     print(calc(21, 7, '/')) # 3
-    print(calc(12, 23, 'o'))
+    print(calc(12, 23, 'o')) # None
 
 if __name__ == "__main__":
     main()
