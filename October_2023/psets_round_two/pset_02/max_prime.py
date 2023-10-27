@@ -9,18 +9,17 @@ max_prime([[]]) -> -1
 """
 def is_prime(x : int):
 
-    result = False
+    result = True
 
     for i in range(2, x):
         if x % i == 0:
             result = False
-        result = True
 
     return result
 
 def max_prime(table : list[list[int]]) -> int:
 
-    result = -1
+    result = None
 
     for row in table:
         for i in row:
@@ -28,6 +27,9 @@ def max_prime(table : list[list[int]]) -> int:
                 if result is None or i > result:
                     result = i
     
+    if result is None or result < 2:
+        result = -1
+
     return result
 
 def main():
