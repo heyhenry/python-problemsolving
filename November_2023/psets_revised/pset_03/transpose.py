@@ -60,7 +60,7 @@ def transpose(filename : str):
                         for row in range(len(revised_contents)):
                             temp.append(revised_contents[row][col])
                         new_contents.append(temp)
-                    
+
                     with open(new_filename, 'w') as nfile:
 
                         for row in new_contents:
@@ -74,10 +74,10 @@ def transpose(filename : str):
                     nfile.write('')
 
 def main():
-    print(transpose("data/data1.csv"))
-    print(transpose("data/data2.csv"))
+    # print(transpose("data/data1.csv"))
+    # print(transpose("data/data2.csv"))
     print(transpose("data/data3.csv"))
-    print(transpose("data/data4.csv"))
+    # print(transpose("data/data4.csv"))
 
 if __name__ == "__main__":
     main()
