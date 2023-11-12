@@ -23,9 +23,14 @@ def flip_image(filename : str):
 
             revised_content = []
 
+            # up and down flip 
             for row in content:
                 row.reverse()
                 revised_content.append(row)
+
+            # # side to side flip
+            # for row in range(len(content)):
+            #     revised_content.append(content[row-1])
 
             # print(revised_content)
 
@@ -40,13 +45,19 @@ def flip_image(filename : str):
                             nfile.write(row[i])
                             nfile.write('\n')
                     
-
 def main():
     # print(flip_image("q2_data/input1.txt")) # passing
     # print(flip_image("q2_data/input2.txt")) # passing
     # print(flip_image("q2_data/input3.txt")) # passing
     # print(flip_image("q2_data/input4.txt")) # passing
-    print(flip_image("q2_data/input5.txt")) 
+    print(flip_image("q2_data/input5.txt")) # wip
+
+# note to self: 
+# I have tried the side to side flip as I checked the first and last lines and replicated that, 
+# however the digits for the lines in between do not follow the same principle logic, 
+# this makes me think maybe there is more to it or it may be an error on the given output file for testcase 5. 
+# Either way, if I were to incorporate the side to side flip logic, it would make my first 4 test cases invalid. 
+# The current up and down (upside down) logic code seems to suffice imo in regards to the given guidelines but will investigate further.
 
 if __name__ == "__main__":
     main()
