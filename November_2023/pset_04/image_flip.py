@@ -42,7 +42,11 @@ def flip_image(filename : str):
                     
 
 def main():
-    print(flip_image("q2_data/input1.txt"))
+    # print(flip_image("q2_data/input1.txt")) # passing
+    # print(flip_image("q2_data/input2.txt")) # passing
+    # print(flip_image("q2_data/input3.txt")) # passing
+    # print(flip_image("q2_data/input4.txt")) # passing
+    print(flip_image("q2_data/input5.txt")) 
 
 if __name__ == "__main__":
     main()
