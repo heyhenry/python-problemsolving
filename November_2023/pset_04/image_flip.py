@@ -24,7 +24,9 @@ def flip_image(filename : str):
 
             content.reverse()
 
-            with open('q2_data/test.output', 'w') as nfile:
+            new_file = 'q2_data/flipped_output' + filename[13:]
+
+            with open(new_file, 'w') as nfile:
                 
                 for row in content:
                     for i in range(len(row)):
@@ -36,10 +38,10 @@ def flip_image(filename : str):
                             nfile.write('\n')
                     
 def main():
-    # print(flip_image("q2_data/input1.txt")) # passing
-    # print(flip_image("q2_data/input2.txt")) # does not pass 
-    # print(flip_image("q2_data/input3.txt")) # passing
-    # print(flip_image("q2_data/input4.txt")) # passing
+    print(flip_image("q2_data/input1.txt")) 
+    print(flip_image("q2_data/input2.txt")) 
+    print(flip_image("q2_data/input3.txt")) 
+    print(flip_image("q2_data/input4.txt")) 
     print(flip_image("q2_data/input5.txt"))
 
 if __name__ == "__main__":
