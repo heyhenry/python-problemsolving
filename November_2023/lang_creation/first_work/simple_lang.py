@@ -34,13 +34,12 @@ def simple_lang(filename : str):
 
             variables = []
             chr_pattern = re.compile(r"[A-Za-z]")
-            var_found = False
+
             # find existing values and assign its respective value or equation
             for row in content:
                 for i in range(len(row)):
                         if row[i] == 'int' and re.fullmatch(chr_pattern, row[i+1]):
                             variables.append(row[i+1])
-                            var_found = True
                 del row[:3]
             
             equation_results = []
@@ -60,7 +59,9 @@ def simple_lang(filename : str):
             for i in range(len(variables)):
                 var_dict[variables[i]] = equation_results[i]
 
-            
+            # prints out var_dict values
+            for k, v in var_dict.items():
+                print(v)
                 
 def main():
     # print(simple_lang('test_cases/input1.txt'))
