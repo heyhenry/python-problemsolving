@@ -32,26 +32,39 @@ def simple_lang(filename : str):
                     if crow == prow:
                         content.remove(prow)
 
-            variables = {}
+            variables = []
             chr_pattern = re.compile(r"[A-Za-z]")
             var_found = False
             # find existing values and assign its respective value or equation
             for row in content:
                 for i in range(len(row)):
                         if row[i] == 'int' and re.fullmatch(chr_pattern, row[i+1]):
-                            variables[row[i+1]] = 0
+                            variables.append(row[i+1])
                             var_found = True
                 del row[:3]
             
-            for row in content:
-                for i in row:
-                    print(i)
-            
-            
+            equation_results = []
 
+            for row in content:
+                if row[1] == '-':
+                    equation_results.append(int(row[0]) - int(row[2]))
+                elif row[1] == '+':
+                    equation_results.append(int(row[0]) + int(row[2]))
+                elif row[1] == '*':
+                    equation_results.append(int(row[0]) * int(row[2]))
+                else:
+                    equation_results.append(int(row[0]) / int(row[2]))
+
+            var_dict = {}
+
+            for i in range(len(variables)):
+                var_dict[variables[i]] = equation_results[i]
+
+            print(var_dict)    
+                
 def main():
     # print(simple_lang('test_cases/input1.txt'))
-    print(simple_lang('test_cases/input2.txt'))
+    # print(simple_lang('test_cases/input2.txt'))
 
 if __name__ == '__main__':
     main()
