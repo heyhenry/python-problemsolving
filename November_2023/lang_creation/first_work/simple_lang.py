@@ -19,26 +19,35 @@ def simple_lang(filename : str):
             for row in split_content:
                 content.append(row.split(' '))
 
-            # variables = {}
+            print_list = []
+            
+            # stores list of required outputs    
+            for row in content:
+                if 'print' in row:
+                    print_list.append(row)
 
-            # pattern = re.compile(r"[A-Za-z]")
+            # remove print outputs from content list
+            for crow in content:
+                for prow in print_list:
+                    if crow == prow:
+                        content.remove(prow)
 
-            # for row in content:
-            #     for i in range(len(row)):
-            #         if i != len(row)-1:
-            #             if row[i] == 'int' and re.fullmatch(pattern, row[i+1]):
-            #                 variables[row[i+1]] = 0
-
-            # for row in content:
-            #     for i in row:
-            #         if i.isdigit():
-
-            xxx = []
-
-            for row in split_content:
-                xxx.append(row.split(' = '))
-
-            print(xxx)
+            variables = {}
+            chr_pattern = re.compile(r"[A-Za-z]")
+            var_found = False
+            # find existing values and assign its respective value or equation
+            for row in content:
+                for i in range(len(row)):
+                        if row[i] == 'int' and re.fullmatch(chr_pattern, row[i+1]):
+                            variables[row[i+1]] = 0
+                            var_found = True
+                del row[:3]
+            
+            for row in content:
+                for i in row:
+                    print(i)
+            
+            
 
 def main():
     # print(simple_lang('test_cases/input1.txt'))
