@@ -60,11 +60,12 @@ def simple_lang(filename : str):
             for i in range(len(variables)):
                 var_dict[variables[i]] = equation_results[i]
 
-            print(var_dict)    
+            
                 
 def main():
     # print(simple_lang('test_cases/input1.txt'))
     # print(simple_lang('test_cases/input2.txt'))
+    print(simple_lang('test_cases/input3.txt')) # 2, 4
 
 if __name__ == '__main__':
     main()
