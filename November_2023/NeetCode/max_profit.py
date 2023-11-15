@@ -31,11 +31,17 @@ def maxProfit(prices : list[int]) -> int:
             elif prices[j] - prices[i] > max_profit and i < j:
                 max_profit = prices[j] - prices[i]
 
-    print(max_profit)  
+    if max_profit < 1:
+        max_profit = 0
+    
+    return max_profit  
         
 def main():
-    print(maxProfit([7,1,5,3,6,4]))
-    print(maxProfit([7,6,4,3,1]))
+    print(maxProfit([7,1,5,3,6,4])) # 5
+    print(maxProfit([7,6,4,3,1])) # 0
+    print(maxProfit([3, 8, 2, 10, 5, 1])) # 8
+    print(maxProfit([2, 4, 1, 7, 6, 9])) # 8
+    print(maxProfit([5, 4, 3, 2, 1])) # 0
 
 if __name__ == "__main__":
     main()
