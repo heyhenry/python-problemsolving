@@ -45,7 +45,11 @@ def simple_lang(filename : str):
             equation_results = []
 
             for row in content:
-                if row[1] == '-':
+                if row[0].isalpha():
+                    print('NOT A NUMBER')
+                elif row[2].isalpha():
+                    print('ALSO NOT A NUMBER')
+                elif row[1] == '-':
                     equation_results.append(int(row[0]) - int(row[2]))
                 elif row[1] == '+':
                     equation_results.append(int(row[0]) + int(row[2]))
@@ -54,19 +58,22 @@ def simple_lang(filename : str):
                 else:
                     equation_results.append(int(row[0]) / int(row[2]))
 
-            var_dict = {}
+            # var_dict = {}
 
-            for i in range(len(variables)):
-                var_dict[variables[i]] = equation_results[i]
+            # for i in range(len(variables)):
+            #     var_dict[variables[i]] = equation_results[i]
 
-            # prints out var_dict values
-            for k, v in var_dict.items():
-                print(v)
+            # # prints out var_dict values
+            # for k, v in var_dict.items():
+            #     print(v)
+
+            # To Note for tomorrow: 
+            # might have to go back to dictionary creation inside the forloop where the del row[:3] is in
                 
 def main():
-    # print(simple_lang('test_cases/input1.txt'))
+    print(simple_lang('test_cases/input1.txt'))
     # print(simple_lang('test_cases/input2.txt'))
-    print(simple_lang('test_cases/input3.txt')) # 2, 4
+    # print(simple_lang('test_cases/input3.txt')) # 2, 4
 
 if __name__ == '__main__':
     main()
