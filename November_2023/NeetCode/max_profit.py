@@ -26,11 +26,6 @@ def maxProfit(prices : list[int]) -> int:
 
     for i in range(len(prices)):
         for j in range(1, len(prices)):
-            # Test call
-            # print(prices[j] - prices[i])
-            # print(str(i) + '()' + str(j))
-            # print(str(prices[i]) + '|' + str(prices[j]))
-            # print('---')
             if max_profit is None and i < j:
                 max_profit = prices[j] - prices[i]
             elif prices[j] - prices[i] > max_profit and i < j:
