@@ -70,10 +70,16 @@ def simple_lang(filename : str):
                             
                 del row[:3]
 
-            # prints out var_dict values
-            for k, v in var_dict.items():
-                print(v)
-                
+            id = filename[16:-4]
+
+            new_filename = 'test_cases/solution' + id + '.txt' 
+
+            with open(new_filename, 'w') as nfile:
+
+                # prints out var_dict values
+                for k, v in var_dict.items():
+                    nfile.write(str(v) + '\n')
+                   
 def main():
     print(simple_lang('test_cases/input1.txt')) # returns 2, 4
     print(simple_lang('test_cases/input2.txt')) # returns 2
