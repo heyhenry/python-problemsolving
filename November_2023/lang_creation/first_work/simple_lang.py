@@ -65,7 +65,7 @@ def simple_lang(filename : str):
                             elif operand == '*':
                                 var_val = int(num1) * int(num2)
                             elif operand == '/':
-                                var_val == int(num1) / int(num2)
+                                var_val = int(num1) / int(num2)
                             var_dict[row[i+1]] = var_val
                             
                 del row[:3]
