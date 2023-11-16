@@ -44,29 +44,29 @@ def simple_lang(filename : str):
                 operand = None
                 var_val = 0
                 for i in range(len(row)):
-                        if row[i] == 'int' and re.fullmatch(chr_pattern, row[i+1]):
-                            variables.append(row[i+1])
-                            for j in range(i+3, len(row)):
-                                if num1 is None:
-                                    num1 = row[j]
-                                elif operand is None:
-                                    operand = row[j]
-                                elif num2 is None:
-                                    num2 = row[j]
-                            if num1.isdigit() == False:
-                                num1 = var_dict[num1]
-                            elif num2.isdigit() == False:
-                                num2 = var_dict[num2]
-                            
-                            if operand == '+':
-                                var_val = int(num1) + int(num2)
-                            elif operand == '-':
-                                var_val = int(num1) - int(num2)
-                            elif operand == '*':
-                                var_val = int(num1) * int(num2)
-                            elif operand == '/':
-                                var_val = int(num1) / int(num2)
-                            var_dict[row[i+1]] = var_val
+                    if row[i] == 'int' and re.fullmatch(chr_pattern, row[i+1]):
+                        variables.append(row[i+1])
+                        for j in range(i+3, len(row)):
+                            if num1 is None:
+                                num1 = row[j]
+                            elif operand is None:
+                                operand = row[j]
+                            elif num2 is None:
+                                num2 = row[j]
+                        if num1.isdigit() == False:
+                            num1 = var_dict[num1]
+                        elif num2.isdigit() == False:
+                            num2 = var_dict[num2]
+                        
+                        if operand == '+':
+                            var_val = int(num1) + int(num2)
+                        elif operand == '-':
+                            var_val = int(num1) - int(num2)
+                        elif operand == '*':
+                            var_val = int(num1) * int(num2)
+                        elif operand == '/':
+                            var_val = int(num1) / int(num2)
+                        var_dict[row[i+1]] = var_val
                             
                 del row[:3]
 
