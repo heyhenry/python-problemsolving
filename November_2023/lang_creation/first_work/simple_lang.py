@@ -3,6 +3,7 @@ Create a simple programming language with python.
 In this version it is expected that there are only integer variables and an operand between them (+, -, /, *) for the equation. 
 """
 import re
+import os
 
 def simple_lang(filename : str):
 
@@ -70,9 +71,20 @@ def simple_lang(filename : str):
                             
                 del row[:3]
 
-            id = filename[16:-4]
+            # id = filename[16:-4]
 
-            new_filename = 'test_cases/solution' + id + '.txt' 
+            # new_filename = 'test_cases/solution' + id + '.txt' 
+
+            filename_index = filename.rfind('/')
+
+            temp_filename = filename[filename_index+1:]
+
+            selected_filename = temp_filename.replace('input', 'solution')
+
+            dir_index = filename.rfind('/')
+            dir_name = filename[:dir_index+1]
+
+            new_filename = dir_name + selected_filename
 
             with open(new_filename, 'w') as nfile:
 
@@ -81,10 +93,10 @@ def simple_lang(filename : str):
                     nfile.write(str(v) + '\n')
                    
 def main():
-    print(simple_lang('test_cases/input1.txt')) # returns 2, 4
-    print(simple_lang('test_cases/input2.txt')) # returns 2
-    print(simple_lang('test_cases/input3.txt')) # returns 2, 4
-    print(simple_lang('test_cases/input4.txt')) # returns 2, 3
+    print(simple_lang('ts/input1.txt')) # returns 2, 4
+    # print(simple_lang('test_cases/input2.txt')) # returns 2
+    # print(simple_lang('test_cases/input3.txt')) # returns 2, 4
+    # print(simple_lang('test_cases/input4.txt')) # returns 2, 3
 
 if __name__ == '__main__':
     main()
