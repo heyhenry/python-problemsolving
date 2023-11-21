@@ -100,3 +100,12 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# Note to self
+
+# Alternative ways to provide the output/solution for each test file: 
+# 1. Piping the information via py test_cases/test1.input > test_cases/test1.ouput in the console
+# 2. Adding onto the pre-existing test file name the solution string (i.e. test_cases/input1.txt --> test_cases/input1_solution.txt)
+# 3. Creating a write out file via console like the following: py simple_lang.py test_cases/input1.txt test_cases/output1.txt
+
