@@ -98,8 +98,10 @@ def main():
     # print(simple_lang('test_cases/input2.txt')) # returns 2
     # print(simple_lang('test_cases/input3.txt')) # returns 2, 4
     # print(simple_lang('test_cases/input4.txt')) # returns 2, 3
+    
+    # provide a more detailed execution in the terminal 
+    # i.e. py simple_lang test_cases/input1.txt
     test_file = sys.argv[1]
-
     print(simple_lang(test_file))
 
 if __name__ == '__main__':
