@@ -4,6 +4,7 @@ In this version it is expected that there are only integer variables and an oper
 """
 import re
 import os
+import sys
 
 def simple_lang(filename : str):
 
@@ -93,10 +94,13 @@ def simple_lang(filename : str):
                     nfile.write(str(v) + '\n')
                    
 def main():
-    print(simple_lang('ts/input1.txt')) # returns 2, 4
+    # print(simple_lang('ts/input1.txt')) # returns 2, 4
     # print(simple_lang('test_cases/input2.txt')) # returns 2
     # print(simple_lang('test_cases/input3.txt')) # returns 2, 4
     # print(simple_lang('test_cases/input4.txt')) # returns 2, 3
+    test_file = sys.argv[1]
+
+    print(simple_lang(test_file))
 
 if __name__ == '__main__':
     main()
