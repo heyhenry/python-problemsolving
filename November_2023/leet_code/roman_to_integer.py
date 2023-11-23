@@ -38,19 +38,57 @@ Input: s = "MCMXCIV"
 Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
+import sys 
+
 def roman_to_int(s : str) -> int:
-
-    M = 1000
-    CM = 900
-    XC = 90
-    IV = 4
-
     
+    result = 0
+    counter = 0
 
+    for c in range(len(s)):
+        if counter == len(s):
+            break
+        if s[c] == 'L': 
+            result += 50
+            counter += 1
+        elif s[c] == 'V':
+            result += 5
+            counter += 1
+        elif s[c] == 'I':
+            if c != len(s) - 1:
+                if s[c+1] == 'V':
+                    result += 4
+                    counter += 2
+                else:
+                    result += 1
+                    counter += 1
+            else:
+                result += 1
+                counter += 1
+        elif s[c] == 'M':
+            if c == 0:
+                result += 1000
+                counter += 1
+            elif s[c-1] == 'C':
+                result += 900
+                counter += 2
+        elif s[c] == 'X':
+            if c != len(s) - 1:
+                if s[c+1] == 'C':
+                    result += 90
+                    counter += 2
+
+    return result
+            
 def main():
-    print(roman_to_int('III')) # 3
-    print(roman_to_int('LVIII')) # 58
-    print(roman_to_int('MCMXCIV')) # 1994
+
+    print(roman_to_int('III'))
+    print(roman_to_int('LVIII'))
+    print(roman_to_int('MCMXCIV'))
+
+    # # Non-embedded version
+    # result = sys.argv[1]
+    # print(roman_to_int(result))
 
 if __name__ == "__main__":
     main()
