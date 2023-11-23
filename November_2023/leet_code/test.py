@@ -1,57 +1,60 @@
-s = 'LVIII'
-list_s = list(s)
-result = 0
-counter = 0
 
-for c in range(len(list_s)):
-    if counter == len(list_s):
-        break
-    if list_s[c] == 'L': 
-        print('L triggered')
-        result += 50
-        counter += 1
-    elif list_s[c] == 'V':
-        print('V triggered')
-        result += 5
-        counter += 1
-    elif list_s[c] == 'I':
-        if c != len(list_s) - 1:
-            if list_s[c+1] == 'V':
-                print('IV triggered')
-                result += 4
-                counter += 2
+import sys 
+
+def roman_to_int(s : str) -> int:
+    
+    result = 0
+    counter = 0
+
+    for c in range(len(s)):
+        if counter == len(s):
+            break
+        if s[c] == 'L': 
+            result += 50
+            counter += 1
+        elif s[c] == 'V':
+            result += 5
+            counter += 1
+        elif s[c] == 'I':
+            if c != len(s) - 1:
+                if s[c+1] == 'V':
+                    result += 4
+                    counter += 2
+                else:
+                    result += 1
+                    counter += 1
             else:
-                print('I triggered')
                 result += 1
                 counter += 1
-        else:
-            print('I triggered aswell')
-            result += 1
-            counter += 1
-    elif list_s[c] == 'M':
-        if c == 0:
-            print('M triggered')
-            result += 1000
-            counter += 1
-        elif list_s[c-1] == 'C':
-            print('CM triggered')
-            result += 900
-            counter += 2
-    elif list_s[c] == 'X':
-        if c != len(list_s) - 1:
-            if list_s[c+1] == 'C':
-                print('XC triggered')
-                result += 90
+        elif s[c] == 'M':
+            if c == 0:
+                result += 1000
+                counter += 1
+            elif s[c-1] == 'C':
+                result += 900
                 counter += 2
+        elif s[c] == 'X':
+            if c != len(s) - 1:
+                if s[c+1] == 'C':
+                    result += 90
+                    counter += 2
+
+    return result
             
-print(result)
+def main():
+    result = sys.argv[1]
+
+    print(roman_to_int(result))
+
+if __name__ == "__main__":
+    main()
 
 # some notes to self about solving the problem - Please READ
 
 # The problem solution strictly caters to the provided roman numerals that are being tested on.
 # It uses a counter system to realise when all the characters in the string has been accounted for.
 # Currently the string has been altered to be a list due to the notion of utilising list's built in functions (remove, replace and pop), 
-# however it hasnt gone well as it affected the static iteration course of the list_s itself as elements were beinga actively removed. 
+# however it hasnt gone well as it affected the static iteration course of the s itself as elements were beinga actively removed. 
 # Further more it just seemed to cause more confusion and code chaos, encroaching upon code readability.
 
 # I will test the alternative usage of a new list rather than a counter, but I think the counter is still cleaner and requires less code at the end.
