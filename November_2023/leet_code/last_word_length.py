@@ -35,14 +35,20 @@ There will be at least one word in s.
 def length_of_last_word(s : str) -> int:
 
     result = None
+    longest_word = ''
 
     words = s.split(' ')
     
     for w in words:
         if result is None:
             result = len(w)
+            longest_word = w
         elif len(w) > result:
             result = len(w)
+            longest_word = w
+
+    # to showcase the longest word (personal touch)
+    # print(longest_word)
 
     return result
 
