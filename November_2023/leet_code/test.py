@@ -45,3 +45,15 @@ for c in range(len(list_s)):
                 counter += 2
             
 print(result)
+
+# some notes to self about solving the problem - Please READ
+
+# The problem solution strictly caters to the provided roman numerals that are being tested on.
+# It uses a counter system to realise when all the characters in the string has been accounted for.
+# Currently the string has been altered to be a list due to the notion of utilising list's built in functions (remove, replace and pop), 
+# however it hasnt gone well as it affected the static iteration course of the list_s itself as elements were beinga actively removed. 
+# Further more it just seemed to cause more confusion and code chaos, encroaching upon code readability.
+
+# I will test the alternative usage of a new list rather than a counter, but I think the counter is still cleaner and requires less code at the end.
+# Also remember to transfer the final code solution to the actual problem file instead of residing in the test file.
+# Might also remove the list system generally, if maintaining the counter system as it seems to be unnessary, but will trial after break. 
