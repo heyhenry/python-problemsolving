@@ -53,6 +53,10 @@ def remove_element(nums : list[int], val : int) -> int:
         if nums[i] != val:
             new_nums.append(nums[i])
     
+    # updating nums list added to accomodate successful test case results on leetcode site
+    nums.clear()
+    nums += new_nums
+
     return len(new_nums)
 
 def main():
