@@ -77,6 +77,24 @@ def user_input():
 
     return str(result)
     
+def validate_variable_name(s : dict) -> bool:
+
+    valid_variable_name = True
+
+    for k, v in s.items():
+        if k == 'int':
+            valid_variable_name = False
+        elif k == 'input':
+            valid_variable_name = False
+        elif k == 'print':
+            valid_variable_name = False
+
+    if not valid_variable_name:
+        print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
+        sys.exit(1)
+    
+    return valid_variable_name
+
 # prints the results of the test case file which is encased in a dictionary
 def print_results(s : dict):
     
@@ -103,30 +121,31 @@ def language(filename : str):
 
     result = []
 
-    for k, v in vars.items():
-        if contains_operand(v):
-            temp = remove_operand_from_string(v)
-            if temp.isdigit():
-                result.append(eval(v))
-                vars[k] = eval(v)
+    if validate_variable_name(vars):
+
+        for k, v in vars.items():
+            if contains_operand(v):
+                temp = remove_operand_from_string(v)
+                if temp.isdigit():
+                    result.append(eval(v))
+                    vars[k] = eval(v)
+                else:
+                    var_val = ''
+                    updated_equation = ''
+                    for c in temp:
+                        if c.isalpha():
+                            var_val = vars[c]
+                            # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
+                    for c in range(len(v)):
+                        if v[c].isalpha():
+                            updated_equation = v[:c] + str(var_val) + v[c+1:]
+                    result.append(eval(updated_equation))
+                    vars[k] = eval(updated_equation)
+            elif contains_input(v):
+                vars[k] = user_input()
             else:
-                var_val = ''
-                updated_equation = ''
-                print(temp)
-                for c in temp:
-                    if c.isalpha():
-                        var_val = vars[c]
-                        # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
-                for c in range(len(v)):
-                    if v[c].isalpha():
-                        updated_equation = v[:c] + str(var_val) + v[c+1:]
-                result.append(eval(updated_equation))
-                vars[k] = eval(updated_equation)
-        elif contains_input(v):
-            vars[k] = user_input()
-        else:
-            print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
-            sys.exit(1)
+                print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
+                sys.exit(1)
     
     print_results(vars)
 
