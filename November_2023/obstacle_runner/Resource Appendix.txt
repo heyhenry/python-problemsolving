@@ -1,0 +1,3 @@
+Appendix 1: Creating screen boundaries for object
+- https://stackoverflow.com/questions/52743872/adding-boundaries-in-pygame-with-movable-characters-images (<-- Main reference)
+- https://www.geeksforgeeks.org/adding-boundary-to-an-object-in-pygame/
