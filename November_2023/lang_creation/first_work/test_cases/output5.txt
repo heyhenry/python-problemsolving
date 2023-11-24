@@ -1,1 +1,4 @@
-NOTICE: INVALID TEST CASE... CRASHING NOW BYE!
+Note:
+This test case is dynamic as it's result is based on the user's input. 
+The correct output should be the correct result based on the given input by user if integer. 
+If anything else, then system will crash which is also the correct response.

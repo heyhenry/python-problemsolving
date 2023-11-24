@@ -1,0 +1,4 @@
+int x = inputs
+print x
+int y = x + 5
+print y
