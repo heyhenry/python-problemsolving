@@ -24,7 +24,7 @@ def parse_content_into_listoflists(file_contents : str):
     return result
 
 # akin to .isalpha() and .isdigit(), but for operands and ensures the operand is found in an appropriate location
-def contains_operand(s:str):
+def contains_operand(s : str) -> bool:
     
     result = False
 
@@ -72,9 +72,29 @@ def user_input():
     
     # ends program if user input is invalid
     if not result.isdigit():
+        print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
         sys.exit(1)
 
     return str(result)
+
+def validate_dict_values(s : dict) -> bool:
+
+    valid_value_found = True
+
+    for k, v in s.items():
+        if not contains_input(v):
+            valid_value_found = False
+        elif not contains_operand(v):
+            valid_value_found = False
+        elif v not in s:
+            valid_value_found = False
+
+    if valid_value_found == False:
+        print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
+        sys.exit(1)
+
+    return valid_value_found
+
     
 # prints the results of the test case file which is encased in a dictionary
 def print_results(s : dict):
@@ -102,29 +122,31 @@ def language(filename : str):
 
     result = []
 
-    for k, v in vars.items():
-        if contains_operand(v):
-            temp = remove_operand_from_string(v)
-            if temp.isdigit():
-                result.append(eval(v))
-                vars[k] = eval(v)
-            else:
-                var_val = ''
-                updated_equation = ''
-                for c in temp:
-                    if c.isalpha():
-                        var_val = vars[c]
-                        # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
-                for c in range(len(v)):
-                    if v[c].isalpha():
-                        updated_equation = v[:c] + str(var_val) + v[c+1:]
-                result.append(eval(updated_equation))
-                vars[k] = eval(updated_equation)
-        elif contains_input(v):
-            vars[k] = user_input()
+    if validate_dict_values(vars):
 
-    print(vars)
-    # print_results(vars)
+        for k, v in vars.items():
+            if contains_operand(v):
+                temp = remove_operand_from_string(v)
+                if temp.isdigit():
+                    result.append(eval(v))
+                    vars[k] = eval(v)
+                else:
+                    var_val = ''
+                    updated_equation = ''
+                    print(temp)
+                    for c in temp:
+                        if c.isalpha():
+                            var_val = vars[c]
+                            # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
+                    for c in range(len(v)):
+                        if v[c].isalpha():
+                            updated_equation = v[:c] + str(var_val) + v[c+1:]
+                    result.append(eval(updated_equation))
+                    vars[k] = eval(updated_equation)
+            elif contains_input(v):
+                vars[k] = user_input()
+
+    print_results(vars)
 
 def main():
     
