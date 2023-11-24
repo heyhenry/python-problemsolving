@@ -8,6 +8,7 @@ def produce_file_string(filename : str):
         
     return read_content
 
+# parses the file contents into a list of lists (elements per line for each line)
 def parse_content_into_listoflists(file_contents : str):
 
     result = []
@@ -22,6 +23,7 @@ def parse_content_into_listoflists(file_contents : str):
 
     return result
 
+# akin to .isalpha() and .isdigit(), but for operands and ensures the operand is found in an appropriate location
 def contains_operand(s:str):
     
     result = False
@@ -38,6 +40,7 @@ def contains_operand(s:str):
 
     return result
 
+# removes the operand from a string (does not check if location is appropriate as contains_operand() function is expected to be run first)
 def remove_operand_from_string(s:str):
 
     result = ''
@@ -53,6 +56,12 @@ def remove_operand_from_string(s:str):
             result = s[:c] + s[c+1:]
 
     return result
+
+# prints the results of the test case file which is encased in a dictionary
+def print_results(s : dict):
+    
+    for k, v in s.items():
+        print(v)
 
 def language(filename : str):
 
@@ -77,9 +86,23 @@ def language(filename : str):
     for k, v in vars.items():
         if contains_operand(v):
             temp = remove_operand_from_string(v)
-            print(temp)
-
-    print(vars)
+            if temp.isdigit():
+                result.append(eval(v))
+                vars[k] = eval(v)
+            else:
+                var_val = ''
+                updated_equation = ''
+                for c in temp:
+                    if c.isalpha():
+                        var_val = vars[c]
+                        # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
+                for c in range(len(v)):
+                    if v[c].isalpha():
+                        updated_equation = v[:c] + str(var_val) + v[c+1:]
+                result.append(eval(updated_equation))
+                vars[k] = eval(updated_equation)
+                    
+    print_results(vars)
 
 def main():
     
