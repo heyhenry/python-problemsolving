@@ -71,7 +71,7 @@ def user_input():
     result = input('Provide input (give an integer): ')
     
     # ends program if user input is invalid
-    if not result.isdigit():
+    if not result.lstrip('-').isdigit():
         print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
         sys.exit(1)
 
