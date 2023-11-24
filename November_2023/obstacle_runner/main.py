@@ -33,6 +33,7 @@ while running:
         player_pos.x += 300 * dt
     
     # resources used for boundary code below (appendix 1)
+    # Note to self: Figure the logic better about the (300 * dt) <-- aspect
     if player_pos.x >= screen_width-40:
         player_pos.x -= 300 * dt
     if player_pos.x <= 0+40:
