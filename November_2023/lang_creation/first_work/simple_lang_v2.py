@@ -57,6 +57,25 @@ def remove_operand_from_string(s:str):
 
     return result
 
+def contains_input(s : str) -> bool:
+
+    result = False
+
+    if len(s) == 5 and s == 'input':
+        result = True
+
+    return result
+
+def user_input():
+
+    result = input('Provide input (give an integer): ')
+    
+    # ends program if user input is invalid
+    if not result.isdigit():
+        sys.exit(1)
+
+    return str(result)
+    
 # prints the results of the test case file which is encased in a dictionary
 def print_results(s : dict):
     
@@ -101,8 +120,11 @@ def language(filename : str):
                         updated_equation = v[:c] + str(var_val) + v[c+1:]
                 result.append(eval(updated_equation))
                 vars[k] = eval(updated_equation)
-                    
-    print_results(vars)
+        elif contains_input(v):
+            vars[k] = user_input()
+
+    print(vars)
+    # print_results(vars)
 
 def main():
     
