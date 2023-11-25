@@ -120,41 +120,46 @@ def language(filename : str):
     var_types = ['int', 'write']
 
     for row in content:
-        for i in range(len(row)):
-            # create a valid key in dict
-            if row[i] in var_types:
-                vars[row[i+1]] = ''
-                for t in range(len(row)):
-                    if row[t] == '=':
-                        for j in range(t, len(row)-1):
-                            if j != len(row)-1:
-                                print(vars)
-                                vars[row[t-1]] += row[j+1]
-                            else:
-                                vars[row[t-1]] += row[j]
+        if not validate_var_type(row[0]) and row[0] != 'print':
+            print('invalid var type bye now')
+            sys.exit(1)
+        elif row[0] == 'print':
+            continue
+        vars[row[1]] = ''
+        for i in range(1, len(row)):
+            if row[i] == '=':
+                for j in range(1, len(row)-2):
+                    if j != len(row)-2:
+                        vars[row[1]] += row[j+2]
+                    else:
+                        vars[row[1]] += row[j]
 
-    result = []
-    print(vars)
+        # for i in range(2,len(row)):
+        #     if row[i] == '=':
+        #         for j in range(2, len(row)-1):
+        #             if j != len(row)-1:
+        #                 print(vars)
+        #                 vars[row[1]] += row[j+1]
+        #             else:
+        #                 vars[row[1]] += row[j]
+
     if validate_variable_name(vars):
 
         for k, v in vars.items():
             if contains_operand(v):
                 temp = remove_operand_from_string(v)
                 if temp.isdigit():
-                    result.append(eval(v))
                     vars[k] = eval(v)
                 else:
                     var_val = ''
                     updated_equation = ''
                     for c in temp:
                         if c.isalpha():
-                            if c in k:
+                            if c in vars.keys():
                                 var_val = vars[c]
-                            # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
                     for c in range(len(v)):
                         if v[c].isalpha():
                             updated_equation = v[:c] + str(var_val) + v[c+1:]
-                    result.append(eval(updated_equation))
                     vars[k] = eval(updated_equation)
             elif contains_input(v):
                 vars[k] = user_input()
