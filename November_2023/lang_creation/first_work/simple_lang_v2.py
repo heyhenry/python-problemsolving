@@ -98,7 +98,18 @@ def validate_variable_name(s : dict) -> bool:
 def validate_var_type(s : str) -> bool:
 
     result = False
-    valid_types = ['int', 'write']
+    valid_types = ['int', 'define']
+
+    if s in valid_types:
+        result = True
+
+    return result
+
+def validate_print_type(s : str) -> bool:
+
+    result = False
+
+    valid_types = ['print', 'write']
 
     if s in valid_types:
         result = True
@@ -117,13 +128,12 @@ def language(filename : str):
     content = parse_content_into_listoflists(content)
 
     vars = {}
-    var_types = ['int', 'write']
 
     for row in content:
-        if not validate_var_type(row[0]) and row[0] != 'print':
+        if not validate_var_type(row[0]) and not validate_print_type(row[0]):
             print('invalid var type bye now')
             sys.exit(1)
-        elif row[0] == 'print':
+        elif validate_print_type(row[0]):
             continue
         vars[row[1]] = ''
         for i in range(1, len(row)):
@@ -133,15 +143,6 @@ def language(filename : str):
                         vars[row[1]] += row[j+2]
                     else:
                         vars[row[1]] += row[j]
-
-        # for i in range(2,len(row)):
-        #     if row[i] == '=':
-        #         for j in range(2, len(row)-1):
-        #             if j != len(row)-1:
-        #                 print(vars)
-        #                 vars[row[1]] += row[j+1]
-        #             else:
-        #                 vars[row[1]] += row[j]
 
     if validate_variable_name(vars):
 
