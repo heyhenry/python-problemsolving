@@ -126,12 +126,13 @@ def language(filename : str):
 
     content = produce_file_string(filename)
     content = parse_content_into_listoflists(content)
-
+    # print(content)
     vars = {}
 
     for row in content:
-        if not validate_var_type(row[0]) and not validate_print_type(row[0]):
-            print('invalid var type bye now')
+        if len(row) == 1 and row[0] == '':
+            continue
+        elif not validate_var_type(row[0]) and not validate_print_type(row[0]):
             sys.exit(1)
         elif validate_print_type(row[0]):
             continue
