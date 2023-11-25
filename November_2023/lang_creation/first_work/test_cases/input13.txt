@@ -1,0 +1,11 @@
+define x := 2 * 0
+write x
+
+define y := x + 5
+write y
+
+define z := x / y
+
+x := 3
+write x
+write z
