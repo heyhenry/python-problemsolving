@@ -1,4 +1,4 @@
-int x = 3 - 1
+intd x = 3 - 1
 print x
 int y = x + 2
 print y

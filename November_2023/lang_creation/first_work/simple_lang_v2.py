@@ -95,6 +95,16 @@ def validate_variable_name(s : dict) -> bool:
     
     return valid_variable_name
 
+def validate_var_type(s : str) -> bool:
+
+    result = False
+    valid_types = ['int', 'write']
+
+    if s in valid_types:
+        result = True
+
+    return result
+
 # prints the results of the test case file which is encased in a dictionary
 def print_results(s : dict):
     
@@ -107,20 +117,24 @@ def language(filename : str):
     content = parse_content_into_listoflists(content)
 
     vars = {}
+    var_types = ['int', 'write']
 
     for row in content:
         for i in range(len(row)):
-            if row[i] == 'int':
+            # create a valid key in dict
+            if row[i] in var_types:
                 vars[row[i+1]] = ''
-            if row[i] == '=':
-                for j in range(i, len(row)-1):
-                    if j != len(row)-1:
-                        vars[row[i-1]] += row[j+1]
-                    else:
-                        vars[row[i-1]] += row[j]
+                for t in range(len(row)):
+                    if row[t] == '=':
+                        for j in range(t, len(row)-1):
+                            if j != len(row)-1:
+                                print(vars)
+                                vars[row[t-1]] += row[j+1]
+                            else:
+                                vars[row[t-1]] += row[j]
 
     result = []
-
+    print(vars)
     if validate_variable_name(vars):
 
         for k, v in vars.items():
