@@ -148,7 +148,8 @@ def language(filename : str):
                     updated_equation = ''
                     for c in temp:
                         if c.isalpha():
-                            var_val = vars[c]
+                            if c in k:
+                                var_val = vars[c]
                             # make sure to create the check code for whether c is actually a key in the dict. if it isnt, then crash or w/e
                     for c in range(len(v)):
                         if v[c].isalpha():
