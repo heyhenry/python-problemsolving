@@ -137,7 +137,7 @@ def language(filename : str):
             continue
         vars[row[1]] = ''
         for i in range(1, len(row)):
-            if row[i] == '=':
+            if row[i] == '=' or row[i] == ':=':
                 for j in range(1, len(row)-2):
                     if j != len(row)-2:
                         vars[row[1]] += row[j+2]

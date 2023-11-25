@@ -18,16 +18,18 @@
 
 # Regards to suggestion 2
 
-import sys
+# import sys
 
-file_name = ''
+# file_name = ''
 
-print('File name before: ' + file_name)
+# print('File name before: ' + file_name)
 
-test_file = sys.argv[1]
+# test_file = sys.argv[1]
 
-file_name = sys.argv[1]
+# file_name = sys.argv[1]
 
-print('File name after: ' + file_name)
+# print('File name after: ' + file_name)
 
 
+print(num := 2)
+print(num)
