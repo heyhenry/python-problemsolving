@@ -164,9 +164,6 @@ def language(filename : str):
                     vars[k] = eval(updated_equation)
             elif contains_input(v):
                 vars[k] = user_input()
-            else:
-                print('NOTICE: INVALID TEST CASE... CRASHING NOW BYE!')
-                sys.exit(1)
     
     print_results(vars)
 
