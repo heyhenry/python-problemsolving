@@ -45,7 +45,8 @@ def climb_stairs(n : int) -> int:
 def main():
     print(climb_stairs(2))
     print(climb_stairs(3))
-    print(climb_stairs(5))
+    print(climb_stairs(5)) # should be 8
+    print(climb_stairs(44)) # should be 1134903170
 
 if __name__ == "__main__":
     main()
