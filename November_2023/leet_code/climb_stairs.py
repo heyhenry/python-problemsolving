@@ -28,19 +28,38 @@ Constraints:
 """
 def climb_stairs(n : int) -> int:
 
-    x = range(1, n, 1)
+    # x = range(1, n, 1)
     
-    counter = 0
+    # counter = 0
     
-    for _ in x:
-        counter += 1
+    # for _ in x:
+    #     counter += 1
     
-    y = range(1, n, 2)
+    # y = range(1, n, 2)
     
-    for _ in y:
-        counter += 1
+    # for _ in y:
+    #     counter += 1
     
-    return counter
+    # return counter
+
+    # fibonacci series
+        
+    result = n
+
+    if n <= 2:
+        result = n
+    else:
+        prev_step_1 = 1
+        prev_step_2 = 2
+        current = 0
+        for _ in range(2, n):
+            current = prev_step_1 + prev_step_2
+            prev_step_1 = prev_step_2
+            prev_step_2 = current
+
+        result = current
+
+    return result
 
 def main():
     print(climb_stairs(2))
@@ -51,4 +70,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Note: I would like to check the integrity of this solution against additional test cases, but it does suffice for the provided leetcode test cases.
+# Update: Had to look at solution + explanation vid. Realised it used the fibonacci series 
+# and still took a bit to get the for loop logic to work without just continually referring to solution. 
+
+# Opted to refer to fibonacci series instead of continuosly looking at code solution, took a bit but got there in the end.
