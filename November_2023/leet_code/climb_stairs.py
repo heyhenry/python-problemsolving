@@ -27,21 +27,7 @@ Constraints:
 1 <= n <= 4
 """
 def climb_stairs(n : int) -> int:
-
-    # x = range(1, n, 1)
     
-    # counter = 0
-    
-    # for _ in x:
-    #     counter += 1
-    
-    # y = range(1, n, 2)
-    
-    # for _ in y:
-    #     counter += 1
-    
-    # return counter
-
     # fibonacci series
         
     result = n
