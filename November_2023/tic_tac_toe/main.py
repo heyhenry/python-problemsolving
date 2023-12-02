@@ -5,12 +5,22 @@ class Player:
         self.piece_type = piece_type
         self.turns = turns
 
-def is_valid_move(board : list[str], row : int, col : int) -> bool:
+def is_valid_move(board : list[str], row : str, col : str) -> bool:
 
     valid_move = True
 
-    if col > len(board[row]) or row > len(board)-1 or board[row][col] != '-':
+    if row.isalpha() or col.isalpha():
         valid_move = False
+    else:
+        row = int(row)
+        col = int(col)
+        if row > 2 or row < 0 or col > 2 or col < 0:
+            valid_move = False
+        elif board[row][col] != '-':
+            valid_move = False
+
+    # if row > len(board)-1 or col > len(board[row]) or board[row][col] != '-':
+    #     valid_move = False
 
     return valid_move
 
@@ -94,9 +104,15 @@ def main():
         move_coords = []
 
         for c in player_move:
-            move_coords.append(int(c))
+            move_coords.append(c)
 
         if is_valid_move(game_board, move_coords[0], move_coords[1]):
+            
+            temp_coords = []
+            for i in move_coords:
+                temp_coords.append(int(i))
+            move_coords.clear()
+            move_coords += temp_coords
 
             if player_turn == player_one:
                 board_update(game_board, move_coords[0], move_coords[1], player_one_piece_type)
