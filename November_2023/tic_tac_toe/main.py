@@ -9,11 +9,7 @@ def is_valid_move(board : list[str], row : int, col : int) -> bool:
 
     valid_move = True
 
-    if board[row][col] != '-':
-        valid_move = False
-    elif col > len(board[row]):
-        valid_move = False
-    elif row > len(board):
+    if col > len(board[row]) or row > len(board) or board[row][col] != '-':
         valid_move = False
 
     return valid_move
@@ -68,14 +64,17 @@ def main():
 
         print_board(game_board)
         
-        player_move = input("Enter a position to place your piece: ")
+        if player_turn == player_one:
+            player_move = input("Enter a position to place your piece " + player_one.name + ": ")
+        else:
+            player_move = input("Enter a position to place your piece " + player_two.name + ": ")
 
         move_coords = []
 
         for c in player_move:
             move_coords.append(int(c))
 
-        if is_valid_move(move_coords[0], move_coords[1]):
+        if is_valid_move(game_board, move_coords[0], move_coords[1]):
 
             if player_turn == player_one:
                 board_update(game_board, move_coords[0], move_coords[1], player_one_piece_type)
