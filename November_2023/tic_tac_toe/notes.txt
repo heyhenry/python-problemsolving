@@ -1,0 +1,8 @@
+Things to do next session: 
+
+- redact the usage of a temp_coords
+- create validation checks for player move input (so that if its more than 2 digits it is considered invalid, or restrict input ability to 2 digits(?))
+- maybe create a separate function to validate string char versus digit char prior to valid_move check function for int continuity for row,col assessment
+- add additional details once someone has won
+- potentially, but temporarily add the win checks for knots (o) as well
+- completely redact the method checking for a win with a more dynamic solution 
