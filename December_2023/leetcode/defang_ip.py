@@ -37,18 +37,31 @@ The given address is a valid IPv4 address.
 #     return defanged_address
 
 # solution 2
+# def defang_ip(address: str) -> str:
+
+#     defanged_addr = ''
+
+#     for c in range(len(address)):
+#         if address[c] == ".":
+#             defanged_addr += '[.]'
+#         else:
+#             defanged_addr += address[c]
+
+#     return defanged_addr
+    
+# solution 3
 def defang_ip(address: str) -> str:
 
-    defanged_addr = ''
+    addr_minus_dot = address.split('.')
+    defang_addr = ''
 
-    for c in range(len(address)):
-        if address[c] == ".":
-            defanged_addr += '[.]'
+    for num in range(len(addr_minus_dot)):
+        if num != len(addr_minus_dot)-1:
+            defang_addr += addr_minus_dot[num] + '[.]'
         else:
-            defanged_addr += address[c]
+            defang_addr += addr_minus_dot[num]
 
-    return defanged_addr
-    
+    return defang_addr
 
 def main():
     print(defang_ip("1.1.1.1"))
