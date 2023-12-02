@@ -21,19 +21,34 @@ Constraints:
 
 The given address is a valid IPv4 address.
 """
+# solution 1
+# def defang_ip(address: str) -> str:
+
+#     defanged_address = ''
+
+#     for c in range(len(address)):
+#         if address[c] == '.':
+#             defanged_address += '['
+#             defanged_address += '.'
+#             defanged_address += ']'
+#         else:
+#             defanged_address += address[c]
+
+#     return defanged_address
+
+# solution 2
 def defang_ip(address: str) -> str:
 
-    defanged_address = ''
+    defanged_addr = ''
 
     for c in range(len(address)):
-        if address[c] == '.':
-            defanged_address += '['
-            defanged_address += '.'
-            defanged_address += ']'
+        if address[c] == ".":
+            defanged_addr += '[.]'
         else:
-            defanged_address += address[c]
+            defanged_addr += address[c]
 
-    return defanged_address
+    return defanged_addr
+    
 
 def main():
     print(defang_ip("1.1.1.1"))
