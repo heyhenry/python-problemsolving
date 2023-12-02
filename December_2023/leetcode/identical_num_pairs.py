@@ -37,7 +37,7 @@ def num_identical_pairs(nums : list[int]) -> int:
             if nums[i] == nums[j] and i < j:
                 pairs.append('(' + str(i) + ',' + str(j) + ')')
 
-    return pairs
+    return len(pairs)
 
 def main():
     print(num_identical_pairs([1,2,3,1,1,3]))
