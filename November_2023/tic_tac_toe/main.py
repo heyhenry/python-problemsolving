@@ -9,7 +9,7 @@ def is_valid_move(board : list[str], row : int, col : int) -> bool:
 
     valid_move = True
 
-    if col > len(board[row]) or row > len(board) or board[row][col] != '-':
+    if col > len(board[row]) or row > len(board)-1 or board[row][col] != '-':
         valid_move = False
 
     return valid_move
@@ -20,6 +20,28 @@ def board_update(board : list[str], row : int, col : int, piece_type : str) -> b
         board[row] = board[row][:col] + piece_type + board[row][col+1]
     else:
         board[row] = board[row][:col] + piece_type + board[row][col+1:]
+
+def check_board_win(board : list[str]) -> bool:
+
+    win = False
+
+    # first row horizontal
+    if board[0][0] == 'x' and board[0][1] == 'x' and board[0][2] == 'x':
+        win = True
+    # second row horizontal
+    elif board[1][0] == 'x' and board[1][1] == 'x' and board[1][2] == 'x':
+        win = True
+    # first col vertical
+    elif board[0][0] == 'x' and board[1][0] == 'x' and board[2][0] == 'x':
+        win = True
+    # second col vertical
+    elif board[1][0] == 'x' and board[1][1] == 'x' and board[1][2] == 'x':
+        win = True
+    # third col vertical
+    elif board[2][0] == 'x' and board[2][1] == 'x' and board[2][2] == 'x':
+        win = True
+
+    return win
 
 def print_board(board : list[str]):
 
@@ -85,6 +107,9 @@ def main():
 
         print_board(game_board)
 
+        if check_board_win(game_board):
+            print('Game done')
+            in_game = False
 
 if __name__ == "__main__":
     main()
