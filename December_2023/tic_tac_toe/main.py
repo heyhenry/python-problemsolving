@@ -32,17 +32,7 @@ def check_board_win(board : list[str]) -> bool:
 
     win = False
 
-    # ways_to_win = [
-    #     [[0,0], [1,1], [2,2]],
-    #     [[0,2], [1,1], [2,0]],
-    #     [[0,0], [0,1], [0,2]],
-    #     [[1,0], [1,1], [1,2]],
-    #     [[2,0], [2,1], [2,2]],
-    #     [[0,0], [1,0], [2,0]],
-    #     [[0,1], [1,1], [2,1]],
-    #     [[0,2], [1,2], [2,2]],
-    # ]
-
+    # each string is a coord (x,y) aka (row,col)
     ways_to_win = [
         ['00', '11', '22'],
         ['02', '11', '20'],
@@ -65,8 +55,24 @@ def check_board_win(board : list[str]) -> bool:
         if x_counter == 3 or o_counter == 3:
             win = True
 
-
     return win
+
+def valid_player_input(s : str) -> bool:
+
+    is_valid = True
+
+    if len(s) != 2:
+        is_valid = False
+    else:
+        for c in s:
+            if c.isalpha():
+                is_valid = False
+            elif int(c) > 2 or int(c) < 0:
+                is_valid = False
+            else:
+                is_valid = True
+
+    return is_valid
 
 def print_board(board : list[str]):
 
@@ -111,10 +117,18 @@ def main():
 
         print_board(game_board)
         
+        valid_input = True
+
         if player_turn == player_one:
-            player_move = input("Enter a position to place your piece " + player_one.name + ": ")
+            while valid_input:
+                player_move = input("Enter a position to place your piece " + player_one.name + ": ")
+                if valid_player_input(player_move):
+                    valid_input = False
         else:
-            player_move = input("Enter a position to place your piece " + player_two.name + ": ")
+            while valid_input:
+                player_move = input("Enter a position to place your piece " + player_two.name + ": ")
+                if valid_player_input(player_move):
+                    valid_input = False
 
         move_coords = []
 
