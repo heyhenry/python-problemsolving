@@ -119,13 +119,7 @@ def main():
         move_coords = []
 
         for c in player_move:
-            move_coords.append(c)
-  
-        temp_coords = []
-        for i in move_coords:
-            temp_coords.append(int(i))
-        move_coords.clear()
-        move_coords += temp_coords
+            move_coords.append(int(c))
 
         if player_turn == player_one:
             board_update(game_board, move_coords[0], move_coords[1], player_one_piece_type)
