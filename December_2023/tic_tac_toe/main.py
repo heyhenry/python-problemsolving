@@ -19,9 +19,6 @@ def is_valid_move(board : list[str], row : str, col : str) -> bool:
         elif board[row][col] != '-':
             valid_move = False
 
-    # if row > len(board)-1 or col > len(board[row]) or board[row][col] != '-':
-    #     valid_move = False
-
     return valid_move
 
 def board_update(board : list[str], row : int, col : int, piece_type : str) -> bool:
@@ -35,21 +32,36 @@ def check_board_win(board : list[str]) -> bool:
 
     win = False
 
-    # first row horizontal
-    if board[0][0] == 'x' and board[0][1] == 'x' and board[0][2] == 'x':
-        win = True
-    # second row horizontal
-    elif board[1][0] == 'x' and board[1][1] == 'x' and board[1][2] == 'x':
-        win = True
-    # first col vertical
-    elif board[0][0] == 'x' and board[1][0] == 'x' and board[2][0] == 'x':
-        win = True
-    # second col vertical
-    elif board[1][0] == 'x' and board[1][1] == 'x' and board[1][2] == 'x':
-        win = True
-    # third col vertical
-    elif board[2][0] == 'x' and board[2][1] == 'x' and board[2][2] == 'x':
-        win = True
+    # ways_to_win = [
+    #     [[0,0], [1,1], [2,2]],
+    #     [[0,2], [1,1], [2,0]],
+    #     [[0,0], [0,1], [0,2]],
+    #     [[1,0], [1,1], [1,2]],
+    #     [[2,0], [2,1], [2,2]],
+    #     [[0,0], [1,0], [2,0]],
+    #     [[0,1], [1,1], [2,1]],
+    #     [[0,2], [1,2], [2,2]],
+    # ]
+
+    ways_to_win = [
+        ['00', '11', '22'],
+        ['02', '11', '20'],
+        ['00', '01', '02'],
+        ['10', '11', '12'],
+        ['20', '21', '22'],
+        ['00', '10', '20'],
+        ['01', '11', '21'],
+        ['02', '12', '22'],
+    ]
+
+    for ways in ways_to_win:
+        counter = 0
+        for way in ways:
+            if board[int(way[0])][int(way[1])] == 'x':
+                counter += 1
+        if counter == 3:
+            win = True
+
 
     return win
 
