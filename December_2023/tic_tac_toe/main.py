@@ -55,11 +55,14 @@ def check_board_win(board : list[str]) -> bool:
     ]
 
     for ways in ways_to_win:
-        counter = 0
+        x_counter = 0
+        o_counter = 0
         for way in ways:
             if board[int(way[0])][int(way[1])] == 'x':
-                counter += 1
-        if counter == 3:
+                x_counter += 1
+            elif board[int(way[0])][int(way[1])] == 'o':
+                o_counter += 1
+        if x_counter == 3 or o_counter == 3:
             win = True
 
 
