@@ -5,22 +5,6 @@ class Player:
         self.piece_type = piece_type
         self.turns = turns
 
-def is_valid_move(board : list[str], row : str, col : str) -> bool:
-
-    valid_move = True
-
-    if row.isalpha() or col.isalpha():
-        valid_move = False
-    else:
-        row = int(row)
-        col = int(col)
-        if row > 2 or row < 0 or col > 2 or col < 0:
-            valid_move = False
-        elif board[row][col] != '-':
-            valid_move = False
-
-    return valid_move
-
 def board_update(board : list[str], row : int, col : int, piece_type : str) -> bool:
 
     if col == len(board[row]):
@@ -57,7 +41,7 @@ def check_board_win(board : list[str]) -> bool:
 
     return win
 
-def valid_player_input(s : str) -> bool:
+def valid_player_input(board : list[str], s : str) -> bool:
 
     is_valid = True
 
@@ -69,8 +53,9 @@ def valid_player_input(s : str) -> bool:
                 is_valid = False
             elif int(c) > 2 or int(c) < 0:
                 is_valid = False
-            else:
-                is_valid = True
+        
+        if board[int(s[0])][int(s[1])] != '-':
+            is_valid = False
 
     return is_valid
 
@@ -122,33 +107,30 @@ def main():
         if player_turn == player_one:
             while valid_input:
                 player_move = input("Enter a position to place your piece " + player_one.name + ": ")
-                if valid_player_input(player_move):
+                if valid_player_input(game_board, player_move):
                     valid_input = False
         else:
             while valid_input:
                 player_move = input("Enter a position to place your piece " + player_two.name + ": ")
-                if valid_player_input(player_move):
+                if valid_player_input(game_board, player_move):
                     valid_input = False
 
         move_coords = []
 
         for c in player_move:
             move_coords.append(c)
+  
+        temp_coords = []
+        for i in move_coords:
+            temp_coords.append(int(i))
+        move_coords.clear()
+        move_coords += temp_coords
 
-        if is_valid_move(game_board, move_coords[0], move_coords[1]):
-            
-            temp_coords = []
-            for i in move_coords:
-                temp_coords.append(int(i))
-            move_coords.clear()
-            move_coords += temp_coords
-
-            if player_turn == player_one:
-                board_update(game_board, move_coords[0], move_coords[1], player_one_piece_type)
-            else:
-                board_update(game_board, move_coords[0], move_coords[1], player_two_piece_type)
+        if player_turn == player_one:
+            board_update(game_board, move_coords[0], move_coords[1], player_one_piece_type)
         else:
-            print("That's not a valid move! You lost a turn RIP")
+            board_update(game_board, move_coords[0], move_coords[1], player_two_piece_type)
+
 
         print_board(game_board)
 
