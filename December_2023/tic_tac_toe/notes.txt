@@ -1,8 +1,6 @@
 Things to do next session: 
 
-- redact the usage of a temp_coords x
-- create validation checks for player move input (so that if its more than 2 digits it is considered invalid, or restrict input ability to 2 digits(?)) x
-- maybe create a separate function to validate string char versus digit char prior to valid_move check function for int continuity for row,col assessment x
 - add additional details once someone has won 
-- potentially, but temporarily add the win checks for knots (o) as well x
-- completely redact the method checking for a win with a more dynamic solution x
+- make the game replayable until one of the players decides to quit
+    - create a menu screen or a play again option at the end that both players have to agree else ends program with overall match details
+    
