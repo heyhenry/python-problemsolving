@@ -129,7 +129,10 @@ def main():
         print_board(game_board)
 
         if check_board_win(game_board):
-            print('Game done')
+            if player_turn == player_one:
+                print(player_one.name + ' has won!')
+            else:
+                print(player_two.name + ' has won!')
             in_game = False
 
 if __name__ == "__main__":
