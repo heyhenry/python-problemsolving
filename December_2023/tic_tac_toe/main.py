@@ -93,25 +93,25 @@ def main():
     while in_game:
 
         if player_one_turns <= player_two_turns:
-            print(player_one.name + "'s turn: ")
             player_one_turns += 1
             player_turn = player_one
         else:
-            print(player_two.name + "'s turn: ")
             player_two_turns += 1
             player_turn = player_two
-
-        print_board(game_board)
         
         valid_input = True
 
         if player_turn == player_one:
             while valid_input:
+                print(player_one.name + "'s turn: ")
+                print_board(game_board)
                 player_move = input("Enter a position to place your piece " + player_one.name + ": ")
                 if valid_player_input(game_board, player_move):
                     valid_input = False
         else:
             while valid_input:
+                print(player_two.name + "'s turn: ")
+                print_board(game_board)
                 player_move = input("Enter a position to place your piece " + player_two.name + ": ")
                 if valid_player_input(game_board, player_move):
                     valid_input = False
