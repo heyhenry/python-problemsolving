@@ -54,8 +54,9 @@ def valid_player_input(board : list[str], s : str) -> bool:
             elif int(c) > 2 or int(c) < 0:
                 is_valid = False
         
-        if board[int(s[0])][int(s[1])] != '-':
-            is_valid = False
+        if is_valid != False:
+            if board[int(s[0])][int(s[1])] != '-':
+                is_valid = False
 
     return is_valid
 
@@ -130,7 +131,6 @@ def main():
             board_update(game_board, move_coords[0], move_coords[1], player_one_piece_type)
         else:
             board_update(game_board, move_coords[0], move_coords[1], player_two_piece_type)
-
 
         print_board(game_board)
 
