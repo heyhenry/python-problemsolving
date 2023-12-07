@@ -37,18 +37,24 @@ Constraints:
 def number_of_matches(n : int) -> int:
 
     is_valid = True
-    val = n
+    matches = 0
     rounds = 0
     while is_valid:
         
         if n % 2 == 0:
             n = n / 2
+            matches += n
+            
         else:
             n = (n - 1) / 2
+            matches += n + 1
+        
         rounds += 1
+        
         if n == 1:
             is_valid = False
-    return rounds
+
+    return int(matches) 
 
 def main():
     print(number_of_matches(7))
