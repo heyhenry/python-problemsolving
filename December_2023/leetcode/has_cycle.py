@@ -36,3 +36,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Not your own worked solution. Just stored here as a piece of code you are reading and learning from. Do it your self later.
