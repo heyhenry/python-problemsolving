@@ -35,3 +35,7 @@ print("Generated word chosen: " + word)
 print("Generated a total of " + str(counter) + " times.")
     
 
+# things i can implement 
+# 1. store list of all generated names and make it a selectable option to review list
+# 2. automatically run through generated names and only stop when a key is pressed
+# 3. option to select how many generated names you want generated in one go (i.e. 10 generated names at a time)
