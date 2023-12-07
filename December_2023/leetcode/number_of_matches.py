@@ -38,7 +38,7 @@ def number_of_matches(n : int) -> int:
 
     is_valid = True
     matches = 0
-    rounds = 0
+
     while is_valid:
         
         if n % 2 == 0:
@@ -48,8 +48,6 @@ def number_of_matches(n : int) -> int:
         else:
             n = (n - 1) / 2
             matches += n + 1
-        
-        rounds += 1
         
         if n == 1:
             is_valid = False
