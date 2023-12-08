@@ -18,18 +18,28 @@ while not_satisfied:
     
     generated_list = []
     
+    # checks to see if the provided user input is a number, if so proceed validating the number
     if user_choice.isdigit():
         
+        # first menu option
         if int(user_choice) == 1:
             is_single_generation = True
+            # continuous loop through the single word generation option until condition a provided condition is met
             while is_single_generation:
+
+                # records word generations
                 generations += 1
+                
+                # list comprehension used to combine all provided words
                 temp_words = [w for w in user_input if w != ' ']
+                # rearrange the characters for the combined word in a random order
                 random.shuffle(temp_words)
                 word = ''
+                # store the new word in a dedicated string variable in lieu of list
                 for w in temp_words:
                     word += w
                 
+                # options to generate new words or proceed to finalise selected word
                 print("1 | " + word)
                 print("\n1. Select generated word")
                 print("2. Try again")
@@ -49,12 +59,15 @@ while not_satisfied:
                     else:
                         print("\nInvalid user input. Going back to the main menu..")
                         is_single_generation = False
-                    
-        elif int(user_choice) == 2:
 
+        # second menu option    
+        elif int(user_choice) == 2:
+            
+            # records word generations
             generations += 5
             i = 0
-            
+
+            # loops through to create 5 newly generated words to be placed in a list for review
             while i < 5:
                 i += 1
                 temp_words = [w for w in user_input if w != ' ']
@@ -64,6 +77,7 @@ while not_satisfied:
                     word += w
                 generated_list.append(word)
             
+            # for loop integrated menu design for a dynamic flow of newly generated word display
             for word in range(len(generated_list)):
                 print(str(word + 1) + "| " + generated_list[word])
             print('6| Return to Menu')
@@ -79,6 +93,7 @@ while not_satisfied:
     else:
         print("Invalid user input. Returning to menu..")    
 
+# summary display of user usage
 print("\nSummary Details: ")
 print("-------")
 print("Generated word chosen: " + selected_word) 
