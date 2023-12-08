@@ -20,9 +20,21 @@ Constraints:
 1 <= s.length <= 105
 s[i] is a printable ascii character.
 """
+# def reverse_string(s : list[str]) -> None:
+
+#     s.reverse()
+
+# solution 2
 def reverse_string(s : list[str]) -> None:
 
-    s.reverse()
+    temp = []
+
+    for c in range(len(s)-1, -1, -1):
+        temp.append(s[c])
+
+    s.clear()
+
+    s += temp
 
 def main():
     
