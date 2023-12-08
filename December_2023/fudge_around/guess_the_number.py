@@ -9,7 +9,10 @@ while not_num:
     if user_input == random_num:
         print("You guessed the number!")
         not_num = False
-    print(random_num)
+    elif user_input < random_num:
+        print("You guessed too low..")
+    elif user_input > random_num:
+        print("You guessed too high..")
     
 print("The number was " + str(random_num))
 print("It took you " + str(attempts) + " attempts to guess the correct number.")
