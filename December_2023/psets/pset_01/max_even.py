@@ -22,14 +22,31 @@ max_even([0]) -> 0
 #     return max_even
 
 # solution 2
+# def max_even(lst : list[int]) -> int | None:
+
+#     mnum = None
+
+#     for i in lst:
+#         if i % 2 == 0:
+#             if mnum is None or mnum < i:
+#                 mnum = i
+
+#     return mnum
+
+# solution 2
 def max_even(lst : list[int]) -> int | None:
 
-    mnum = None
+    mnum = 0
+    nlist = []
 
     for i in lst:
         if i % 2 == 0:
-            if mnum is None or mnum < i:
-                mnum = i
+            nlist.append(i)
+
+    if len(nlist) > 0:
+        mnum = max(nlist)
+    else:
+        mnum = None
 
     return mnum
 
