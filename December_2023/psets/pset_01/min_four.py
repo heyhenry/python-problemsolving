@@ -11,16 +11,43 @@ min_four(0, 0, -5, 0) -> -5
 #     return min(x, y, z, w)
 
 # solution 2 - Using the max function
+# def min_four(x : int, y : int, z : int, w : int) -> int:
+
+#     nums = [x, y, z, w]
+
+#     while len(nums) > 1:
+
+#         mnum = max(nums)
+#         nums.remove(mnum)
+
+#     return nums[0]
+
+# solution 3 - Process of elimination 
 def min_four(x : int, y : int, z : int, w : int) -> int:
 
-    nums = [x, y, z, w]
+    min_num = 0
 
-    while len(nums) > 1:
+    if x < y:
+        if x < z:
+            if x < w:
+                min_num = x
+            else: 
+                min_num = w
+        elif z < w:
+            min_num = z
+        else:
+            min_num = w
+    elif y < z:
+        if y < w:
+            min_num = y
+        else:
+            min_num = w
+    elif z < w:
+        min_num = z
+    else:
+        min_num = w
 
-        mnum = max(nums)
-        nums.remove(mnum)
-
-    return nums[0]
+    return min_num
 
 def main():
     print(min_four(1, 2, 3, 4))
