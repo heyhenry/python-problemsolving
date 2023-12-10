@@ -50,15 +50,29 @@ min_four(0, 0, -5, 0) -> -5
 #     return min_num
 
 # solution 4 - Using For Loop
+# def min_four(x : int, y : int, z : int, w : int) -> int:
+
+#     nums = [x, y, z, w]
+    
+#     min_num = None
+    
+#     for i in nums:
+#         if min_num is None or i < min_num:
+#             min_num = i
+    
+#     return min_num
+
+# solution 5 - Using a single variable as point of changing leverage
 def min_four(x : int, y : int, z : int, w : int) -> int:
 
-    nums = [x, y, z, w]
-    
-    min_num = None
-    
-    for i in nums:
-        if min_num is None or i < min_num:
-            min_num = i
+    min_num = x
+
+    if y < min_num:
+        min_num = y
+    elif z < min_num:
+        min_num = z
+    elif w < min_num: 
+        min_num = w
     
     return min_num
 
