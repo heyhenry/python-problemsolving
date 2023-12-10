@@ -7,18 +7,31 @@ max_even([-4, 3, -1, -6]) -> -4
 max_even([1, 3, 5]) -> None
 max_even([0]) -> 0
 """
+# solution 1
+# def max_even(lst : list[int]) -> int | None:
+
+#     max_even = None
+
+#     for i in lst:
+#         if i % 2 == 0:
+#             if max_even is None:
+#                 max_even = i
+#             elif max_even < i:
+#                 max_even = i
+
+#     return max_even
+
+# solution 2
 def max_even(lst : list[int]) -> int | None:
 
-    max_even = None
+    mnum = None
 
     for i in lst:
         if i % 2 == 0:
-            if max_even is None:
-                max_even = i
-            elif max_even < i:
-                max_even = i
+            if mnum is None or mnum < i:
+                mnum = i
 
-    return max_even
+    return mnum
 
 def main():
     print(max_even([1, 2, 3]))
