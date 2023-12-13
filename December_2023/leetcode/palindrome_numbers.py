@@ -31,24 +31,41 @@ Constraints:
 
 Follow up: Could you solve it without converting the integer to a string?
 """
+# solution 1
+# def is_palindrome(x : int) -> bool:
+
+#     is_pally = True
+
+#     og_num = []
+#     rev_num = []
+
+#     for i in str(x):
+#         og_num.append(i)
+    
+#     rev_num += og_num
+#     rev_num.reverse()
+
+#     for i in range(len(og_num)):
+#         if og_num[i] != rev_num[i]:
+#             is_pally = False
+
+#     return is_pally
+
+# solution 2 - without converting int to str
+def reverse_int(n : int):
+
+    rev_num = 0
+
+    while (n > 0):
+        rem = n % 10
+        rev_num = (rev_num * 10) + rem
+        n = n // 10
+    
+    return rev_num
+
 def is_palindrome(x : int) -> bool:
 
-    is_pally = True
-
-    og_num = []
-    rev_num = []
-
-    for i in str(x):
-        og_num.append(i)
-    
-    rev_num += og_num
-    rev_num.reverse()
-
-    for i in range(len(og_num)):
-        if og_num[i] != rev_num[i]:
-            is_pally = False
-
-    return is_pally
+    return x == reverse_int(x)
 
 def main():
     print(is_palindrome(121)) # true
