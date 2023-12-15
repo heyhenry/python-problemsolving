@@ -48,15 +48,30 @@ Constraints:
 0 <= nums[i] <= 50
 0 <= val <= 100
 """
+# solution 1 - Creating a new list
+# def remove_element(nums : list[int], val : int) -> int:
+
+#     new_list = []
+
+#     for i in nums:
+#         if i != val:
+#             new_list.append(i)
+
+#     return new_list
+
+# solution 2 - iterating over the remove() function til no elements is val
 def remove_element(nums : list[int], val : int) -> int:
 
-    new_list = []
+    contains_val = True
 
-    for i in nums:
-        if i != val:
-            new_list.append(i)
+    while contains_val:
 
-    return new_list
+        nums.remove(val)
+
+        if val not in nums:
+            contains_val = False
+
+    return nums
 
 def main():
     print(remove_element([3,2,2,3],3))
