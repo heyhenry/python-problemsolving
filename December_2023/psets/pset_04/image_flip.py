@@ -35,13 +35,14 @@ def image_flip(filename : str):
 
             with open(new_filename, 'w') as nfile:
 
-                for row in reverse_content:
-                    for i in range(len(row)):
-                        if i != (len(row)-1):
-                            nfile.write(row[i] + ' ')
+                for row in range(len(reverse_content)):
+                    for i in range(len(reverse_content[row])):
+                        if i != (len(reverse_content[row])-1):
+                            nfile.write(reverse_content[row][i] + ' ')
                         else:
-                            nfile.write(row[i])
-                    nfile.write("\n")
+                            nfile.write(reverse_content[row][i])
+                    if row != len(reverse_content) - 1:
+                        nfile.write("\n")
 
 def main():
     print(image_flip(sys.argv[1]))
