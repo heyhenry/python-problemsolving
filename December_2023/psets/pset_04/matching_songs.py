@@ -17,22 +17,30 @@ def matching_songs(filename : str):
 
         if read_content:
 
+            # store each new line as an element into a list
             store_lines = read_content.splitlines()
-            
+
+            # store each element from the first line (it's the comparison key to match songs)
             filter = [c for c in store_lines[0]]
 
+            # loops through each song excluding the filter line (first line)
             for song in range(1, len(store_lines)):
+                # a live stack and index to reference the position of the filter element 
+                # so I can compare against the characters of each song
                 stack = []
+                index = 0
+                # looping through each character of each song
                 for c in store_lines[song].lower():
-                    for i in filter:
-                        if i == c and c.count(i) > 1:
-                            stack = []
-                            stack.append(c)
-                        elif i == c and c not in stack:
-                            stack.append(c)
+                    # checks to see if stack is still available and not all elements have been matched
+                    # if conditions are met, add to the stack and update the next element position that needs to be matched
+                    if index < len(filter) and c == filter[index]:
+                        stack.append(c)
+                        index += 1
+                # checks and validates whether the stack meets the filter requirement after looping through each song
                 if stack == filter:
+                    # store it in the final results list
                     results.append(store_lines[song])
-
+    
     return results        
                             
 def main():
