@@ -1,4 +1,3 @@
-def transpose(filename : str):
 """
 Given a CSV filename `example.csv`
 4 / 5
@@ -19,3 +18,61 @@ transpose("data4.csv") produces `data4_transpose.csv` with
 2,3,4,5
 3,4,5,6
 """
+import sys
+
+def transpose(filename : str):
+
+    # set up new filename
+    new_filename = '_transpose.csv'
+    index = filename.rfind('.csv')
+    new_filename = filename[:index]+new_filename
+
+    with open(filename, 'r') as file:
+
+        read_content = file.read()
+
+        if read_content:
+
+            # create appropriate lists
+            split_lines = read_content.splitlines()
+            content = []
+            for row in split_lines:
+                content.append(row.split(','))
+
+            # check if rows are equal
+            equal_rows = True
+            row_check = len(content[0])
+            for row in content:
+                if len(row) != row_check:
+                    equal_rows = False
+            
+            # transposes content list
+            new_content = []
+            if equal_rows:
+                for col in range(len(content[0])):
+                    temp = []
+                    for row in range(len(content)):
+                        temp.append(content[row][col])
+                    new_content.append(temp)
+            
+                # # create and add transposed results
+                with open(new_filename, 'w') as nfile:
+
+                    for row in range(len(new_content)):
+                        for i in range(len(new_content[row])):
+                            if i != (len(new_content[row]) - 1):
+                                nfile.write(new_content[row][i]+',')
+                            else:
+                                nfile.write(new_content[row][i])
+                        if row != (len(new_content)-1):
+                            nfile.write('\n')
+        else:
+            with open(new_filename, 'w') as nfile:
+
+                nfile.write('')
+                
+def main():
+    print(transpose(sys.argv[1]))
+
+if __name__ == "__main__":
+    main()
