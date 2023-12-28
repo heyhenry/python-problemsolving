@@ -8,7 +8,13 @@ count_letters("ababbcca) -> {'a' : 3, 'b' : 3, 'c' : 2}
 """
 def count_letters(s : str) -> dict[str, int]:
 
+    results = {}
 
+    for c in s:
+        if c not in results:
+            results[c] = s.count(c)
+
+    return results
 
 def main():
     print(count_letters(""))

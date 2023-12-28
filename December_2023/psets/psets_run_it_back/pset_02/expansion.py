@@ -7,7 +7,14 @@ expansion('abccba') -> ['a', 'ab', 'abc', 'abcc', 'abccb', 'abccba']
 """
 def expansion(s : str) -> list[str]:
 
+    results = []
+    new_s = ''
 
+    for c in s:
+        new_s += c
+        results.append(new_s)
+
+    return results
 
 def main():
     print(expansion('test'))

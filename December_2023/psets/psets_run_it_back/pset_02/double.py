@@ -9,7 +9,17 @@ double([[]]) does "nothing"
 """
 def double(table : list[list[int]]):
 
+    results = []
 
+    for row in table:
+        temp = []
+        for i in row:
+            temp.append(i*2)
+        results.append(temp)
+
+    table.clear()
+
+    table += results
 
 def main():
     
