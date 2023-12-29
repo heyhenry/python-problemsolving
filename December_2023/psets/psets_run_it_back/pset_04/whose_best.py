@@ -48,12 +48,12 @@ def whose_best(filename : str):
                             if v not in second_key:
                                 names[second_key].append(v)
             
-            # best name?
+            # find potential best name
             for key, values in names.items():
                 if greatest_name == '' or greatest_name in values:
                     greatest_name = key
 
-            # multiple best names?
+            # cross examine the keys and values for multiple best names
             best_names = []
             
             for key, values in names.items():
@@ -66,6 +66,7 @@ def whose_best(filename : str):
                 if counter == len(names):
                     best_names.append(a_name)
             
+            # utilise validation algorithm above to determine appropriate result
             if len(best_names) > 1:
                 result = 'UNKNOWN'
             elif len(best_names) < 1:
