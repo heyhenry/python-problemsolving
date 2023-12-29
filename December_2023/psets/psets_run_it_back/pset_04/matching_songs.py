@@ -27,7 +27,6 @@ def matching_songs(filename : str):
             for row in content:
                 stack = [i for i in content[0]]
                 for i in row.lower():
-                    
                     if len(stack) < 1:
                         break
                     elif i in filter and i == stack[0]:
@@ -36,10 +35,10 @@ def matching_songs(filename : str):
                         stack = [i for i in content[0]]
                         if i == stack[0]:
                             stack.remove(stack[0])
-                    print(stack)
-                print(len(stack))
                 if len(stack) < 1:
                     results.append(row)
+
+            del results[0]
             
     return results
             
