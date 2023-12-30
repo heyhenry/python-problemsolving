@@ -98,3 +98,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# is not 100% solved as 3rd test case in submission to leetcode failed .. [0,0,0,4] expected = 0, output = 1
