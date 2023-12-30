@@ -32,6 +32,8 @@ def buy_choco(prices: list[int], money: int) -> int:
     counter = 0
     original_bal = money
 
+    prices.sort()
+
     for i in prices:
 
         if counter < 2 and i <= money:
@@ -44,8 +46,9 @@ def buy_choco(prices: list[int], money: int) -> int:
     return money
 
 def main():
-    print(buy_choco([1,2,2],3))
-    print(buy_choco([3,2,3],3))
+    # print(buy_choco([1,2,2],3))
+    # print(buy_choco([3,2,3],3))
+    print(buy_choco([98,54,6,34,66,63,52,39],62))
 
 if __name__ == "__main__":
     main()
