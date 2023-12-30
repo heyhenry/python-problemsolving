@@ -27,27 +27,30 @@ Constraints:
 """
 def climb_stairs(n: int) -> int:
 
-    steps_left = n
-    
-    # just to see what kind of steps were taken
-    steps_taken = []
+    result = 0
 
-    while steps_left > 0:
+    if n == 1:
+        result = n
+    elif n == 2:
+        result = n
+    else:
+        step_one = 0
+        step_two = 1
+        next_step = 0
 
-        if steps_left - 2 >= 0:
-            steps_left -= 2
-            steps_taken.append(2)
-        else:
-            steps_left -= 1
-            steps_taken.append(1)
+        for _ in range(n):
+            next_step = step_one + step_two
+            step_one = step_two
+            step_two = next_step
+        
+        result = next_step
     
-    steps_left += n
-    print(steps_taken)
-    return steps_left   
+    return result
 
 def main():
     print(climb_stairs(2))
     print(climb_stairs(3))
+    print(climb_stairs(4))
 
 if __name__ == "__main__":
     main()
