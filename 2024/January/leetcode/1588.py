@@ -61,6 +61,20 @@ def sumOddLengthSubarrays(arr: list[int]) -> int:
     # Solution above found by seeing the first 2mins of this video (https://www.youtube.com/watch?v=NTT1VvrKL0o&ab_channel=StreetCoder), 
     # where it showed the first for loop. 
 
+    # mentioned videos faster time complexity Osquared(?) solution
+    # sum_value = 0
+    # presum = [0]*(len(arr)+1)
+
+    # for i in range(len(arr)):
+    #     presum[i+1] += presum[i] + arr[i]
+    
+    # for i in range(len(arr)):
+    #     for j in range(i+1, len(arr)+1):
+    #         if (j-i) % 2:
+    #             sum_value += presum[j] - presum[i]
+    
+    # return sum_value
+
 def main():
     print(sumOddLengthSubarrays(arr = [1,4,2,5,3]))
     print(sumOddLengthSubarrays(arr = [1,2]))
