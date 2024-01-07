@@ -64,7 +64,7 @@ def transpose(filename : str):
                             else:
                                 nfile.write(content[row][col])
                         nfile.write('\n')
-            
+
         else:
 
             # create an empty file if the given file is empty

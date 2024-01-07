@@ -24,13 +24,13 @@ def write_fake(filename : str, words : list[str]):
                 file.write(words[i])
 
 def main():
+    
+    write_fake("fakeletters/test-output.fakeletters", ["test", "out"])
 
-    write_fake("fakeletters/output.fakeletters", ["test", "out"])
 
-
-    print(contains("fakeletters/output.fakeletters", "test"))
-    print(contains("fakeletters/output.fakeletters", "other"))
-    print(count_words("fakeletters/output.fakeletters"))
+    # print(contains("fakeletters/output.fakeletters", "test"))
+    # print(contains("fakeletters/output.fakeletters", "other"))
+    # print(count_words("fakeletters/output.fakeletters"))
 
 if __name__ == "__main__":
     main()
