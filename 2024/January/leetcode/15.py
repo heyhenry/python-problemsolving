@@ -46,27 +46,18 @@ def threeSum(nums: list[int]) -> list[list[int]]:
                 temp = []
                 if i != j and i != k and j != k and nums[i] + nums[j] + nums[k] == 0:
                     temp.extend([nums[i], nums[j], nums[k]])
-                    if temp not in results:
-                        results.append(temp)
+                    if sorted(temp) not in results:
+                        results.append(sorted(temp))
 
-    new_results = []
-    for row in results:
-        new_results.append(sorted(row))
-
-    final_results = []
-
-    for i in new_results:
-        if i not in final_results:
-            final_results.append(i)
-
-    return final_results      
+    return results   
 
 def main():
     # print(threeSum(nums = [-1,0,1,2,-1,-4]))
     # print(threeSum(nums = [0,1,1]))
     # print(threeSum(nums = [0,0,0]))
     # print(threeSum([-1,0,1,2,-1,-4,-2,-3,3,0,4]))
-    print(threeSum([-1,0,1,2,-1,-4]))
+    # print(threeSum([-1,0,1,2,-1,-4]))
+    print(threeSum([1,-1,-1,0]))
 
 if __name__ == "__main__":
     main()
