@@ -39,7 +39,20 @@ n == accounts[i].length
 """
 def maximumWealth(accounts: list[list[int]]) -> int:
 
-    
+    accounts_added = {}
+
+    for account in range(len(accounts)):
+        accounts_added[account] = sum(accounts[account])
+
+    richest_customer = ''
+    biggest_account = 0
+
+    for key, value in accounts_added.items():
+        if biggest_account < 0 or biggest_account < value:
+            biggest_account = value
+            richest_customer = key
+
+    return accounts_added[richest_customer]
 
 def main():
     print(maximumWealth(accounts = [[1,2,3],[3,2,1]]))
