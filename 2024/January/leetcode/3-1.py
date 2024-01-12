@@ -32,24 +32,33 @@ s consists of English letters, digits, symbols and spaces.
 """
 def lengthOfLongestSubstring(s: str) -> int:
 
-    distinct_letters = set(s)
-    size = len(s)
-    left, right = 0, 0
+    result = ''
 
-    for i in range(size):
-        if s[right] in distinct_letters:
-            
-    
+    if len(s) < 2:
+        result = s
+    else:
+        substr = ''
+        substr_list = []
+        for i in range(len(s)):
+            if i == len(s) - 1 and s[i] not in substr:
+                substr += s[i]
+                substr_list.append(substr)
+            elif s[i] not in substr:
+                substr += s[i]
+            else:
+                substr_list.append(substr)
+                substr = substr[substr.rfind(s[i]):]     
 
+        result = max(substr_list, key=len)
 
-
-    # return subs
+    return result
 
 
 def main():
     print(lengthOfLongestSubstring("abcabcbb"))
     print(lengthOfLongestSubstring("bbbbb"))
     print(lengthOfLongestSubstring("pwwkew"))
+    print(lengthOfLongestSubstring("dvdf"))
 
 if __name__ == "__main__":
     main()
