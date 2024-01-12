@@ -37,37 +37,7 @@ def longestCommonPrefix(strs: list[str]) -> str:
     #     ans+=first[i]
     # return ans
 
-    result = ''
-
-    if len(strs) == 1:
-        result = strs[0]
-        
-    else:
-        min_len = min(strs, key=len)
-        
-        prefixes = []
-        
-        prefix = ''
-        for col in range(len(min_len)):
-            temp = ''
-            for row in range(len(strs)):
-                temp += strs[row][col]
-            if temp == temp[0]*len(temp) and len(temp) > 1 and col == len(min_len) - 1:
-                prefix += temp[0]
-                prefixes.append(prefix)
-            elif temp == temp[0]*len(temp) and len(temp) > 1:
-                prefix += temp[0]
-            else:
-                prefixes.append(prefix)
-                prefix = ''
-        if len(prefixes) < 1:
-            result = strs[0]
-        else:
-            result = max(prefixes, key=len)
-        
-    return result
-
-    # solution assisted by ai 
+    # My code before ai help 
     # result = ''
 
     # if len(strs) == 1:
@@ -76,19 +46,50 @@ def longestCommonPrefix(strs: list[str]) -> str:
     # else:
     #     min_len = min(strs, key=len)
         
+    #     prefixes = []
+        
     #     prefix = ''
     #     for col in range(len(min_len)):
     #         temp = ''
     #         for row in range(len(strs)):
     #             temp += strs[row][col]
-    #         if temp == temp[0]*len(temp) and len(temp) > 1:
+    #         if temp == temp[0]*len(temp) and len(temp) > 1 and col == len(min_len) - 1:
+    #             prefix += temp[0]
+    #             prefixes.append(prefix)
+    #         elif temp == temp[0]*len(temp) and len(temp) > 1:
     #             prefix += temp[0]
     #         else:
-    #             break  # Reset the prefix when a mismatch is encountered
+    #             prefixes.append(prefix)
+    #             prefix = ''
+    #     if len(prefixes) < 1:
+    #         result = strs[0]
+    #     else:
+    #         result = max(prefixes, key=len)
         
-    #     result = prefix
-
     # return result
+
+    # solution assisted by ai 
+    result = ''
+
+    if len(strs) == 1:
+        result = strs[0]
+        
+    else:
+        min_len = min(strs, key=len)
+        
+        prefix = ''
+        for col in range(len(min_len)):
+            temp = ''
+            for row in range(len(strs)):
+                temp += strs[row][col]
+            if temp == temp[0]*len(temp) and len(temp) > 1:
+                prefix += temp[0]
+            else:
+                break  # Reset the prefix when a mismatch is encountered
+        
+        result = prefix
+
+    return result
 
 
     # Note to self: The reason behind the difficulty in solving the question seems to significantly stem from not properly understanding core components of the problem. 
