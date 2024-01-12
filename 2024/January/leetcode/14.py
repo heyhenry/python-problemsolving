@@ -26,46 +26,16 @@ strs[i] consists of only lowercase English letters.
 """
 def longestCommonPrefix(strs: list[str]) -> str:
 
-    result = ""
-
-    if len(strs) < 2 and strs[0] == "":
-
-        result = ""
-
-    else:
-
-        min_word = len(min(strs, key=len))
-        modified_strs = []
-        for word in strs:
-            counter = 0
-            new_word = ''
-            for c in word:
-                if counter < min_word:
-                    new_word += c
-                    counter += 1
-            
-            modified_strs.append(new_word)
-
-        tha_word = ''
-        save_it = []
-        for col in range(len(modified_strs[0])):
-            temp = ''
-            modi_str = ''
-            for row in range(len(modified_strs)):
-                temp += modified_strs[row][col]
-                modi_str = modified_strs[row][col]
-            if temp.count(modi_str) == len(modified_strs):
-                tha_word += modi_str
-            else:
-                save_it.append(tha_word)
-                tha_word = ''
-
-        if len(save_it) > 1:
-            result = max(save_it, key=len)
-        else:
-            result = tha_word
-
-    return result
+    # solution by https://leetcode.com/problems/longest-common-prefix/solutions/3273176/python3-c-java-19-ms-beats-99-91/
+    ans = ''
+    strs = sorted(strs)
+    first = strs[0]
+    last = strs[-1]
+    for i in range(min(len(first),len(last))):
+        if(first[i]!=last[i]):
+            return ans
+        ans+=first[i]
+    return ans
 
 def main():
     print(longestCommonPrefix(strs = ["flower","flow","flight"]))
