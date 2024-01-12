@@ -46,7 +46,7 @@ def countMatches(items: list[list[str]], ruleKey: str, ruleValue: str) -> int:
             counter += 1
             results.append(item)
 
-    return results
+    return len(results)
 
 def main():
     print(countMatches(items = [["phone","blue","pixel"],["computer","silver","lenovo"],["phone","gold","iphone"]], ruleKey = "color", ruleValue = "silver"))
