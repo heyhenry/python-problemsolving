@@ -7,9 +7,26 @@ max_prime([[3, 7, 1, 4], [8, 4, 12, 221]]) -> 7
 max_prime([[4, 5, 6], [1, 2, 3], [17, 9, 6]]) -> 17
 max_prime([[]]) -> -1
 """
+def is_prime(n : int) -> bool:
+
+    result = True
+
+    for i in range(2, n):
+        if n % i == 0:
+            result = False
+
+    return result
+
 def max_prime(table : list[list[int]]) -> int:
 
+    result = -1
 
+    for row in table:
+        for i in row:
+            if is_prime(i) and i > result:
+                result = i
+
+    return result
 
 def main():
     print(max_prime([[1, 4, 8], [0, -5]]))
