@@ -45,7 +45,7 @@ def whose_best(filename : str) -> str:
                          name_in_val_counter += 1
                 if name_in_val_counter < 1:
                     potential_besties.append(key)
-            
+
             if len(potential_besties) == 1:
                 result = potential_besties[0]
             elif len(potential_besties) < 1:
