@@ -8,7 +8,17 @@ row_sum([[-1, -5, 6], [7, 2], [10, 10, 10]]) -> [[-1, -6, 0], [7, 9], [10, 20,
 """
 def row_sum(table : list[list[int]]) -> list[list[int]]:
 
+    results = []
 
+    for row in table:
+        temp = []
+        sum_val = 0
+        for i in row:
+            sum_val += i
+            temp.append(sum_val)
+        results.append(temp)
+
+    return results
 
 def main():
     print(row_sum([[1, 2, 3], [4, 5, 6]]))
