@@ -36,7 +36,5 @@ def main():
     print(isPalindrome(x = -121))
     print(isPalindrome(x = 10))
 
-
-
 if __name__ == "__main__":
     main()
