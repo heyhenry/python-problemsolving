@@ -28,10 +28,36 @@ ransomNote and magazine consist of lowercase English letters.
 """
 def canConstruct(ransomNote : str, magazine : str) -> bool:
 
+    # solution 1
+    # result = True
+
+    # for i in ransomNote:
+    #     if magazine.count(i) < ransomNote.count(i):
+    #         result = False
+
+    # return result
+
+    # solution 2
     result = True
+    ransom = {}
+    maga = {}
 
     for i in ransomNote:
-        if magazine.count(i) < ransomNote.count(i):
+        if i not in ransom:
+            ransom[i] = 1
+        else:
+            ransom[i] += 1
+
+    for i in magazine:
+        if i not in maga:
+            maga[i] = 1
+        else:
+            maga[i] += 1
+
+    for key in ransom:
+        if key not in maga:
+            result = False
+        elif maga[key] < ransom[key]:
             result = False
 
     return result
