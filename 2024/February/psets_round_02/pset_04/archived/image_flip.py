@@ -8,9 +8,9 @@ Output: a matrix of numbers between 0 and 255, of the same size as the input.
 If you're feeling fancy, you can try and visualize these images! Pillow's Image save method can actually write
 out images in the format we're using, so you can make a png or whatever of them!
 """
-def flip_image(filename : str):
+def image_flip(filename : str):
 
-    new_filename = filename[:filename.rfind('.')] + '.solution'
+    new_filename = filename[:filename.rfind('.')] + '.output'
 
     with open(filename, 'r') as file:
 
@@ -19,23 +19,22 @@ def flip_image(filename : str):
         if read_content:
 
             lines = read_content.splitlines()
-
             lines.reverse()
-
+            
             with open(new_filename, 'w') as nfile:
 
-                for row in range(len(lines)):
-                    if row != len(lines) - 1:
-                        nfile.write(lines[row] + '\n')
+                for l in range(len(lines)):
+                    if l != len(lines) - 1:
+                        nfile.write(lines[l] + '\n')
                     else:
-                        nfile.write(lines[row])
+                        nfile.write(lines[l])
 
 def main():
-    print(flip_image("2/input1.txt"))
-    print(flip_image("2/input2.txt"))
-    print(flip_image("2/input3.txt"))
-    print(flip_image("2/input4.txt"))
-    print(flip_image("2/input5.txt"))
+    print(image_flip("2/input1.txt"))
+    print(image_flip("2/input2.txt"))
+    print(image_flip("2/input3.txt"))
+    print(image_flip("2/input4.txt"))
+    print(image_flip("2/input5.txt"))
 
 if __name__ == "__main__":
     main()
