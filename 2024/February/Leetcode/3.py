@@ -44,9 +44,9 @@ def lengthOfLongestSubstring(s : str) -> int:
     return len(max(subs, key=len))
 
 def main():
-    # print(lengthOfLongestSubstring(s = "abcabcbb"))
-    # print(lengthOfLongestSubstring(s = "bbbbb"))
-    # print(lengthOfLongestSubstring(s = "pwwkew"))
+    print(lengthOfLongestSubstring(s = "abcabcbb"))
+    print(lengthOfLongestSubstring(s = "bbbbb"))
+    print(lengthOfLongestSubstring(s = "pwwkew"))
     print(lengthOfLongestSubstring("dvdf"))
 
 
