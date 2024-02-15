@@ -46,12 +46,19 @@ nums is sorted in non-decreasing order.
 """
 def removeDuplicates(nums : list[int]) -> int:
 
-    lst = []
+    # solution 1
+    # lst = []
 
-    for i in nums:
-        if i not in lst:
-            lst.append(i)
+    # for i in nums:
+    #     if i not in lst:
+    #         lst.append(i)
     
+    # nums.clear()
+    # nums += lst
+
+    # solution 2 = faster, shorter code
+    lst = list(set(nums))
+    lst.sort()
     nums.clear()
     nums += lst
 
