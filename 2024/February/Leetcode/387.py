@@ -42,10 +42,9 @@ def firstUniqChar(s : str) -> int:
         if val == 1:
             searcher = key
             break
-    
-    for c in range(len(s)):
-        if s[c] == searcher:
-            result = c
+
+    if searcher != '':
+        result = s.rfind(searcher)
 
     return result
         
