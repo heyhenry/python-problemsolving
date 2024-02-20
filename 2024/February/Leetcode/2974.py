@@ -32,22 +32,20 @@ nums.length % 2 == 0
 def numberGame(nums : list[int]) -> list[int]:
 
     arr = []
-    alices_arr = []
-    bobs_arr = []
+    numbers = sorted(nums)
 
-    s_nums = sorted(nums)
-    bob_counter = 1
-    alice_counter = 0
-    for i in range(len(s_nums)):
-        if i != len(s_nums)-1:
-            arr.append(i+bob_counter)
-            arr.append(i+alice_counter)
-            s_nums.pop(0)
-            s_nums.pop(0)
+    while len(numbers) > 0:
+        temp = []
+        temp.append(min(numbers))
+        numbers.pop(0)
+        temp.append(min(numbers))
+        numbers.pop(0)
+        temp.reverse()
+        for i in temp:
+            arr.append(i)  
+    
+    return arr
         
-    print(arr)
-
-
 def main():
     print(numberGame(nums = [5,4,2,3]))
     print(numberGame(nums = [2,5]))
