@@ -8,6 +8,9 @@ Output: a matrix of numbers between 0 and 255, of the same size as the input.
 If you're feeling fancy, you can try and visualize these images! Pillow's Image save method can actually write
 out images in the format we're using, so you can make a png or whatever of them!
 """
+from PIL import Image
+import PIL
+
 def image_flip(filename : str):
 
     new_filename = filename[:filename.rfind('.')] + ".solution"
@@ -31,11 +34,11 @@ def image_flip(filename : str):
                         nfile.write(lines[l])
 
 def main():
-    print(image_flip("imgs/input1.txt"))
-    print(image_flip("imgs/input2.txt"))
-    print(image_flip("imgs/input3.txt"))
-    print(image_flip("imgs/input4.txt"))
-    print(image_flip("imgs/input5.txt"))
+    image_flip("imgs/input1.txt")
+    image_flip("imgs/input2.txt")
+    image_flip("imgs/input3.txt")
+    image_flip("imgs/input4.txt")
+    image_flip("imgs/input5.txt")
 
 if __name__ == "__main__":
     main()
