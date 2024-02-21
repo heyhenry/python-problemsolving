@@ -28,16 +28,15 @@ Output: false
 """
 def isHappy(n : int) -> bool:
 
-    # result = False
+    result = False
 
     flagged_juan = True
+    counter = 0
     
     while flagged_juan:
         num = 0
         for i in str(n):
             num += int(i) ** 2
-        
-        
 
         if int(num) == 1:
             flagged_juan = False
@@ -46,6 +45,9 @@ def isHappy(n : int) -> bool:
             flagged_juan = False
         else:
             n = int(num)
+        counter += 1
+        if counter > 31:
+            break
 
     return result
 
