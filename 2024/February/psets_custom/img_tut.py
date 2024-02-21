@@ -1,14 +1,18 @@
 from PIL import Image
+import PIL
 
-with open('imgs/input3.solution') as file:
-    lines = file.readlines()
+used_image = "imgs/goku_3.jpg"
 
-img_data = [int(x) for line in lines for x in line if x.isdigit()]
+# rotating an image
+# im1 = Image.open(used_image)
+# im1 = im1.rotate(67, PIL.Image.NEAREST, expand=1)
+# im1.show()
 
-height = len(lines)
-width = len(img_data) // height
+original_img = Image.open("imgs/goku_3.jpg")
 
-img = Image.new('P', (width, height), 0)
+vert_img = original_img.transpose(method=Image.FLIP_TOP_BOTTOM)
+vert_img.save("vert_goku.png")
+vert_img.show()
 
-img.save('test.png')
-
+original_img.close()
+vert_img.close()
