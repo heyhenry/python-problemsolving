@@ -7,10 +7,12 @@ import os
 jan_leetcodes = os.listdir(r"E:\PYTHON\python-problemsolving\2024\January\leetcode")
 feb_leetcodes = os.listdir(r"E:\PYTHON\python-problemsolving\2024\February\Leetcode")
 
-to_do_leetcodes = []
+with open("todo_leetcodes.results", 'w') as nfile:
 
-for i in jan_leetcodes:
-    if i not in feb_leetcodes:
-        to_do_leetcodes.append(i)
+    nfile.write("Leetcodes Left from January: \n")
 
-print(to_do_leetcodes)
+    for i in range(len(jan_leetcodes)):
+        if i != len(jan_leetcodes) - 1 and jan_leetcodes[i] not in feb_leetcodes:
+            nfile.write(jan_leetcodes[i] + '\n')
+        elif i == len(jan_leetcodes) - 1 and jan_leetcodes[i] not in feb_leetcodes:
+            nfile.write(jan_leetcodes[i])
