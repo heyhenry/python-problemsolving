@@ -25,44 +25,24 @@ s consists of only lowercase English letters.
 """
 def reverseStr(s : str, k : int) -> str:
 
-    if len(s) < k:
-        return s[::-1]
-    elif len(s) < 2*k and k >= len(s):
-        temp = ''
-        for c in range(2):
-            temp += c
-        temp = temp[::-1]
-        for c in range(2, len(s)):
-            temp += c
-        return temp
+    # Studied solution by Marlen09 on leetcode
+    lst = list(s)
 
+    for i in range(0, len(lst), 2*k):
+        lst[i:i+k] = reversed(lst[i:i+k])
 
-    # else:
-    #     pairs_lst = []
-    #     counter = 0
-    #     temp = []
-    #     for c in s:
-    #         counter += 1
-    #         temp.append(c)
-    #         if counter == 2:
-    #             pairs_lst.append(temp)
-    #             counter = 0
-    #             temp = []
-        
-    #     equal_lengths = True
+    return "".join(lst)
 
-    #     for pair in pairs_lst:
-    #         if len(pair) != len(pairs_lst[0]):
-    #             equal_lengths = False
+    # studied numerous resources to understand the question better and to see how the above code actually
+    # deals with the 1 first conditional ('If there are fewer than k characters left, reverse them all').
+    # The code above addresses it but I dont understand how.. it might just be a thing with string slices I dont understand.
 
-    
-        
-    # print(pairs_lst)
+    # Solution: I need to learn more about string slicing and its default use cases for different situations.
 
 def main():
     # print(reverseStr(s = "abcdefg", k = 2))
     # print(reverseStr(s = "abcd", k = 2))
-    print(reverseStr(s = "abcdefghi", k = 3))
+    print(reverseStr(s = "abc", k=4))
 
 if __name__ == "__main__":
     main()
