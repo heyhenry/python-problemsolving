@@ -28,6 +28,17 @@ Constraints:
 1 <= s.length <= 105
 s[i] is either 'I' or 'D'.
 """
+"""
+Reflection Notes:
+
+- Weakness: Need to get better at understanding leetcode descriptions, and being able to conceptualise/visualise them.
+- Solution: More exposure - Do them with and without assistance, just get more use to reading and familiarising with such descriptions.
+
+- Weakness: Lack of understanding given concepts such as permutations and manipulation lists.
+- Solution: More exposure to list manipulation and exploring all frequent concepts used in python and pseudo/code examples for it.
+"""
+
+
 def diStringMatch(s : str) -> list[int]:
 
     # Initial code written after assessing the provided pseudo code I asked to chatgpt ai.
@@ -83,8 +94,6 @@ def diStringMatch(s : str) -> list[int]:
     perm[n-1] = low
 
     return perm
-
-
 
 def main():
     print(diStringMatch(s = "IDID"))
