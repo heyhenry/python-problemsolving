@@ -68,8 +68,7 @@ def sumOddLengthSubarrays(arr : list[int]) -> int:
     for i in range(len(arr)):
         for j in range(i+1, len(arr)+1):
             if len(arr[i:j]) % 2 != 0:
-                for k in arr[i:j]:
-                    result += k
+                result += sum(arr[i:j])
 
     return result
 
