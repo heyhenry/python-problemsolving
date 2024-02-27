@@ -45,23 +45,33 @@ Could you solve this problem in O(n) time complexity?
 """
 def sumOddLengthSubarrays(arr : list[int]) -> int:
 
-    sub_arrs = []
+    # sub_arrs = []
 
-    for i in range(len(arr)):
-        for j in range(i+1, len(arr)+1):
-            sub_arrs.append(arr[i:j])
+    # for i in range(len(arr)):
+    #     for j in range(i+1, len(arr)+1):
+    #         sub_arrs.append(arr[i:j])
 
-    result = 0
+    # result = 0
 
-    for i in sub_arrs:
-        if len(i) % 2 != 0:
-            for j in i:
-                result += j
+    # for i in sub_arrs:
+    #     if len(i) % 2 != 0:
+    #         for j in i:
+    #             result += j
 
-    return result
+    # return result
 
 # had to look at the first for loop section of my previous solution to get it. 
 # still struggling to remember and understand the line 'sub_arrs.append(arr[i:j])' independently without testing to see output
+    
+    result = 0
+
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)+1):
+            if len(arr[i:j]) % 2 != 0:
+                for k in arr[i:j]:
+                    result += k
+
+    return result
 
 def main():
     print(sumOddLengthSubarrays(arr = [1,4,2,5,3]))
