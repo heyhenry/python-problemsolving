@@ -1,0 +1,4 @@
+The leetcode questions I struggled and ultimately had to look at solution to solve.
+
+- 541
+- 1588
