@@ -8,7 +8,16 @@ max_even_table([[], [1, 4, 6, 2], [-1, -2]]) -> [None, 6, -2]
 """
 def max_even_table(lst : list[list[int]]) -> list[int | None]:
 
+    results = []
+    
+    for row in lst:
+        num = None
+        for i in row:
+            if (num is None or num < i) and i % 2 == 0:
+                num = i
+        results.append(num)
 
+    return results
 
 def main():
     print(max_even_table([[1, 2, 3]]))
