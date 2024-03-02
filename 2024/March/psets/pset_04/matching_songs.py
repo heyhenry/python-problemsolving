@@ -8,10 +8,9 @@ names in the song database (which can be any letter, space, or number).
 Output: a list of songs in alphabetical order that match the given request order
 Note that capitalization doesn't matter, so a matches both A and a
 """
-def matching_songs(filename : str):
+def matching_songs(filename : str) -> list[str]:
 
     results = []
-    new_filename = filename[:filename.rfind('.')] + '.solution'
 
     with open(filename, 'r') as file:
 
@@ -36,6 +35,8 @@ def matching_songs(filename : str):
                         stack = content[0]
                 if len(stack) == 0:
                     results.append(row)
+            
+            results.pop(0)
 
     return results
 
