@@ -42,7 +42,6 @@ def is_palindrome(s : str) -> bool:
 
     return clean_s == clean_s[::-1]
 
-
 def main():
     print(is_palindrome(s = "A man, a plan, a canal: Panama"))
     print(is_palindrome(s = "race a car"))
