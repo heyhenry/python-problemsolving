@@ -29,6 +29,37 @@ Constraints:
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
 """
-def isValid(s : str) -> bool:
+def is_valid(s : str) -> bool:
 
+    s = list(s)
+    result = False
 
+    if len(s) > 1:
+
+        stack = []
+
+        for c in s:
+            if c in '([{':
+                stack.append(c)
+            elif len(stack) > 0 and c == ')' and stack[-1] == '(':
+                stack.pop()
+            elif len(stack) > 0 and  c == ']' and stack[-1] == '[':
+                stack.pop()
+            elif len(stack) > 0 and  c == '}' and stack[-1] == '{':
+                stack.pop()
+            else:
+                stack.append(c)
+
+        result = len(stack) == 0
+
+    return result
+
+def main():
+    print(is_valid(s = "()"))
+    print(is_valid(s = "()[]{}"))
+    print(is_valid(s = "(]"))
+    print(is_valid("]"))
+    print(is_valid("){"))
+
+if __name__ == "__main__":
+    main()
