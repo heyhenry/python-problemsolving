@@ -52,13 +52,15 @@ def height_checker(heights : list[int]) -> int:
     # return result
 
     # solution 2 (slightly faster .. beats 30% on lc)
+    # solution 2.1 (much faster .. beats 69% of lc) only change was putting len(heights) in a variable
     result = 0
 
     original = []
     original += heights
     heights.sort()
+    r = len(heights)
 
-    for i in range(len(heights)):
+    for i in range(r):
         if original[i] != heights[i]:
             result += 1
 
