@@ -36,18 +36,23 @@ def is_happy(n : int) -> bool:
     called_nums = set()
     calculating = True
     holder = n
+    result = True
+    
     while calculating:
         temp = 0
         if holder in called_nums:
-            return False
+            result = False
+            calculating = False
         else:
             called_nums.add(holder)
             for i in str(holder):
                 temp += int(i)**2
             if temp == 1:
-                return True
+                break
             else:
                 holder = temp
+
+    return result
 
 def main():
     print(is_happy(n = 19))
