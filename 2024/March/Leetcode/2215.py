@@ -32,20 +32,20 @@ Constraints:
 """
 def find_difference(nums1: list[int], nums2 : list[int]) -> list[list[int]]:
 
-    results = []
-    nums1_diff = []
-    nums2_diff = []
+    answer = [[],[]]
+
+    nums1 = list(set(nums1))
+    nums2 = list(set(nums2))
 
     for i in nums1:
-        if i not in nums2 and i not in nums1_diff:
-            nums1_diff.append(i)
-    results.append(nums1_diff)
-    for i in nums2: 
-        if i not in nums1 and i not in nums2_diff:
-            nums2_diff.append(i)
-    results.append(nums2_diff)
+        if i not in nums2 and i not in answer[0]:
+            answer[0].append(i)
 
-    return results
+    for i in nums2:
+        if i not in nums1 and i not in answer[1]:
+            answer[1].append(i)
+
+    return answer
 
 def main():
     print(find_difference(nums1 = [1,2,3], nums2 = [2,4,6]))
