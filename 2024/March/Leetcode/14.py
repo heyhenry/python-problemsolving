@@ -28,10 +28,11 @@ def longest_common_prefix(strs : list[str]) -> str:
 
     prefix = ''
     rnge = len(min(strs, key=len))
+    len_s = len(strs)
     
     for col in range(rnge):
         temp = []
-        for row in range(len(strs)):
+        for row in range(len_s):
             temp.append(strs[row][col])
         if temp.count(temp[0]) == len(temp):
             prefix += temp[0]
