@@ -42,10 +42,24 @@ Constraints:
 """
 def height_checker(heights : list[int]) -> int:
 
+    # solution 1 (pretty slow .. beats 5.9% on lc)
+    # result = 0
+
+    # for i in range(len(heights)):
+    #     if heights[i] != sorted(heights)[i]:
+    #         result += 1
+
+    # return result
+
+    # solution 2 (slightly faster .. beats 30% on lc)
     result = 0
 
+    original = []
+    original += heights
+    heights.sort()
+
     for i in range(len(heights)):
-        if heights[i] != sorted(heights)[i]:
+        if original[i] != heights[i]:
             result += 1
 
     return result
