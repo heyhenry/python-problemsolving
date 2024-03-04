@@ -38,9 +38,7 @@ def sort_people(names : list[str], heights : list[int]) -> list[str]:
     for i in range(n):
         hierarchy.append([heights[i],names[i]])
     
-    hierarchy.sort(reverse=True)
-    
-    return [row[1] for row in hierarchy]
+    return [row[1] for row in sorted(hierarchy, reverse=True)]
 
 
 def main():
