@@ -61,8 +61,8 @@ def maximum_number_of_string_pairs(words : list[str]) -> int:
 
 def main():
     print(maximum_number_of_string_pairs(words = ["cd","ac","dc","ca","zz"]))
-    # print(maximum_number_of_string_pairs(words = ["ab","ba","cc"]))
-    # print(maximum_number_of_string_pairs(words = ["aa","ab"]))
+    print(maximum_number_of_string_pairs(words = ["ab","ba","cc"]))
+    print(maximum_number_of_string_pairs(words = ["aa","ab"]))
 
 if __name__ == "__main__":
     main()
