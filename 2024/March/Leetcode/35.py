@@ -30,26 +30,30 @@ nums contains distinct values sorted in ascending order.
 """
 def search_insert(nums : list[int], target : int) -> int:
 
-    result = -1
+    # result = -1
     
-    n = len(nums)
+    # n = len(nums)
 
-    for i in range(n):
-        if target < nums[i]:
-            result = i
-            break
-        elif i != n - 1 and target > nums[i] and target < nums[i+1]:
-            result = i+1
-            break
-        elif i == n - 1 and target > nums[i]:
-            result = i+1
-            break
-        if nums[i] == target:
-            result = i
-            break
+    # for i in range(n):
+    #     if target < nums[i]:
+    #         result = i
+    #         break
+    #     elif i != n - 1 and target > nums[i] and target < nums[i+1]:
+    #         result = i+1
+    #         break
+    #     elif i == n - 1 and target > nums[i]:
+    #         result = i+1
+    #         break
+    #     if nums[i] == target:
+    #         result = i
+    #         break
     
-    return result
+    # return result
 
+    nums.append(target)
+    x = sorted(nums)
+   
+    return x.index(target)
 
 
 def main():
