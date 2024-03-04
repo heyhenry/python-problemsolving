@@ -34,13 +34,20 @@ Follow up: Could you implement a solution using only O(1) extra space complexity
 """
 def missing_number(nums : list[int]) -> int:
 
+    # n = len(nums) + 1
+
+    # for i in range(n):
+    #     if i not in nums:
+    #         result = i
+
+    # return result
+
     n = len(nums) + 1
 
-    for i in range(n):
-        if i not in nums:
-            result = i
+    expected = set([i for i in range(n)])
+    nums = set(nums)
 
-    return result
+    return list(expected.difference(nums))[0]
 
 def main():
     print(missing_number(nums = [3,0,1]))
