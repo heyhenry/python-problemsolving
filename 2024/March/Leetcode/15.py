@@ -58,13 +58,26 @@ def three_sum(nums : list[int]) -> list[list[int]]:
     nums.sort()
     n = len(nums)
 
+    # 'PN' will stand for personal note
+
+    # PN: making the range n - 2, to ensure that there is enough elements available to form a triplet
     for i in range(n - 2):
         # skip duplicate values for the first element
         if i > 0 and nums[i] == nums[i - 1]:
             continue
 
+        # PN:
+        # 'left' and 'right' pointers are used to represent the second and third elements
+        # meanwhile 'i' will be the first element
+        # the 'left' pointer will start with the next element after 'i' whilst
+        # the 'right' pointer will start with the last element in the array
         left, right = i + 1, n - 1
 
+        # PN: 
+        # the while loop will iterate as long as the 'left' pointer is less than the 'right' pointer
+        # this means that if there is still more on the left, then there is still something on the right,
+        # otherwise it means the left has caught up and there are no more elements for the right pointer to point at
+        # aka this makes sure that the pointers are still within a valid range
         while left < right:
             current_sum = nums[i] + nums[left] + nums[right]
 
