@@ -36,6 +36,7 @@ Constraints:
 """
 def three_sum(nums : list[int]) -> list[list[int]]:
 
+    # My personal solution but it doesnt pass 'time limit exceeded' trigger
     # lst = []
     # results = []
 
@@ -51,22 +52,41 @@ def three_sum(nums : list[int]) -> list[list[int]]:
 
     # return results
 
-    lst = set()
-    results = []
+    # solution provided by ai - currently left here for study purposes after struggling a couple hours.
+    result = []
+    # sort array for easier duplicate handling
+    nums.sort()
     n = len(nums)
 
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                temp = nums[i] + nums[j] + nums[k]
-                if temp == 0:
-                    lst.add((nums[i],nums[j],nums[k]))
+    for i in range(n - 2):
+        # skip duplicate values for the first element
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
 
-    for row in lst:
-        if sorted(row) not in results:
-            results.append(sorted(row))
+        left, right = i + 1, n - 1
 
-    return results
+        while left < right:
+            current_sum = nums[i] + nums[left] + nums[right]
+
+            if current_sum == 0:
+                result.append([nums[i],nums[left],nums[right]])
+
+                # skip duplicate values for the second element
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+
+                # skip duplicate values for the third element
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+
+                left += 1
+                right -= 1
+            elif current_sum < 0:
+                left += 1
+            else:
+                right -= 1
+
+    return result
 
 def main():
     print(three_sum(nums = [-1,0,1,2,-1,-4]))
