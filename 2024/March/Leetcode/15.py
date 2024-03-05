@@ -120,24 +120,19 @@ def three_sum(nums : list[int]) -> list[list[int]]:
             ans = nums[i] + nums[left] + nums[right]
 
             if ans > 0:
-
                 right -= 1
-
             elif ans < 0:
-
                 left += 1
-
             else:
-
                 result.append([nums[i],nums[left],nums[right]])
-
                 left += 1
-
                 while nums[left] == nums[left-1] and left < right:
-                    
                     left += 1    
     
     return result
+
+    # note to self: 
+    # the whole process from my pov is that we use the left pointer as the moving middle between i and right to catch out any triplets that give a sum value of 0
 
 def main():
     print(three_sum(nums = [-1,0,1,2,-1,-4]))
