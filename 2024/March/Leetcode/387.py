@@ -23,28 +23,41 @@ s consists of only lowercase English letters.
 """
 def first_uniq_char(s : str) -> int:
     
+    # n = len(s)
+    # r = {}
+    # result = -1
+
+    # for c in range(n):
+    #     if s[c] not in r:
+    #         r[s[c]] = s.count(s[c])
+
+    # remember_dat = ''
+
+    # for key, val in r.items():
+    #     if val == 1:
+    #         remember_dat = key
+    #         break
+
+    # for i in range(n):
+
+    #     if s[i] == remember_dat:
+    #         result = i
+    #         break
+
+    # return result   
+
+    result = -1
     n = len(s)
     r = {}
-    result = -1
-
-    for c in range(n):
-        if s[c] not in r:
-            r[s[c]] = s.count(s[c])
-
-    remember_dat = ''
-
-    for key, val in r.items():
-        if val == 1:
-            remember_dat = key
-            break
 
     for i in range(n):
+        if s[i] not in r:
+            r[s[i]] = s.count(s[i])
+            if r[s[i]] == 1:
+                result = i
+                break
 
-        if s[i] == remember_dat:
-            result = i
-            break
-
-    return result   
+    return result
 
 def main():
     print(first_uniq_char(s = "leetcode"))
