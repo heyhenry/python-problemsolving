@@ -49,6 +49,6 @@ def main():
     print(smaller_numbers_than_current(nums = [8,1,2,2,3]))
     print(smaller_numbers_than_current(nums = [6,5,4,8]))
     print(smaller_numbers_than_current(nums = [7,7,7,7]))
-
+ 
 if __name__ == "__main__":
     main()
