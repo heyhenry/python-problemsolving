@@ -47,8 +47,8 @@ def balanced_str_split(s : str) -> int:
 
 def main():
     print(balanced_str_split(s = "RLRRLLRLRL"))
-    # print(balanced_str_split(s = "RLRRRLLRLL"))
-    # print(balanced_str_split(s = "LLLLRRRR"))
+    print(balanced_str_split(s = "RLRRRLLRLL"))
+    print(balanced_str_split(s = "LLLLRRRR"))
 
 if __name__ == "__main__":
     main()
