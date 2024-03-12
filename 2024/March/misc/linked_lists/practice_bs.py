@@ -9,69 +9,69 @@ class LinkedList():
 
     def append(self, data):
         new_node = Node(data)
-
-        if not self.head:
+        if self.head == None:
             self.head = new_node
         else:
-            current = self.head
-            while current.next:
-                current = current.next
-            current.next = new_node
+            current_node = self.head
+            while current_node.next:
+                current_node = current_node.next
+            current_node.next = new_node
 
     def display(self):
-        current = self.head
+        current_node = self.head
         nodes = []
-        while current:
-            nodes.append(current.data)
-            current = current.next
+        while current_node:
+            nodes.append(current_node.data)
+            current_node = current_node.next
+        print(nodes)
         return nodes
-
+    
     def length(self):
-        current = self.head
-        total = 0
-        while current:
-            total += 1
-            current = current.next
-        return total
+        current_node = self.head
+        count = 0
+        while current_node:
+            current_node = current_node.next
+            count += 1
+        # print(count)
+        return count
 
     def get(self, index):
-        current = self.head
-        node_index = 0
-        result = ''
-        if index >= self.length(): result = 'Error. Index out of bounds!'
+        lst_index = 0
+        current_node = self.head
+        out_of_bounds = False
+        result = 0
+        if index >= self.length(): out_of_bounds = True
         else:
             while True:
-                print(node_index)
-                if index == node_index:
-                    result = current.data
+                if index == lst_index:
+                    result = current_node.data
                     break
-                current = current.next
-                node_index += 1
-        return result
+                current_node = current_node.next
+                lst_index += 1
+        if out_of_bounds:
+            result = 'Error! Index out of bounds.'
 
+        # print(result)
+        return result
+    
     def erase(self, index):
+        lst_index = 0
         current = self.head
-        node_index = 0
+        out_of_bounds = False
         result = ''
-        boundary_error = False
-        if index >= self.length(): boundary_error = True
+        if index >= self.length(): out_of_bounds = True
         else:
             while True:
-                # save the current node -> last_node
-                last_node = current
-                current = current.next
-                if index == node_index:
-                    last_node.next = current.next # <-- still working on getting deep understanding of this line's logic
+                if index == lst_index:
+                    prev_node.next = current.next
                     break
-                node_index += 1
-        if boundary_error:
-            result = 'Error. Out of bounds!'
-        else:
-            result = self.display()
-
+                prev_node = current
+                current = current.next
+                lst_index += 1
+        if out_of_bounds:
+            result = 'Error! Index out of bounds.'
+        
         return result
-
-
 
 my_list = LinkedList()
 
@@ -80,8 +80,8 @@ my_list.append(2)
 my_list.append(3)
 my_list.append(4)
 
-print(my_list.display())
-
-# print(my_list.length())
-# print(my_list.get(1))
-print(my_list.erase(1))
+my_list.display()
+my_list.length()
+my_list.get(2)
+my_list.erase(2)
+my_list.display()
