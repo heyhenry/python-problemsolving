@@ -54,6 +54,40 @@ class LinkedList:
         
         self.head = prev  # Set the head of the linked list to the last node (which was the original tail)
 
+    def length(self):
+        total = 0
+        current_node = self.head
+        while current_node:
+            total += 1
+            current_node = current_node.next
+        return total
+
+    def get(self, index):
+        ll_index = 0
+        current_node = self.head
+
+        if index >= self.length(): return "Index is out of bounds!"
+
+        while current_node:
+            if index == ll_index:
+                return current_node.val
+            ll_index += 1
+            current_node = current_node.next
+
+    def erase(self, index):
+        ll_index = 0
+        current_node = self.head
+
+        if index >= self.length(): return "Index is out of bounds!"
+        
+        while current_node:
+            if index == ll_index:
+                prev_node.next = current_node.next
+            prev_node = current_node
+            current_node = current_node.next
+            ll_index += 1
+
+
 # Example usage:
 linked_list = LinkedList()
 linked_list.append(1)
