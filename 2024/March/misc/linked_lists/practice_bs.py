@@ -20,10 +20,11 @@ class LinkedList():
 
     def display(self):
         current = self.head
+        nodes = []
         while current:
-            print(current.data, end=" -> ")
+            nodes.append(current.data)
             current = current.next
-        print('None')
+        return nodes
 
     def length(self):
         current = self.head
@@ -31,7 +32,22 @@ class LinkedList():
         while current:
             total += 1
             current = current.next
-        print(total)
+        return total
+
+    def get(self, index):
+        current = self.head
+        node_index = 0
+        result = ''
+        if index >= self.length(): result = 'Error. Index out of bounds!'
+        else:
+            while True:
+                print(node_index)
+                if index == node_index:
+                    result = current.data
+                    break
+                current = current.next
+                node_index += 1
+        return result
 
 
 my_list = LinkedList()
@@ -41,6 +57,7 @@ my_list.append(2)
 my_list.append(3)
 my_list.append(4)
 
-my_list.display()
+print(my_list.display())
 
-my_list.length()
+print(my_list.length())
+print(my_list.get(1))
