@@ -36,7 +36,7 @@ class LinkedList():
     def get(self, index):
         index_counter = 0
         current_node = self.head
-        if index >= self.length(): return "Index out of bounds!"
+        if index >= self.length(): return print("Index out of bounds!")
         while current_node:
             if index == index_counter:
                 return current_node.val
@@ -46,7 +46,7 @@ class LinkedList():
     def erase(self, index):
         index_counter = 0
         current_node = self.head
-        if index >= self.length(): return "Index out of bounds!"
+        if index >= self.length(): return print("Index out of bounds!")
         # prev_node = None
         while current_node:
             if index == index_counter:
@@ -70,6 +70,20 @@ class LinkedList():
             current_node = next_node
         self.head = prev_node
 
+    def delete(self, del_val):
+        node_found = False
+        if not self.head: return print("Empty List!")
+        current_node = self.head
+        prev_node = None
+        while current_node:
+            if current_node.val == del_val:
+                prev_node.next = current_node.next
+                node_found = True
+            prev_node = current_node
+            current_node = current_node.next
+        if not node_found:
+            return print("Node not found in the Linked List.")
+
 # functions to create
 # append
 # display
@@ -88,10 +102,6 @@ my_list.append(4)
 print("Display Original Linked List:")
 print(my_list.display())
 
-# print("Display Reversed Linked List:")
-# my_list.reverse()
-# print(my_list.display())
-
 print("Length of the Linked List:")
 print(my_list.length())
 
@@ -104,4 +114,8 @@ print(my_list.display())
 
 print("Reverse Original Linked List:")
 my_list.reverse()
+print(my_list.display())
+
+print("Delete a node in Linked List:")
+my_list.delete(1)
 print(my_list.display())
