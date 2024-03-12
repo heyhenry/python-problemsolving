@@ -9,6 +9,7 @@ class LinkedList():
 
     def append(self, data):
         new_node = Node(data)
+
         if not self.head:
             self.head = new_node
         else:
@@ -24,25 +25,22 @@ class LinkedList():
             current = current.next
         print('None')
 
-    def reverse(self):
+    def length(self):
         current = self.head
-        prev = None
+        total = 0
         while current:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            current = next_node
-        self.head = prev
+            total += 1
+            current = current.next
+        print(total)
 
-# Example usage:
-linked_list = LinkedList()
-linked_list.append(1)
-linked_list.append(2)
-linked_list.append(3)
 
-print("Original Linked List:")
-linked_list.display()
+my_list = LinkedList()
 
-print("Reversed Linked List: ")
-linked_list.reverse()
-linked_list.display()
+my_list.append(1)
+my_list.append(2)
+my_list.append(3)
+my_list.append(4)
+
+my_list.display()
+
+my_list.length()
