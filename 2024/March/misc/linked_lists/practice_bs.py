@@ -73,6 +73,24 @@ class LinkedList():
         
         return result
 
+    def delete(self, data):
+        
+        is_empty = False
+
+        if not self.head:
+            is_empty = True
+        elif self.head.data == data:
+            self.head = self.head.next
+        else:
+            current_node = self.head
+            while current_node:
+                if current_node.data == data:
+                    prev_node.next = current_node.next
+                prev_node = current_node
+                current_node = current_node.next
+        
+        if is_empty: return 'Error! Empty list.'
+
 my_list = LinkedList()
 
 my_list.append(1)
@@ -81,7 +99,9 @@ my_list.append(3)
 my_list.append(4)
 
 my_list.display()
-my_list.length()
-my_list.get(2)
-my_list.erase(2)
+# my_list.length()
+# my_list.get(2)
+# my_list.erase(2)
+# my_list.display()
+my_list.delete(2)
 my_list.display()
