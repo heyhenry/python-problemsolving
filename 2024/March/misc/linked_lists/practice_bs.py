@@ -49,6 +49,29 @@ class LinkedList():
                 node_index += 1
         return result
 
+    def erase(self, index):
+        current = self.head
+        node_index = 0
+        result = ''
+        boundary_error = False
+        if index >= self.length(): boundary_error = True
+        else:
+            while True:
+                # save the current node -> last_node
+                last_node = current
+                current = current.next
+                if index == node_index:
+                    last_node.next = current.next # <-- still working on getting deep understanding of this line's logic
+                    break
+                node_index += 1
+        if boundary_error:
+            result = 'Error. Out of bounds!'
+        else:
+            result = self.display()
+
+        return result
+
+
 
 my_list = LinkedList()
 
@@ -59,5 +82,6 @@ my_list.append(4)
 
 print(my_list.display())
 
-print(my_list.length())
-print(my_list.get(1))
+# print(my_list.length())
+# print(my_list.get(1))
+print(my_list.erase(1))
