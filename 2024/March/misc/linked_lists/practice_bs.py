@@ -22,13 +22,18 @@ class LinkedList():
 
     def display(self):
         current_node = self.head
-        elems = []
         while current_node:
-            elems.append(current_node.val)
             print(current_node.val, end=" -> ")
             current_node = current_node.next
         print('None')
-        return elems
+
+    def retrieve_list(self):
+        current_node = self.head
+        lst = []
+        while current_node:
+            lst.append(current_node.val)
+            current_node = current_node.next
+        return lst
 
     def reverse(self):
         current_node = self.head
@@ -128,6 +133,9 @@ my_list.display()
 
 print("Length of the Linked List:")
 my_list.length()
+
+print("Retrieve Linked List as an array/list:")
+print(my_list.retrieve_list())
 
 print("Get the node value stored in the nth location via index referencing (i.e. index: 2):")
 my_list.get_val(2)
