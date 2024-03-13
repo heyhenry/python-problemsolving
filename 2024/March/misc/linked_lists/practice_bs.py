@@ -75,7 +75,7 @@ class LinkedList():
             current_node = current_node.next
 
     # deletes every instance of given val found in the linked list
-    def delete_first(self, val):
+    def delete(self, val):
         current_node = self.head
         prev_node = None
         while current_node:
