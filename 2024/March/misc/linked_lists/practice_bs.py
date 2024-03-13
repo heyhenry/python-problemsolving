@@ -45,14 +45,12 @@ class LinkedList():
             current_node = next_node
         self.head = prev_node
 
-
     def length(self):
         size = 0
         current_node = self.head
         while current_node:
             size += 1
             current_node = current_node.next
-        print(size)
         return size
 
     def get_val(self, index):
@@ -69,6 +67,9 @@ class LinkedList():
         return result
 
     def erase(self, index):
+        if index > self.length() - 1 or index < 0:
+            return print("Given index is invalid.")
+
         current_node = self.head
         current_index = 0
         prev_node = None
@@ -81,6 +82,9 @@ class LinkedList():
 
     # deletes every instance of given val found in the linked list
     def delete_all(self, val):
+        if val not in self.retrieve_list():
+            return print("Given value is invalid.")
+        
         current_node = self.head
         prev_node = None
         while current_node:
@@ -95,7 +99,7 @@ class LinkedList():
 
     def delete(self, val, count):
         if val not in self.retrieve_list():
-            return print('Given value is invalid')
+            return print("Given value is invalid")
         
         current_node = self.head
         del_count = 0
@@ -135,7 +139,7 @@ print("Display Original Linked List:")
 my_list.display()
 
 print("Length of the Linked List:")
-my_list.length()
+print(my_list.length())
 
 print("Retrieve Linked List as an array/list:")
 print(my_list.retrieve_list())
@@ -143,18 +147,18 @@ print(my_list.retrieve_list())
 print("Get the node value stored in the nth location via index referencing (i.e. index: 2):")
 my_list.get_val(2)
 
-# print("Remove the node in the nth location in the Linked List via index referencing (i.e. index: 1):")
-# my_list.erase(1)
-# my_list.display()
+print("Remove the node in the nth location in the Linked List via index referencing (i.e. index: 1):")
+my_list.erase(1)
+my_list.display()
 
 print("Reverse Original Linked List:")
 my_list.reverse()
 my_list.display()
 
 # print("Delete a node in Linked List:")
-# my_list.delete_all(1)
+# my_list.delete_all(66)
 # my_list.display()
 
-print("Delete specific number of nodes based on given value:")
-my_list.delete(1, 1)
-my_list.display()
+# print("Delete specific number of nodes based on given value:")
+# my_list.delete(1, 1)
+# my_list.display()
