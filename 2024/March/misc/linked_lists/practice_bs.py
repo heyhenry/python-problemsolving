@@ -88,6 +88,21 @@ class LinkedList():
                 prev_node = current_node
             current_node = current_node.next
 
+    def delete(self, val, count):
+        current_node = self.head
+        del_count = 0
+        prev_node = None
+        while current_node:
+            if current_node.val == val and del_count < count:
+                if prev_node:
+                    prev_node.next = current_node.next
+                    del_count += 1
+                else:
+                    self.head = current_node
+            else:
+                prev_node = current_node
+            current_node = current_node.next
+
 # functions to create
 # append
 # display
@@ -125,6 +140,10 @@ print("Reverse Original Linked List:")
 my_list.reverse()
 my_list.display()
 
-print("Delete a node in Linked List:")
-my_list.delete_all(1)
+# print("Delete a node in Linked List:")
+# my_list.delete_all(1)
+# my_list.display()
+
+print("Delete specific number of nodes based on given value:")
+my_list.delete(1, 3)
 my_list.display()
