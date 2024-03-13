@@ -75,13 +75,17 @@ class LinkedList():
             current_node = current_node.next
 
     # deletes every instance of given val found in the linked list
-    def delete(self, val):
+    def delete_all(self, val):
         current_node = self.head
         prev_node = None
         while current_node:
             if current_node.val == val:
-                prev_node.next = current_node.next
-            prev_node = current_node
+                if prev_node:
+                    prev_node.next = current_node.next
+                else:
+                    self.head = None
+            else:
+                prev_node = current_node
             current_node = current_node.next
 
 # functions to create
@@ -91,9 +95,13 @@ class LinkedList():
 # length
 # get
 # erase
+# delete 
 
 my_list = LinkedList()
 
+# my_list.append(1)
+# my_list.append(1)
+# my_list.append(1)
 my_list.append(1)
 my_list.append(2)
 my_list.append(1)
@@ -118,5 +126,5 @@ my_list.reverse()
 my_list.display()
 
 print("Delete a node in Linked List:")
-my_list.delete_first(1)
+my_list.delete_all(1)
 my_list.display()
