@@ -94,6 +94,9 @@ class LinkedList():
             current_node = current_node.next
 
     def delete(self, val, count):
+        if val not in self.retrieve_list():
+            return print('Given value is invalid')
+        
         current_node = self.head
         del_count = 0
         prev_node = None
@@ -153,5 +156,5 @@ my_list.display()
 # my_list.display()
 
 print("Delete specific number of nodes based on given value:")
-my_list.delete(1, 3)
+my_list.delete(1, 1)
 my_list.display()
