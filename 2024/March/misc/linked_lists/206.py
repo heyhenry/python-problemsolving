@@ -27,27 +27,7 @@ The number of nodes in the list is the range [0, 5000].
 
 Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
 """
-class ListNode():
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = None
 
-class Solution():
-    def reverse_list(self, head : ListNode) -> ListNode:
-        current_node = head
-        prev_node = None
-        while current_node:
-            next_node = current_node.next
-            current_node.next = prev_node
-            prev_node = current_node
-            current_node = next_node
-        head = prev_node
-        
-        cur = head
-        while cur:
-            print(cur.val, end="->")
-            cur = cur.next
-        print('None')
 
 solution = Solution()
 

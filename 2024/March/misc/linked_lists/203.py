@@ -25,9 +25,9 @@ The number of nodes in the list is in the range [0, 104].
 0 <= val <= 50
 """
 class ListNode():
-    def __init__(self, val=0, next=None):
+    def __init__(self, val):
         self.val = val
-        self.next = next
+        self.next = None
 
 class Solution():
     def remove_elements(self, head : ListNode, val : int) -> ListNode:
@@ -42,40 +42,38 @@ class Solution():
             else:
                 prev_node = current_node
             current_node = current_node.next
-        
-        cur = head
-        while cur:
-            print(cur.val, end="->")
-            cur = cur.next
+        return head
+    
+    def display(self, head):
+        current_node = head
+        while current_node:
+            print(current_node.val, end=" -> ")
+            current_node = current_node.next
         print('None')
-        
-        
-        # return head
-
 
 solution = Solution()
 
 # example 1
-# head = ListNode(1)
-# node2 = ListNode(2)
-# node3 = ListNode(6)
-# node4 = ListNode(3)
-# node5 = ListNode(4)
-# node6 = ListNode(5)
-# node7 = ListNode(6)
+head = ListNode(1)
+node2 = ListNode(2)
+node3 = ListNode(6)
+node4 = ListNode(3)
+node5 = ListNode(4)
+node6 = ListNode(5)
+node7 = ListNode(6)
 
-# head.next = node2
-# node2.next = node3
-# node3.next = node4
-# node4.next = node5
-# node5.next = node6
-# node6.next = node7
+head.next = node2
+node2.next = node3
+node3.next = node4
+node4.next = node5
+node5.next = node6
+node6.next = node7
 
 # example 2 -> output = []
-head = ListNode(7)
-node2 = ListNode(7)
-node3 = ListNode(7)
-node4 = ListNode(7)
+# head = ListNode(7)
+# node2 = ListNode(7)
+# node3 = ListNode(7)
+# node4 = ListNode(7)
 
 # head.next = node2
 # node2.next = node3
@@ -90,5 +88,6 @@ node4 = ListNode(7)
 # example 4 -> output []
 # head = ListNode(1)
 
-solution.remove_elements(head,7)
+solution.remove_elements(head,6)
+solution.display(head)
 
