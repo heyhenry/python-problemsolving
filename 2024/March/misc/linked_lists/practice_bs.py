@@ -74,8 +74,8 @@ class LinkedList():
             current_index += 1
             current_node = current_node.next
 
-    # deletes only the first node that has the given val
-    def delete(self, val):
+    # deletes every instance of given val found in the linked list
+    def delete_first(self, val):
         current_node = self.head
         prev_node = None
         while current_node:
@@ -96,6 +96,7 @@ my_list = LinkedList()
 
 my_list.append(1)
 my_list.append(2)
+my_list.append(1)
 my_list.append(3)
 my_list.append(4)
 
@@ -117,5 +118,5 @@ my_list.reverse()
 my_list.display()
 
 print("Delete a node in Linked List:")
-my_list.delete(1)
+my_list.delete_first(1)
 my_list.display()
