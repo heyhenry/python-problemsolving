@@ -12,54 +12,24 @@ class LinkedList():
         if not self.head:
             self.head = new_node
         else:
-            current_node = self.head 
+            current_node = self.head
+            # the while loop is only to loop through the linked list and place the current_node variable to the end of the linked list,
+            # this is to get into a position where we can append the new_node that we have created to be added to the end (.next) of the 
+            # last node that is already in the linked list!
             while current_node.next:
                 current_node = current_node.next
-            current_node.next = new_node
+            current_node.next = new_node # adds the newly appended node here (after the last node in the linked list)
 
     def display(self):
         current_node = self.head
         elems = []
         while current_node:
             elems.append(current_node.val)
+            print(current_node.val, end=" -> ")
             current_node = current_node.next
+        print('None')
         return elems
 
-    def length(self):
-        current_node = self.head
-        total = 0
-        while current_node:
-            total += 1
-            current_node = current_node.next
-        return total
-    
-    def get(self, index):
-        index_counter = 0
-        current_node = self.head
-        if index >= self.length(): return print("Index out of bounds!")
-        while current_node:
-            if index == index_counter:
-                return current_node.val
-            current_node = current_node.next
-            index_counter += 1
-
-    def erase(self, index):
-        index_counter = 0
-        current_node = self.head
-        if index >= self.length(): return print("Index out of bounds!")
-        # prev_node = None
-        while current_node:
-            if index == index_counter:
-                prev_node.next = current_node.next
-            prev_node = current_node
-            current_node = current_node.next
-            index_counter +=1
-
-    # save the next node in the original list
-    # reverse the link by pointing the current node to the previous node
-    # move the previous pointer one step forward
-    # move the current pointer one step forward
-    # set the starting head to be the last node
     def reverse(self):
         current_node = self.head
         prev_node = None
@@ -70,19 +40,49 @@ class LinkedList():
             current_node = next_node
         self.head = prev_node
 
-    def delete(self, del_val):
-        node_found = False
-        if not self.head: return print("Empty List!")
+
+    def length(self):
+        size = 0
+        current_node = self.head
+        while current_node:
+            size += 1
+            current_node = current_node.next
+        print(size)
+        return size
+
+    def get_val(self, index):
+        current_node = self.head
+        current_index = 0
+        result = 0
+        while current_node:
+            if current_index == index:
+                result = current_node.val
+                break
+            current_node = current_node.next
+            current_index += 1
+        print(result)
+        return result
+
+    def erase(self, index):
+        current_node = self.head
+        current_index = 0
+        prev_node = None
+        while current_node:
+            if current_index == index:
+                prev_node.next = current_node.next
+            prev_node = current_node
+            current_index += 1
+            current_node = current_node.next
+
+    # deletes only the first node that has the given val
+    def delete(self, val):
         current_node = self.head
         prev_node = None
         while current_node:
-            if current_node.val == del_val:
+            if current_node.val == val:
                 prev_node.next = current_node.next
-                node_found = True
             prev_node = current_node
             current_node = current_node.next
-        if not node_found:
-            return print("Node not found in the Linked List.")
 
 # functions to create
 # append
@@ -100,22 +100,22 @@ my_list.append(3)
 my_list.append(4)
 
 print("Display Original Linked List:")
-print(my_list.display())
+my_list.display()
 
 print("Length of the Linked List:")
-print(my_list.length())
+my_list.length()
 
 print("Get the node value stored in the nth location via index referencing (i.e. index: 2):")
-print(my_list.get(2))
+my_list.get_val(2)
 
-print("Remove the node in the nth location in the Linked List via index referencing (i.e. index: 1):")
-my_list.erase(1)
-print(my_list.display())
+# print("Remove the node in the nth location in the Linked List via index referencing (i.e. index: 1):")
+# my_list.erase(1)
+# my_list.display()
 
 print("Reverse Original Linked List:")
 my_list.reverse()
-print(my_list.display())
+my_list.display()
 
 print("Delete a node in Linked List:")
 my_list.delete(1)
-print(my_list.display())
+my_list.display()
