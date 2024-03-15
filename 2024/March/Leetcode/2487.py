@@ -36,6 +36,7 @@ class ListNode():
 class Solution():
     def remove_nodes(self, head : ListNode) -> ListNode:
 
+        # seems like a good solution aside from the time limit exceeded trigger
         # current_node = head
         # lst = []
         
@@ -69,6 +70,7 @@ class Solution():
     
         # return head     
 
+        # Actual solution that is within efficient time complexity to pass on leetcode
         curr = head
         prev = None
         while curr:
@@ -92,8 +94,7 @@ class Solution():
                     curr_max = curr.val
                 prev = curr
             curr = curr.next
-        
-        print(head.val)
+
         curr = head
         prev = None
         while curr:
