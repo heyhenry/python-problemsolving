@@ -9,83 +9,113 @@ class LinkedList:
     def __init__(self):
         self.head = None   # Initialize the head of the linked list to None
 
-    def append(self, data):
-        # Create a new node with the given data
-        new_node = Node(data)
-        
+    def append(self, val):
+        new_node = Node(val)
         if not self.head:
-            # If the linked list is empty, set the new node as the head
             self.head = new_node
         else:
-            # If the linked list is not empty, traverse to the end and append the new node
-            # The line below sets the variable 'current' to the head of the linked list.
-            # This is the starting point for traversing the linked list.
-            current = self.head
-            # The line below initiates a 'while' loop that continues as long as the 'next' attribute
-            # of the current node is not 'None'. This loop is used to traverse the linked list until 
-            # the last node is reached (i.e., a node whose 'next' attribute is 'None').
-            while current.next:
-                # Inisde the loop, this line updates the 'current' variable to point to the next node
-                # in the linked list. This effectively moves the traversal to the next node in each
-                # iteration of the loop.
-                current = current.next
-            # Once the loop exits (when 'current.next' is 'None'), this line sets the 'next' attribute
-            # of the last node (which was reached in the loop) to the new node. This effectively appends 
-            # the new node to the end of the linked list.
-            current.next = new_node
+            current_node = self.head
+            # the while loop is only to loop through the linked list and place the current_node variable to the end of the linked list,
+            # this is to get into a position where we can append the new_node that we have created to be added to the end (.next) of the 
+            # last node that is already in the linked list!
+            while current_node.next:
+                current_node = current_node.next
+            current_node.next = new_node # adds the newly appended node here (after the last node in the linked list)
 
     def display(self):
-        # Display the elements of the linked list
-        current = self.head
-        while current:
-            print(current.data, end=" -> ")
-            current = current.next
-        print("None")
+        current_node = self.head
+        while current_node:
+            print(current_node.val, end=" -> ")
+            current_node = current_node.next
+        print('None')
+
+    def retrieve_list(self):
+        current_node = self.head
+        lst = []
+        while current_node:
+            lst.append(current_node.val)
+            current_node = current_node.next
+        return lst
 
     def reverse(self):
-        prev = None   # Initialize a variable to keep track of the previous node
-        current = self.head  # Start from the head of the linked list
-        
-        while current:
-            next_node = current.next  # Save the next node in the original list
-            current.next = prev        # Reverse the link by pointing the current node to the previous node
-            prev = current              # Move the previous pointer one step forward
-            current = next_node        # Move the current pointer one step forward
-        
-        self.head = prev  # Set the head of the linked list to the last node (which was the original tail)
+        current_node = self.head
+        prev_node = None
+        while current_node:
+            next_node = current_node.next
+            current_node.next = prev_node
+            prev_node = current_node
+            current_node = next_node
+        self.head = prev_node
 
     def length(self):
-        total = 0
+        size = 0
         current_node = self.head
         while current_node:
-            total += 1
+            size += 1
             current_node = current_node.next
-        return total
+        return size
 
-    def get(self, index):
-        ll_index = 0
+    def get_val(self, index):
         current_node = self.head
-
-        if index >= self.length(): return "Index is out of bounds!"
-
+        current_index = 0
+        result = 0
         while current_node:
-            if index == ll_index:
-                return current_node.val
-            ll_index += 1
+            if current_index == index:
+                result = current_node.val
+                break
             current_node = current_node.next
+            current_index += 1
+        print(result)
+        return result
 
     def erase(self, index):
-        ll_index = 0
-        current_node = self.head
+        if index > self.length() - 1 or index < 0:
+            return print("Given index is invalid.")
 
-        if index >= self.length(): return "Index is out of bounds!"
-        
+        current_node = self.head
+        current_index = 0
+        prev_node = None
         while current_node:
-            if index == ll_index:
+            if current_index == index:
                 prev_node.next = current_node.next
             prev_node = current_node
+            current_index += 1
             current_node = current_node.next
-            ll_index += 1
+
+    # deletes every instance of given val found in the linked list
+    def delete_all(self, val):
+        if val not in self.retrieve_list():
+            return print("Given value is invalid.")
+        
+        current_node = self.head
+        prev_node = None
+        while current_node:
+            if current_node.val == val:
+                if prev_node:
+                    prev_node.next = current_node.next
+                else:
+                    self.head = None
+            else:
+                prev_node = current_node
+            current_node = current_node.next
+
+    def delete(self, val, count):
+        if val not in self.retrieve_list():
+            return print("Given value is invalid")
+        
+        current_node = self.head
+        del_count = 0
+        prev_node = None
+        while current_node:
+            if current_node.val == val and del_count < count:
+                if prev_node:
+                    prev_node.next = current_node.next
+                    del_count += 1
+                else:
+                    self.head = current_node
+            else:
+                prev_node = current_node
+            current_node = current_node.next
 
 
 # Example usage:
