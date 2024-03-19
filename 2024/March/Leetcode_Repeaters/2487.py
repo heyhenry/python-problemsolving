@@ -36,7 +36,50 @@ class ListNode():
         self.next = None
 
 class Solution():
-    def reverse(self, head : ListNode) -> ListNode:
+    # def reverse(self, head : ListNode) -> ListNode:
+    #     curr = head
+    #     prev = None
+    #     while curr:
+    #         next_node = curr.next
+    #         curr.next = prev
+    #         prev = curr
+    #         curr = next_node
+    #     head = prev
+    #     return head
+    
+    # def remove_nodes(self, head : ListNode) -> ListNode:
+
+    #     head = solution.reverse(head)
+
+    #     curr = head 
+    #     prev = None
+    #     max_node = head.val
+
+    #     while curr:
+    #         if curr.val < max_node:
+    #             if prev:
+    #                 prev.next = curr.next
+    #             else:
+    #                 head = curr.next
+    #         else:
+    #             if curr.val > max_node:
+    #                 max_node = curr.val
+    #             prev = curr
+    #         curr = curr.next
+        
+    #     head = solution.reverse(head)
+
+    #     return head
+
+    def display(self, head):
+        curr = head
+        while curr:
+            print(curr.val, end=" -> ")
+            curr = curr.next
+        print("None")
+
+    def remove_nodes(self, head : ListNode) -> ListNode:
+
         curr = head
         prev = None
         while curr:
@@ -45,11 +88,6 @@ class Solution():
             prev = curr
             curr = next_node
         head = prev
-        return head
-    
-    def remove_nodes(self, head : ListNode) -> ListNode:
-
-        head = solution.reverse(head)
 
         curr = head 
         prev = None
@@ -67,16 +105,16 @@ class Solution():
                 prev = curr
             curr = curr.next
         
-        head = solution.reverse(head)
+        curr = head
+        prev = None
+        while curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+        head = prev
 
         return head
-
-    def display(self, head):
-        curr = head
-        while curr:
-            print(curr.val, end=" -> ")
-            curr = curr.next
-        print("None")
 
 head = ListNode(5)
 node2 = ListNode(2)
