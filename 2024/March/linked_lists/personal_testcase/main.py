@@ -54,8 +54,20 @@ class LinkedList():
             
         return print(tail_node.val)
     
-    
+    def prepend(self, val):
 
+        new_head = Node(val)
+        next_node = self.head
+        self.head = new_head
+        self.head.next = next_node
+
+    def display(self):
+
+        current_node = self.head
+        while current_node: 
+            print(current_node.val, end = " ->  ")
+            current_node = current_node.next
+        print("None")
 
 ll = LinkedList()
 
@@ -65,4 +77,6 @@ ll.append(3)
 ll.append(4)
 ll.append(5)
 
-ll.peek()
+ll.display()
+ll.prepend(66)
+ll.display()
