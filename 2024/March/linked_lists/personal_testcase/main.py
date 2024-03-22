@@ -7,7 +7,7 @@ class LinkedList():
     def __init__(self):  
         self.head = None
 
-    def append(self, val):
+    def append(self, val : Node):
         new_node = Node(val)
 
         if self.head is None:
@@ -30,6 +30,7 @@ class LinkedList():
         while current_node:
             if current_index == index:
                 return current_node.val
+            current_index += 1
         
         if current_node is None:
             raise error
@@ -54,12 +55,30 @@ class LinkedList():
             
         return print(tail_node.val)
     
-    def prepend(self, val):
+    def prepend(self, val : Node):
 
         new_head = Node(val)
         next_node = self.head
         self.head = new_head
         self.head.next = next_node
+
+    def insert(self, index : int, val : Node):
+        new_node = Node(val)
+        current_index = 0
+
+        if index == 0:
+            self.prepend(val)
+        else:
+            current_node = self.head
+            next_node = None
+            while current_node:
+                current_index += 1
+                if current_index == index:
+                    next_node = new_node
+                    next_next_node = current_node.next
+                    current_node.next = next_node
+                    next_node.next = next_next_node
+                current_node = current_node.next
 
     def display(self):
 
@@ -68,6 +87,8 @@ class LinkedList():
             print(current_node.val, end = " ->  ")
             current_node = current_node.next
         print("None")
+
+
 
 ll = LinkedList()
 
@@ -79,4 +100,6 @@ ll.append(5)
 
 ll.display()
 ll.prepend(66)
+ll.display()
+ll.insert(3,21)
 ll.display()
