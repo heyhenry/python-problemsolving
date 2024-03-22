@@ -60,7 +60,6 @@ class LinkedList():
         return print(tail_node.val)
     
     def prepend(self, val : Node):
-
         new_head = Node(val)
         next_node = self.head
         self.head = new_head
@@ -85,7 +84,6 @@ class LinkedList():
                 current_node = current_node.next
 
     def pop(self):
-
         current_node = self.head
         size = self.length()
         current_index = 0
@@ -97,19 +95,31 @@ class LinkedList():
             current_node = current_node.next
 
     def pop_front(self):
-
         starting_node = self.head.next
         self.head = starting_node
 
-    def display(self):
+    def remove(self, index : int):
+        current_node = self.head
+        current_index = 0
+        prev_node = None
 
+        while current_node:
+            if current_index == index:
+                if prev_node:
+                    prev_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+            else:
+                prev_node = current_node
+            current_index += 1
+            current_node = current_node.next
+
+    def display(self):
         current_node = self.head
         while current_node: 
             print(current_node.val, end = " ->  ")
             current_node = current_node.next
         print("None")
-
-
 
 ll = LinkedList()
 
@@ -127,8 +137,10 @@ ll.append(5)
 # print(ll.get(3))
 # ll.display()
 # ll.pop()
+# ll.display()
+# ll.pop_front()
 ll.display()
-ll.pop_front()
+ll.remove(3)
 ll.display()
 
 
