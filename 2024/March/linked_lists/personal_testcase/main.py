@@ -96,6 +96,11 @@ class LinkedList():
             current_index += 1
             current_node = current_node.next
 
+    def pop_front(self):
+
+        starting_node = self.head.next
+        self.head = starting_node
+
     def display(self):
 
         current_node = self.head
@@ -120,8 +125,10 @@ ll.append(5)
 # ll.insert(3,21)
 # ll.display()
 # print(ll.get(3))
+# ll.display()
+# ll.pop()
 ll.display()
-ll.pop()
+ll.pop_front()
 ll.display()
 
 
