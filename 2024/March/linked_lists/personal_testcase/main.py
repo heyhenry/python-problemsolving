@@ -84,7 +84,17 @@ class LinkedList():
                     next_node.next = next_next_node
                 current_node = current_node.next
 
-    
+    def pop(self):
+
+        current_node = self.head
+        size = self.length()
+        current_index = 0
+
+        while current_node:
+            if current_index == size - 2:
+                current_node.next = None
+            current_index += 1
+            current_node = current_node.next
 
     def display(self):
 
@@ -104,9 +114,14 @@ ll.append(3)
 ll.append(4)
 ll.append(5)
 
+# ll.display()
+# ll.prepend(66)
+# ll.display()
+# ll.insert(3,21)
+# ll.display()
+# print(ll.get(3))
 ll.display()
-ll.prepend(66)
+ll.pop()
 ll.display()
-ll.insert(3,21)
-ll.display()
-print(ll.get(3))
+
+
