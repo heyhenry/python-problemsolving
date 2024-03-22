@@ -26,14 +26,18 @@ class LinkedList():
 
         current_index = 0
         current_node = self.head
-
+        result = None
         while current_node:
             if current_index == index:
-                return current_node.val
+                result = current_node.val
+                break
             current_index += 1
+            current_node = current_node.next
         
         if current_node is None:
             raise error
+        
+        return result
         
     def length(self):
         size = 0
@@ -80,6 +84,8 @@ class LinkedList():
                     next_node.next = next_next_node
                 current_node = current_node.next
 
+    
+
     def display(self):
 
         current_node = self.head
@@ -103,3 +109,4 @@ ll.prepend(66)
 ll.display()
 ll.insert(3,21)
 ll.display()
+print(ll.get(3))
