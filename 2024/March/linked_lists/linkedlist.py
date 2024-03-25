@@ -6,7 +6,7 @@ from typing import TypeVar, Self
 # But it's really important for the List ADT
 T = TypeVar('T')
 
-class LinkedList[T]():
+class LinkedList():
     """
     An implementation of a Linked List over generic type T
     Supports the usual List ADT functions
@@ -137,7 +137,12 @@ class LinkedList[T]():
         This is faster than using `get` since we can avoid traversing forward
         LL( - 3 - 7 - ).peek() returns 7
         """
-        pass
+        current_node = self._head
+        last_element = 0
+        while current_node:
+            last_element = current_node.data
+            current_node = current_node.next_node
+        return last_element
 
     def prepend(self, item : T):
         """
