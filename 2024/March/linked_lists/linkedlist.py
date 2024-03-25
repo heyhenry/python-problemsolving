@@ -158,7 +158,15 @@ class LinkedList():
         Inserts an element in the given index of this linked list
         LL( - 3 - 4 - ).insert(1, 5) results in LL( - 3 - 5 - 4 - )
         """
-        pass
+        current_node = self._head
+        current_index = 0
+        while current_node:
+            if current_index == index:
+                inc_node = current_node
+                current_node = self.Node(item)
+                current_node.next_node = inc_node
+            current_index += 1
+            current_node = current_node.next_node
 
     def pop(self) -> T:
         """
@@ -168,7 +176,14 @@ class LinkedList():
 
         LL( - 3 - 7 - ).pop() returns 7, and ends with LL( - 3 - )
         """
-        pass
+        current_node = self._head
+        last_index = self.__len__() - 1
+        current_index = 0
+        while current_node:
+            if current_index == last_index - 1:
+                current_node.next_node = None
+            current_index += 1
+            current_node = current_node.next_node
 
     def pop_front(self) -> T:
         """
@@ -178,7 +193,7 @@ class LinkedList():
 
         LL( - 3 - 7 - ).pop_front() returns 3, and ends with LL( - 7 - )
         """
-        pass
+        self._head = self._head.next_node
 
     def remove(self, index : int):
         """
