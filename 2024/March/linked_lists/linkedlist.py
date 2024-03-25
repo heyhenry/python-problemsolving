@@ -149,7 +149,9 @@ class LinkedList():
         Adds an element to the beginning of this linked list
         LL( - 1 - 2 - ).prepend(5) results in LL( - 5 - 1 - 2 - )
         """
-        pass
+        inc_node = self._head
+        self._head = self.Node(item)
+        self._head.next_node = inc_node
 
     def insert(self, index : int, item : T):
         """
