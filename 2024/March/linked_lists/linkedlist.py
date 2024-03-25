@@ -203,4 +203,16 @@ class LinkedList():
 
         LL( - 3 - 7 - 5 - ).remove(1) ends with LL( - 3 - 7 - )
         """
-        pass
+        current_index = 0
+        current_node = self._head
+        prev_node = None
+        while current_node:
+            if current_index == index:
+                if prev_node:
+                    prev_node.next_node = current_node.next_node
+                else:
+                    self._head = current_node.next_node
+            else:
+                prev_node = current_node
+            current_index += 1
+            current_node = current_node.next_node
