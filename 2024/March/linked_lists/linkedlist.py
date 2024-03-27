@@ -6,7 +6,7 @@ from typing import TypeVar, Self
 # But it's really important for the List ADT
 T = TypeVar('T')
 
-class LinkedList():
+class LinkedList[T]():
     """
     An implementation of a Linked List over generic type T
     Supports the usual List ADT functions
