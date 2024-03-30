@@ -28,30 +28,20 @@ Constraints:
 
 -231 <= n <= 231 - 1
 """
-import math 
-
-def is_prime(n : int): 
-
-    for i in range(1, n):
-        if n % i == 0:
-            return False
-    return True
-
 def is_ugly(n : int) -> bool:
 
     while n >= 1:
-
-        if n % 2 == 0:
-            n = n // 2
-        elif n % 3 == 0:
+        if n % 3 == 0:
             n = n // 3
         elif n % 5 == 0:
             n = n // 5
+        elif n % 2 == 0:
+            n = n // 2
         elif n == 1:
             return True
         else:
             return False
-        
+    
     return False
 
 def main():
