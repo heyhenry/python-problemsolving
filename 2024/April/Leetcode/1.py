@@ -37,15 +37,11 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 def two_sum(nums : list[int], target : int) -> list[int]:
 
     n = len(nums)
-    results = [0,0]
 
     for i in range(n):
         for j in range(i+1, n):
             if nums[i] + nums[j] == target:
-                results = [i,j]
-                break
-
-    return results
+                return [i,j]
 
 def main():
     print(two_sum(nums = [2,7,11,15], target = 9))
