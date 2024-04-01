@@ -43,6 +43,7 @@ def two_sum(nums : list[int], target : int) -> list[int]:
         for j in range(i+1, n):
             if nums[i] + nums[j] == target:
                 results = [i,j]
+                break
 
     return results
 
