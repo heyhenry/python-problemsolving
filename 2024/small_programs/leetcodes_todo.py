@@ -10,7 +10,7 @@ new_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\April\Leetcode")
 with open("todo_leetcodes.results", 'w') as nfile:
 
     nfile.write("Leetcodes Questions To Do: \n")
-    nfile.write("Leetcodes Left: " + str(len(comparison_file)) + "\n")
+    nfile.write("Leetcodes Left: " + str(len(comparison_file) - len(new_file)) + "\n")
 
     for i in range(len(comparison_file)):
         if i != len(comparison_file) - 1 and comparison_file[i] not in new_file:
