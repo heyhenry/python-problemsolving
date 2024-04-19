@@ -4,20 +4,11 @@ A quick program to find out the leetcodes in January's directory that hasn't bee
 
 import os
 
-comparison_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\March\Leetcode")
-new_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\April\Leetcode")
+comparison_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\April\Leetcode")
+new_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\April\Leetcode_Rerun")
 leetcodes_file = r"E:\PYTHON\python-problemsolving\2024\small_programs\todo_leetcodes.results"
 
-count = 0
-
-with open(leetcodes_file, 'r') as file:
-    read_content = file.read()
-    if read_content:
-        splitlines = read_content.splitlines()
-        
-        for row in splitlines:
-            if row[0].isnumeric():
-                count += 1
+count = len(comparison_file) - len(new_file)
 
 with open(leetcodes_file, 'w') as nfile:
 
