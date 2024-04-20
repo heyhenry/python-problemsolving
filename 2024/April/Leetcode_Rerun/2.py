@@ -60,8 +60,9 @@ class Solution:
             while curr.next:
                 curr = curr.next
             curr.next = ListNode(total[i])
-
-        self.display(head)
+        
+        # self.display(head)
+        return head
         
     def display(self, head):
         curr = head
