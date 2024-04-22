@@ -34,15 +34,29 @@ Constraints:
 """
 def smaller_numbers_than_current(nums : list[int]) -> list[int]:
 
-    results = []
-    n = len(nums)
+    # results = []
+    # n = len(nums)
 
-    for i in range(n):
-        count = 0
-        for j in range(n):
-            if nums[j] < nums[i]:
-                count += 1
-        results.append(count)
+    # for i in range(n):
+    #     count = 0
+    #     for j in range(n):
+    #         if nums[j] < nums[i]:
+    #             count += 1
+    #     results.append(count)
+
+    # return results
+
+    # note to self: did not put lists in n variable (n = len(nums), etc) because it actually required more memory space while not improving runtime
+    temp = sorted(nums)
+    results = []
+    d = {}
+
+    for i in range(len(temp)):
+        if temp[i] not in d:
+            d[temp[i]] = i
+
+    for i in range(len(nums)):
+        results.append(d[nums[i]])
 
     return results
 
