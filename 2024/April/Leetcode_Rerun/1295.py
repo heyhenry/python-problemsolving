@@ -29,3 +29,19 @@ Constraints:
 1 <= nums.length <= 500
 1 <= nums[i] <= 105
 """
+def find_numbers(nums : list[int]) -> int:
+
+    count = 0
+
+    for i in nums:
+        if len(str(i)) % 2 == 0:
+            count += 1
+
+    return count
+
+def main():
+    print(find_numbers(nums = [12,345,2,6,7896]))
+    print(find_numbers(nums = [555,901,482,1771]))
+
+if __name__ == "__main__":
+    main()
