@@ -24,9 +24,9 @@ s[i] is a printable ascii character.
 """
 def reverse_string(s : list[str]) -> None:
 
-    s.reverse()
+    # s.reverse()
 
-    # print(s)
+    s[:] = s[::-1]
 
 def main():
     print(reverse_string(s = ["h","e","l","l","o"]))
