@@ -30,12 +30,14 @@ nums.length == 2n
 """
 def shuffle(nums : list[int], n : int) -> list[int]:
 
-    result = []
+    # solution 1
+    lst = []
 
     for i in range(n):
-        nums[i+1] = nums[i+n]
-
-    return nums
+        lst.append(nums[i])
+        lst.append(nums[i+n])
+    
+    return lst
 
 def main():
     print(shuffle(nums = [2,5,1,3,4,7], n = 3))
