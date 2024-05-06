@@ -5,7 +5,7 @@ A quick program to find out the leetcodes in January's directory that hasn't bee
 import os
 
 comparison_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\April\Leetcode")
-new_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\April\Leetcode_Rerun")
+new_file = os.listdir(r"E:\PYTHON\python-problemsolving\2024\May\Leetcode")
 leetcodes_file = r"E:\PYTHON\python-problemsolving\2024\small_programs\todo_leetcodes.results"
 
 count = len(comparison_file) - len(new_file)
