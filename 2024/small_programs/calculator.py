@@ -4,15 +4,18 @@ window = tk.Tk()
 window.title("Calculator App")
 window.geometry("320x500")
 
+# frames
 add_frame = tk.Frame(window)
 subtract_frame = tk.Frame(window)
 
+# variables
 add_num1_var = tk.IntVar(add_frame, '')
 add_num2_var = tk.IntVar(add_frame, '')
 
 subtract_num1_var = tk.IntVar(subtract_frame, '')
 subtract_num2_var = tk.IntVar(subtract_frame, '')
 
+# addition function
 def add():
 
     num1 = add_num1_var.get()
@@ -22,6 +25,7 @@ def add():
 
     print("(Addition) The result is: " + str(result))
 
+# subtraction function
 def subtract():
 
     num1 = subtract_num1_var.get()
@@ -31,9 +35,7 @@ def subtract():
     
     print("(Subtraction) The result is: " + str(result))
 
-
 # add frame
-
 add_label = tk.Label(add_frame, text="Addition")
 add_first_num = tk.Label(add_frame, text="First Num: ")
 add_num1_entry = tk.Entry(add_frame, textvariable=add_num1_var)
@@ -42,7 +44,6 @@ add_num2_entry = tk.Entry(add_frame, textvariable=add_num2_var)
 add_btn = tk.Button(add_frame, text = "Calculate", command=add)
 
 # subtract frame
-
 subtract_label = tk.Label(subtract_frame, text="Subtraction")
 subtract_first_num = tk.Label(subtract_frame, text="First Num: ")
 subtract_num1_entry = tk.Entry(subtract_frame, textvariable=subtract_num1_var)
