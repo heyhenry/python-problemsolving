@@ -4,33 +4,65 @@ window = tk.Tk()
 window.title("Calculator App")
 window.geometry("320x500")
 
-num1_var = tk.IntVar(window, '')
-num2_var = tk.IntVar(window, '')
+add_num1_var = tk.IntVar(window, '')
+add_num2_var = tk.IntVar(window, '')
 
-def calculate():
+subtract_num1_var = tk.IntVar(window, '')
+subtract_num2_var = tk.IntVar(window, '')
 
-    num1 = num1_var.get()
-    num2 = num2_var.get()
+def add():
+
+    num1 = add_num1_var.get()
+    num2 = add_num2_var.get()
 
     result = num1 + num2
 
-    print("The sum is: " + str(result))
+    print("(Addition) The result is: " + str(result))
 
-first_num = tk.Label(window, text="First Num: ")
-num1_entry = tk.Entry(window, textvariable=num1_var)
-second_num = tk.Label(window, text="second Num: ")
-num2_entry = tk.Entry(window, textvariable=num2_var)
-calc_btn = tk.Button(window, text = "Calculate", command=calculate)
+def subtract():
 
-# first_num.pack()
-# num1_entry.pack()
-# second_num.pack()
-# num2_entry.pack()
-# calc_btn.pack()
-first_num.grid(row=0, column=0)
-num1_entry.grid(row=0, column=1)
-second_num.grid(row=1, column=0)
-num2_entry.grid(row=1, column=1)
-calc_btn.grid(row=2, column=1)
+    num1 = subtract_num1_var.get()
+    num2 = subtract_num2_var.get()
+
+    result = num1 - num2
+    
+    print("(Subtraction) The result is: " + str(result))
+
+
+# add frame
+add_frame = tk.Frame(window)
+add_label = tk.Label(add_frame, text="Addition")
+add_first_num = tk.Label(add_frame, text="First Num: ")
+add_num1_entry = tk.Entry(add_frame, textvariable=add_num1_var)
+add_second_num = tk.Label(add_frame, text="Second Num: ")
+add_num2_entry = tk.Entry(add_frame, textvariable=add_num2_var)
+add_btn = tk.Button(add_frame, text = "Calculate", command=add)
+
+# subtract frame
+subtract_frame = tk.Frame(window)
+subtract_label = tk.Label(subtract_frame, text="Subtraction")
+subtract_first_num = tk.Label(subtract_frame, text="First Num: ")
+subtract_num1_entry = tk.Entry(subtract_frame, textvariable=subtract_num1_var)
+subtract_second_num = tk.Label(subtract_frame, text="Second Num: ")
+subtract_num2_entry = tk.Entry(subtract_frame, textvariable=subtract_num2_var)
+subtract_btn = tk.Button(subtract_frame, text="Calcuate", command=subtract)
+
+# add layout
+add_frame.pack()
+add_label.grid(row=0, column=1)
+add_first_num.grid(row=1, column=0)
+add_num1_entry.grid(row=1, column=1)
+add_second_num.grid(row=2,column=0)
+add_num2_entry.grid(row=2,column=1)
+add_btn.grid(row=3,column=1)
+
+# subtract layout
+subtract_frame.pack()
+subtract_label.grid(row=0,column=1)
+subtract_first_num.grid(row=1, column=0)
+subtract_num1_entry.grid(row=1, column=1)
+subtract_second_num.grid(row=2,column=0)
+subtract_num2_entry.grid(row=2,column=1)
+subtract_btn.grid(row=3,column=1)
 
 window.mainloop()
