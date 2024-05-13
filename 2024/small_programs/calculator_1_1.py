@@ -52,3 +52,16 @@ divide_btn.grid(row=0, column=3)
 
 # the run
 window.mainloop()
+
+
+# What to do next time on
+
+# 1.0 Change intvar to stringvar
+# 2.0 Create validate input function to ensure its an accepted int/float
+# 2.1 Ensure error message is given if input is invalid
+# 3.0 Add additional design considerations to existing content
+
+
+# future considerations/implementations
+# force the usage of displayed number buttons in lieu of keyboard inputs
+# provide continuious inputs (not limited to current 2 numbers)
