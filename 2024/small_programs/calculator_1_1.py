@@ -19,10 +19,11 @@ def add():
     result_var.set(num1_var.get() + num2_var.get())
     
     # testing
-    # result = result_var.get()
-    # print(result)
+    result = result_var.get()
+    print(result)
 
 # display frame
+output_label = tk.Label(display_frame, textvariable=result_var)
 num1_input = tk.Entry(display_frame, textvariable=num1_var)
 num2_input = tk.Entry(display_frame, textvariable=num2_var)
 add_btn = tk.Button(input_frame, text="Pookie", command=add)
@@ -30,6 +31,7 @@ add_btn = tk.Button(input_frame, text="Pookie", command=add)
 # packing
 display_frame.pack()
 input_frame.pack()
+output_label.pack()
 num1_input.pack()
 num2_input.pack()
 add_btn.pack()
