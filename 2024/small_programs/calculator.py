@@ -4,8 +4,8 @@ window = tk.Tk()
 window.title("Fuck man")
 window.geometry("320x500")
 
-num1_var = tk.IntVar()
-num2_var = tk.IntVar()
+num1_var = tk.IntVar(window, '')
+num2_var = tk.IntVar(window, '')
 
 def calculate():
 
