@@ -37,18 +37,18 @@ multiply_btn = tk.Button(input_frame, text="Multiply", command=multiply)
 divide_btn = tk.Button(input_frame, text="Divide", command=divide)
 
 # packing
-display_frame.pack()
+display_frame.pack(padx=10, pady=10)
 input_frame.pack()
 
-output_label.pack()
+output_label.grid(row=0, column=0, columnspan=2)
 
-num1_input.pack()
-num2_input.pack()
+num1_input.grid(row=1, column=0, padx=5)
+num2_input.grid(row=1, column=1, padx=5)
 
-add_btn.pack()
-subtract_btn.pack()
-multiply_btn.pack()
-divide_btn.pack()
+add_btn.grid(row=0, column=0)
+subtract_btn.grid(row=0, column=1)
+multiply_btn.grid(row=0, column=2)
+divide_btn.grid(row=0, column=3)
 
 # the run
 window.mainloop()
