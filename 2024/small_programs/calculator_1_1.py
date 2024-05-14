@@ -31,6 +31,8 @@ def divide():
 output_label = tk.Label(display_frame, textvariable=result_var)
 num1_input = tk.Entry(display_frame, textvariable=num1_var)
 num2_input = tk.Entry(display_frame, textvariable=num2_var)
+
+# operators
 add_btn = tk.Button(input_frame, text="Add", command=add)
 subtract_btn = tk.Button(input_frame, text="Subtract", command=subtract) 
 multiply_btn = tk.Button(input_frame, text="Multiply", command=multiply)
