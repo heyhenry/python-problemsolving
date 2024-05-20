@@ -1,10 +1,13 @@
-# Training Materials: http://tkdocs.com/tutorial/grid.html
+# Training Materials: 
+# http://tkdocs.com/tutorial/grid.html
+# https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/grid-config.html 
 
 # Following training material but without ttk insertion
 import tkinter as tk
 
 window = tk.Tk()
 
+# widgets
 content = tk.Frame(window, bg='red')
 frame = tk.Frame(content, borderwidth=5, relief='ridge', width=200, height=100)
 namelbl = tk.Label(content, text="Name")
@@ -20,6 +23,7 @@ three = tk.Checkbutton(content, text='three', variable=threevar, onvalue=True)
 ok = tk.Button(content, text='Okay')
 cancel = tk.Button(content, text='Cancel')
 
+# grid layout
 content.grid(row=0, column=0)
 frame.grid(row=0, column=0, columnspan=3, rowspan=2)
 namelbl.grid(row=0, column=3, columnspan=2)
@@ -30,6 +34,9 @@ two.grid(row=2, column=1)
 three.grid(row=2, column=2)
 ok.grid(row=2, column=3)
 cancel.grid(row=2, column=4)
+
+# resizing capabilities
+window.columnconfigure(0, weight=1)
 
 window.mainloop()
 
