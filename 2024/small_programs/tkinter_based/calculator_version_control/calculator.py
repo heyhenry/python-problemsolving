@@ -16,7 +16,12 @@ def on_click(char):
     data.set(calculations)
 
 def del_data():
-    data.set('')
+    global calculations
+    calculations = ''
+    data.set(calculations)
+    
+def equal_data():
+    print(eval(calculations))
 
 # def add_clicked(char):
 #     global calculations
@@ -55,7 +60,7 @@ numpad_ten = tk.Button(window, btn_params, text='0', command=lambda: on_click('0
 
 # del / equal
 del_btn = tk.Button(window, btn_params, text='DEL', command=del_data).grid(row=5,column=0, sticky='nswe')
-equal_btn = tk.Button(window, btn_params, text='=').grid(row=5, column=2, sticky='nswe')
+equal_btn = tk.Button(window, btn_params, text='=', command=equal_data).grid(row=5, column=2, sticky='nswe')
 
 window.mainloop()
 
