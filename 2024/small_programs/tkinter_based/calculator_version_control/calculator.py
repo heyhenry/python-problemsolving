@@ -4,7 +4,7 @@ window = tk.Tk()
 window.title("My Calculator")
 window.geometry("320x500")
 
-calc_operator = ""
+calc_operator = ''
 user_input = tk.StringVar()
 result_var = tk.StringVar()
 
@@ -22,7 +22,6 @@ def equal():
     print(calc_operator)
     temp = eval(calc_operator) 
     print(temp)
-    
 
 input_label = tk.Label(window, text='Input: ')
 input_entry = tk.Entry(window, textvariable=user_input)
