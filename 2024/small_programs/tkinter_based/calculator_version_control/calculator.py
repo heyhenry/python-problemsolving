@@ -1,72 +1,41 @@
 import tkinter as tk
 
 window = tk.Tk()
-window.title("Calculator App")
+window.title("My Calculator")
 window.geometry("320x500")
 
-# frames
-add_frame = tk.Frame(window)
-subtract_frame = tk.Frame(window)
+calc_operator = ""
+user_input = tk.StringVar()
+result_var = tk.StringVar()
 
-# variables
-add_num1_var = tk.IntVar(add_frame, '')
-add_num2_var = tk.IntVar(add_frame, '')
+def on_press(char):
+    global calc_operator
+    calc_operator += str(char)
+    user_input.set(calc_operator)
 
-subtract_num1_var = tk.IntVar(subtract_frame, '')
-subtract_num2_var = tk.IntVar(subtract_frame, '')
+def on_add(char):
+    global calc_operator
+    calc_operator += str(char)
+    user_input.set(calc_operator)
 
-# addition function
-def add():
-
-    num1 = add_num1_var.get()
-    num2 = add_num2_var.get()
-
-    result = num1 + num2
-
-    print("(Addition) The result is: " + str(result))
-
-# subtraction function
-def subtract():
-
-    num1 = subtract_num1_var.get()
-    num2 = subtract_num2_var.get()
-
-    result = num1 - num2
+def equal():
+    print(calc_operator)
+    temp = eval(calc_operator) 
+    print(temp)
     
-    print("(Subtraction) The result is: " + str(result))
 
-# add frame
-add_label = tk.Label(add_frame, text="Addition")
-add_first_num = tk.Label(add_frame, text="First Num: ")
-add_num1_entry = tk.Entry(add_frame, textvariable=add_num1_var)
-add_second_num = tk.Label(add_frame, text="Second Num: ")
-add_num2_entry = tk.Entry(add_frame, textvariable=add_num2_var)
-add_btn = tk.Button(add_frame, text = "Calculate", command=add)
+input_label = tk.Label(window, text='Input: ')
+input_entry = tk.Entry(window, textvariable=user_input)
+numpad_one = tk.Button(window, text='1', command=lambda:on_press('1'))
+numpad_two = tk.Button(window, text='2', command=lambda:on_press('2'))
+add_btn = tk.Button(window, text='+', command=lambda:on_add('+'))
+equal_btn = tk.Button(window, text='=', command=equal)
 
-# subtract frame
-subtract_label = tk.Label(subtract_frame, text="Subtraction")
-subtract_first_num = tk.Label(subtract_frame, text="First Num: ")
-subtract_num1_entry = tk.Entry(subtract_frame, textvariable=subtract_num1_var)
-subtract_second_num = tk.Label(subtract_frame, text="Second Num: ")
-subtract_num2_entry = tk.Entry(subtract_frame, textvariable=subtract_num2_var)
-subtract_btn = tk.Button(subtract_frame, text="Calcuate", command=subtract)
-
-# add layout
-add_frame.pack()
-add_label.grid(row=0, column=1)
-add_first_num.grid(row=1, column=0)
-add_num1_entry.grid(row=1, column=1)
-add_second_num.grid(row=2,column=0)
-add_num2_entry.grid(row=2,column=1)
-add_btn.grid(row=3,column=1)
-
-# subtract layout
-subtract_frame.pack()
-subtract_label.grid(row=0,column=1)
-subtract_first_num.grid(row=1, column=0)
-subtract_num1_entry.grid(row=1, column=1)
-subtract_second_num.grid(row=2,column=0)
-subtract_num2_entry.grid(row=2,column=1)
-subtract_btn.grid(row=3,column=1)
+input_label.grid(row=0, column=0)
+input_entry.grid(row=0, column=1)
+numpad_one.grid(row=1, column=0)
+numpad_two.grid(row=1, column=1)
+add_btn.grid(row=2, columnspan=2)
+equal_btn.grid(row=3, columnspan=2)
 
 window.mainloop()
