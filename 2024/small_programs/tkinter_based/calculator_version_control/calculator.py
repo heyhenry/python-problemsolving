@@ -21,7 +21,10 @@ def del_data():
     data.set(calculations)
     
 def equal_data():
-    data.set(eval(calculations))
+    global calculations
+    result = eval(calculations)
+    data.set(result)
+    calculations = str(result)
 
 # def add_clicked(char):
 #     global calculations
