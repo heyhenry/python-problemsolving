@@ -39,3 +39,7 @@ add_btn.grid(row=2, columnspan=2)
 equal_btn.grid(row=3, columnspan=2)
 
 window.mainloop()
+
+
+# create skeleton template for buttons etc - their placements / ui (Simple version first i.e. minimal)
+# create additional functional methods (-,*,/)
