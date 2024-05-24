@@ -26,21 +26,6 @@ def equal_data():
     data.set(result)
     calculations = str(result)
 
-# def add_clicked(char):
-#     global calculations
-#     calculations += char
-#     data.set(calculations)
-
-# def sub_clicked(char):
-#     global calculations
-#     calculations += char
-#     data.set(calculations)
-
-# def times_clicked(char):
-#     global calculations
-#     calculations += char
-#     data.set(calculations)
-
 # input display
 data_entry = tk.Entry(window, textvariable=data, borderwidth=5, width=25, font=('sans-serif', 22)).grid(columnspan=3, padx=5, pady=5)
 
