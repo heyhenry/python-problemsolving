@@ -27,16 +27,22 @@ Output: [0,1]
 """
 def two_sum(nums, target):
 
+    # solution 1
+    # for i in range(len(nums)):
+    #     for j in range(len(nums)):
+    #         if nums[i] + nums[j] == target and i != j:
+    #             return [i,j]
+
+    # solution 2
     for i in range(len(nums)):
-        for j in range(len(nums)):
-            if nums[i] + nums[j] == target and i != j:
-                return [i,j]
+        for j in range(i+1, len(nums)):
+            print(nums[i], nums[j])
 
 def main():
 
-    print(two_sum(nums = [2,7,11,15], target = 9))
+    # print(two_sum(nums = [2,7,11,15], target = 9))
     print(two_sum(nums = [3,2,4], target = 6))
-    print(two_sum(nums = [3,3], target = 6))
+    # print(two_sum(nums = [3,3], target = 6))
 
 if __name__ == "__main__":
     main()
