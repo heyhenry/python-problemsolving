@@ -25,14 +25,37 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 """
 def is_palindrome(x):
 
-    x = str(x)
-    new_x = ''
-    for i in range(len(x)-1, -1, -1):
-        new_x += x[i]
-    
-    return x == new_x
+    # solution 1
+    # x = str(x)
+    # new_x = ''
+    # for i in range(len(x)-1, -1, -1):
+    #     new_x += x[i]
+    # return x == new_x
+
+    # solution 2
+    # return str(x) == str(x)[::-1]
+
+    # solution 3
+    # x = str(x)
+    # return x == x[::-1]
+
+    # solution 4
+    number = x
+    reverse = 0
+
+    while number > 0:
+        last_digit = number % 10
+        reverse = reverse * 10 + last_digit
+        number = number // 10
+        # print(f'Reverse: {reverse}')
+        # print(f'Original: {number}')
+        # print('---')
+    print(f'Reverse: {reverse}')
+    print(f'Original: {x}')
+
 
 def main():
+    print(is_palindrome(x = 283))
     print(is_palindrome(x = 121))
     print(is_palindrome(x = -121))
     print(is_palindrome(x = 10))
