@@ -15,7 +15,7 @@ def climb_stars(n):
         n_two = total
 
     return total
-    
+
 def main():
     print(climb_stars(2))
     print(climb_stars(3))
