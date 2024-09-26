@@ -28,11 +28,17 @@ Thus, the result should be [1,0].
 """
 def plus_one(digits : list[int]) -> list[int]:
 
+    # create a num string variable to store the face value length of the digits list
     num = ''
+    # loop through the digits list and append each integer to the num string variable
     for i in digits:
         num += str(i)
+    # implement the required logic
+    # add the requested one to the num that has been changed to an int type for said calculation
     num = int(num) + 1
+    # update the current digits list with the new value/s
     digits[:] = [int(i) for i in str(num)]
+    # return the updated digits list
     return digits
 
 def main():
