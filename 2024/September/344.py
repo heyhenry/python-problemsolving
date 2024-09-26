@@ -15,15 +15,20 @@ Output: ["h","a","n","n","a","H"]
 """
 def reverse_string(s : list[str]):
 
-    # create a shallow copy of the s list
-    temp_s = s[:]
-    # store the s list's length as a variable to reduce calculations required
-    size = len(s)
+    # solution 1
+    # # create a shallow copy of the s list
+    # temp_s = s[:]
+    # # store the s list's length as a variable to reduce calculations required
+    # size = len(s)
 
-    # loop through the list in reverse indexes
-    for i in range(size-1, -1, -1):
-        # replace the s list values with the reversed list values
-        s[(size-1)-i] = temp_s[i]
+    # # loop through the list in reverse indexes
+    # for i in range(size-1, -1, -1):
+    #     # replace the s list values with the reversed list values
+    #     s[(size-1)-i] = temp_s[i]
+    # return s
+
+    # solution 2
+    s[:] = s[::-1]
     return s
 
 def main():
