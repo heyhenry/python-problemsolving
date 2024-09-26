@@ -40,9 +40,19 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 """
 def remove_duplicates(nums):
 
-    nums[:] = sorted(list(set(nums[:])))
-    return len(nums)
+    # solution 1
+    # nums[:] = sorted(list(set(nums[:])))
+    # return len(nums)
 
+    # solution 2
+    new_nums = []
+    for i in nums:
+        if i not in new_nums:
+            new_nums.append(i)
+    nums[:] = new_nums[:]
+    
+    return len(nums)
+    
 def main():
     print(remove_duplicates(nums = [1,1,2]))
     print(remove_duplicates(nums = [0,0,1,1,1,2,2,3,3,4]))
