@@ -3,6 +3,10 @@ Problem 1: Grouping Anagrams
 
 Write a function that takes a list of strings and groups them into lists of anagrams. 
 Two strings are anagrams if they contain the same characters in the same frequency, regardless of order.
+
+Constraints:
+Each word consists of lowercase English letters only.
+You may return the groups in any order.
 """
 def group_anagrams(words : list[str]) -> list[list[str]]:
     result = []
