@@ -20,20 +20,22 @@ class Solution:
         #     num_map[nums[i]] = i
 
         # # algorithm
-        # for i in range(size):
-        #     complement = target - nums[i]
-        #     if complement in num_map and num_map[complement] != i:
-        #         print([i, num_map[complement]])
-        #         return [i, num_map[complement]]
+        for i in range(size):
+            # find a value that makes up the target value alongside the current looped number value
+            complement = target - nums[i]
+            # if the found value (complement) is found inside the populated num_map..
+            if complement in num_map and num_map[complement] != i:
+                # then it is deemed to have found a valid make up of 2 elements in the nums list to equal the target value
+                return [i, num_map[complement]]
         
         # solution 3 - single dictionary iteration
         num_map = {}
         size = len(nums)
 
         for i in range(size):
-            complacent = target - nums[i]
-            if complacent in num_map:
-                return [num_map[complacent], i]
+            complement = target - nums[i]
+            if complement in num_map:
+                return [num_map[complement], i]
             num_map[nums[i]] = i
         
 
