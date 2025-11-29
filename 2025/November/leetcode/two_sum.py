@@ -7,19 +7,29 @@ class Solution:
         #         if nums[i] + nums[j] == target:
         #             return [i, j]
         
-        # method 2 - linear or someshit
+        # # method 2 - double loop solution
+        # num_map = {}
+        # size = len(nums)
+        
+        # for i in range(size):
+        #     num_map[nums[i]] = i
+
+        # for i in range(size):
+        #     complement = target - nums[i]
+        #     if complement in num_map and num_map[complement] != i:
+        #         return [num_map[complement], i]
+            
+        # # not needed as question maker guarantess match to be found, but still good practice.
+        # return []
+
+        # method 3 - single loop solution
         num_map = {}
         size = len(nums)
-        
-        for i in range(size):
-            num_map[nums[i]] = i
-
         for i in range(size):
             complement = target - nums[i]
-            if complement in num_map and num_map[complement] != i:
+            if complement in num_map:
                 return [num_map[complement], i]
-            
-        # not needed as question maker guarantess match to be found, but still good practice.
+            num_map[nums[i]] = i
         return []
 
 solution = Solution()
