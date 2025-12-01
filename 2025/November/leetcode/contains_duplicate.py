@@ -1,8 +1,12 @@
 class Solution:
     def contains_duplicate(self, nums : list[int]) -> bool:
-        size = len(nums)
-        unique_size = len(set(nums))
-        return size != unique_size
+        # initial solution 
+        # size = len(nums)
+        # unique_size = len(set(nums))
+        # return size != unique_size
+
+        # a more optimised solution (reduced code and operations)
+        return len(nums) != len(set(nums))
 
 solution = Solution()
 
