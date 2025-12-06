@@ -1,5 +1,6 @@
 class Solution:
     def remove_duplicates(self, nums : list[int]) -> int:
+        # first method 
         k = sorted(list(set(nums)))
         nums.clear()
         nums += k
