@@ -8,24 +8,43 @@ class Solution:
         #             return [i, j]
         # return
     
-        # two pass method
-        size = len(nums)
-        num_maps = {}
+        # # two pass method
+        # size = len(nums)
+        # num_maps = {}
         
-        # first pass 
-        # intentionally loop over existing integer values with latest one found in the nums list
-        for i in range(size):
-            num_maps[nums[i]] = i
+        # # first pass 
+        # # intentionally loop over existing integer values with latest one found in the nums list
+        # for i in range(size):
+        #     num_maps[nums[i]] = i
+
+        # for i in range(size):
+        #     # find the complement integer value that makes up the other half of the target's sum
+        #     complement = target - nums[i]
+        #     # check if the complement is in nums_map,
+        #     # once the first check is cleared, proceed to check if the value (index) located at the provided key 
+        #     # (complement) does not match with the index of the current iteration's i (index) in nums[i] (aka the other half of the target's sum)
+        #     if complement in num_maps and num_maps[complement] != i:
+        #         # return the indexes of the two values that total the target's value
+        #         return [num_maps[complement], i]
+        
+        # return
+
+        # single pass method
+        size = len(nums)
+        nums_map = {}
 
         for i in range(size):
-            # find the complement integer value that makes up the other half of the target's sum
+            # store the value that makes the other half of the target's sum (complement)
             complement = target - nums[i]
-            # check if the complement is in nums_map,
-            # once the first check is cleared, proceed to check if the value (index) located at the provided key 
-            # (complement) does not match with the index of the current iteration's i (index) in nums[i] (aka the other half of the target's sum)
-            if complement in num_maps and num_maps[complement] != i:
-                # return the indexes of the two values that total the target's value
-                return [num_maps[complement], i]
+            # check if the complement value exists in nums_map
+            if complement in nums_map:
+                # if the complement value exists in nums_map,
+                # that means that the current iteration's value + complement's value (existing value from a previous iteration stored in nums_map)
+                # equate to the sum of the target value
+                return [nums_map[complement], i]
+            # if the above condition is not met, then add this iteration's value (complement) to the nums_map to be checked with future complements
+            # until the sum of the target is found
+            nums_map[nums[i]] = i
         
         return
 
