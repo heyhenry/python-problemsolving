@@ -1,6 +1,14 @@
 class Solution:
     def remove_duplicates(self, nums : list[int]) -> int:
-        k = set(nums)
+        # solution 1
+        # k = list(set(nums))
+        # nums.clear()
+        # nums += k
+        # return len(k)
+    
+        # solution 2
+        k = sorted(list(set(nums)))
+        nums[:] = k
         return len(k)
 
 solution = Solution()
