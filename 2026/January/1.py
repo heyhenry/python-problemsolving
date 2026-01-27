@@ -1,17 +1,37 @@
 # 1. Two Sum
 
 class Solution:
+    # method: brute force
+    # def two_sum(self, nums: list[int], target: int) -> list[int]:
+    #     # brute force method:
+    #     size = len(nums)
+    #     for i in range(size):
+    #         for j in range(i+1, size):
+    #             if nums[i] + nums[j] == target:
+    #                 # result log
+    #                 print([i, j])
+    #                 return [i, j]
+    #     # should never be prompted based on problem's constraints, just a style choice
+    #     return
+
+    # method: single pass
     def two_sum(self, nums: list[int], target: int) -> list[int]:
-        # brute force method:
         size = len(nums)
+        num_map = {}
         for i in range(size):
-            for j in range(i+1, size):
-                if nums[i] + nums[j] == target:
-                    # result log
-                    print([i, j])
-                    return [i, j]
-        # should never be prompted based on problem's constraints, just a style choice
-        return
+            # get a remainder number with current iteration's value provided by the nums' list
+            complement = target - nums[i]
+            # check if the remainder number already exists in the num_map, 
+            # if it does that means this current iteration's value + remainder number is the 
+            # first valid result that equals the given target value
+            if complement in num_map:
+                # print statement to check the result
+                print([num_map[complement], i])
+                return [num_map[complement], i]
+            # if the conditional if statement is not met, add the current iteration's value to the num_map
+            num_map[nums[i]] = i
+        # dummy return for aesthetics, based on details, there will always be a match found
+        return 
 
 s = Solution()
 
