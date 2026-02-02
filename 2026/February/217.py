@@ -3,18 +3,24 @@
 
 class Solution:
 
-    # new list method
-    def containsDuplicate(self, nums: list[int]) -> bool:
-        unique_nums = []
+    # # new list method
+    # def containsDuplicate(self, nums: list[int]) -> bool:
+    #     unique_nums = []
 
-        for i in nums:
-            if i not in unique_nums:
-                unique_nums.append(i)
-            else:
-                print("True")
-                return True
-        print("False")
-        return False
+    #     for i in nums:
+    #         if i not in unique_nums:
+    #             unique_nums.append(i)
+    #         else:
+    #             print("True")
+    #             return True
+    #     print("False")
+    #     return False
+
+    # set() comparison method
+    def containsDuplicate(self, nums: list[int]) -> bool:
+        print(len(nums) != len(set(nums)))
+        # comparing original list against set() version of list
+        return len(nums) != len(set(nums))
 
 s = Solution()
 
