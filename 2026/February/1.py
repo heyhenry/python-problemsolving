@@ -1,3 +1,6 @@
+# Leetcode No.1: Two Sum
+# More Info: https://leetcode.com/problems/two-sum/description/
+
 class Solution:
     # brute force method
     # def twoSum(self, nums: list[int], target: int) -> list[int]:
