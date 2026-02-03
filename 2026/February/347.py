@@ -10,8 +10,15 @@ class Solution:
             else:
                 nums_map[i] += 1
 
-        # line below referenced this info: https://www.freecodecamp.org/news/sort-dictionary-by-value-in-python/
-        sorted_nums = sorted(nums_map.items(), key=lambda x:x[1], reverse=True)
+        # Line below referenced this info: https://www.freecodecamp.org/news/sort-dictionary-by-value-in-python/
+        # ---
+        # Explanation for self study: 
+        # The lambda is used in the key parameter to create an 'on the go' one off function that is isolated in the space of that intialised lambda.
+        # The sorted() function iterates through the item pairings (key,value) of the nums_map.
+        # The lambda function's first 'item' before the colon takes in each item as they get iterated and 
+        # the 'item' after the colon is the returning result (or expression) which includes a '[1]' in this case to refer to the value in the pairing (key,value) 
+        # to be used as the basis for determining the sorting order.
+        sorted_nums = sorted(nums_map.items(), key=lambda item:item[1], reverse=True)
 
         results = []
         for i in sorted_nums[:k]:
