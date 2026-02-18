@@ -2,12 +2,15 @@
 # More Info: https://leetcode.com/problems/single-number/description/
 
 class Solution:
+
+    # solved using set() to find all nums and count() to find the number that had a sum of 1
     def singleNumber(self, nums: list[int]) -> int:
         unique_nums = set(nums)
         for i in unique_nums:
             if nums.count(i) == 1:
                 return i
-            
+    
+    # solved using dict as a counter and list as a filter
     def singleNumber(self, nums: list[int]) -> int:
         nums_dict = {}
         smallest_number = []
@@ -23,6 +26,15 @@ class Solution:
         
         print(smallest_number[0])
         return smallest_number[0]
+    
+    # solved using bit manipulation technique using XOR bitwise operator
+    def singleNumber(self, nums: list[int]) -> int:
+        a = 0
+        for i in nums:
+            a = a ^ i
+        
+        print(a)
+        return a
 
 test_case_01 = [2,2,1]
 test_case_02 = [4,1,2,1,2]
