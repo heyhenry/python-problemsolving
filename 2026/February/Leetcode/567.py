@@ -1,6 +1,11 @@
 # Leetcode No.567: Permutation in String
 # More Info: https://leetcode.com/problems/permutation-in-string/description/
 
+# Extra resources: 
+# Dictionary Comparison in Python: https://www.sitepoint.com/python/dictionaries-compare/
+# Python - Slicing Strings: https://www.w3schools.com/python/python_strings_slicing.asp
+# Sliding Window Algorithm Explained: https://builtin.com/data-science/sliding-window-algorithm
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         if len(s1) > len(s2):
