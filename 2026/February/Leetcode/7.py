@@ -2,24 +2,41 @@
 # More Info: https://leetcode.com/problems/reverse-integer/description/
 
 class Solution:
-    def reverse(self, x : int) -> int:
-        has_negative = False
-        x = list(str(x))
-        if x[0] == "-":
-            has_negative = True
-            x.remove("-")
-        x.reverse()
-        new_x = abs(int("".join(x)))
-        if has_negative:
-            new_x = "-" + str(new_x)
-            new_x = int(new_x)
-        if -2**31 <= new_x <= 2**31 - 1:
-            print(new_x)
-            return new_x
-        print(0)
-        return 0
+    # my personal messy-ish solution
+    # def reverse(self, x : int) -> int:
+    #     has_negative = False
+    #     x = list(str(x))
+    #     if x[0] == "-":
+    #         has_negative = True
+    #         x.remove("-")
+    #     x.reverse()
+    #     new_x = abs(int("".join(x)))
+    #     if has_negative:
+    #         new_x = "-" + str(new_x)
+    #         new_x = int(new_x)
+    #     if -2**31 <= new_x <= 2**31 - 1:
+    #         print(new_x)
+    #         return new_x
+    #     print(0)
+    #     return 0
 
-            
+    def reverse(self, x : int) -> int:
+            has_negative = False
+            if x < 0:
+                has_negative = True
+            x = abs(x)
+            rev_x = 0
+            while x > 0:
+                rev_x *= 10
+                rev_x += x % 10
+                x //= 10
+            if has_negative:
+                rev_x = -abs(rev_x)
+            if -2**31 <= rev_x <= 2**31 - 1:
+                print(rev_x)
+                return rev_x
+            print(0)
+            return 0
 
 test_case_01 = 123
 test_case_02 = -123
