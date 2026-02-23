@@ -6,8 +6,16 @@ reverse_string('') -> ''
 reverse_string('abab') -> 'baba'
 """
 class Problem:
+    # string slicing method
+    # def reverse_string(self, s : str) -> str:
+        # return s[::-1]
+
+    # for loop + concatenation method
     def reverse_string(self, s : str) -> str:
-        return s[::-1]
+        new_s = ""
+        for c in s:
+            new_s = c + new_s
+        return new_s
 
 test_01 = "abc"
 test_02 = ""
