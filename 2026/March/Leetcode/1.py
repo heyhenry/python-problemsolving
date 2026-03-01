@@ -11,13 +11,25 @@ class Solution:
         #             return [i, j]
 
         # method: one pass
-        num_map = {}
+        # num_map = {}
         
-        for i in range(len(nums)):
-            complement = target - nums[i]
-            if complement in num_map:
-                return [num_map[complement], i]
+        # for i in range(len(nums)):
+        #     complement = target - nums[i]
+        #     if complement in num_map:
+        #         return [num_map[complement], i]
+        #     num_map[nums[i]] = i
+
+        # method: two pass
+        num_map = {}
+        size = len(nums)
+
+        for i in range(size):
             num_map[nums[i]] = i
+        
+        for i in range(size):
+            complement = target - nums[i]
+            if complement in num_map and num_map[complement] != i:
+                return [i, num_map[complement]]
 
 test_case_01 = ([2,7,11,15], 9)
 test_case_02 = ([3,2,4], 6)
