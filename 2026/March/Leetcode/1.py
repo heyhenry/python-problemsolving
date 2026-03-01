@@ -1,0 +1,19 @@
+# Leetcode No.1: Two Sum
+# More Info: https://leetcode.com/problems/two-sum/description/
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        size = len(nums)
+        for i in range(size):
+            for j in range(i+1, size):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+
+test_case_01 = ([2,7,11,15], 9)
+test_case_02 = ([3,2,4], 6)
+test_case_03 = ([3,3], 6)
+
+s = Solution()
+
+print(s.twoSum(test_case_01[0], test_case_01[1]))
+print(s.twoSum(test_case_02[0], test_case_02[1]))
+print(s.twoSum(test_case_03[0], test_case_03[1]))
