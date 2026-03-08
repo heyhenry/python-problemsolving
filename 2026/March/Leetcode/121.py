@@ -1,3 +1,6 @@
+# Leetcode No.121: Best Time to Buy and Sell Stock
+# More Info: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:
         min_price = prices[0]
