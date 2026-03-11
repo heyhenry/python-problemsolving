@@ -16,12 +16,13 @@ def count_words(filename : str) -> int:
         line = f.read()
         return len(line.split())
 
-fakeletters = [
-    "test1.fakeletters",
-    "test2.fakeletters",
-    "test3.fakeletters",
-    "test4.fakeletters"
-]
+if __name__ == "__main__":
+    fakeletters = [
+        "test1.fakeletters",
+        "test2.fakeletters",
+        "test3.fakeletters",
+        "test4.fakeletters"
+    ]
 
-for letter in fakeletters:
-    print(count_words("fakeletters/"+letter))
+    for letter in fakeletters:
+        print(count_words("fakeletters/"+letter))

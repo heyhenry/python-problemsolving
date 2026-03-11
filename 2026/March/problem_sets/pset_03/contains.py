@@ -16,13 +16,14 @@ def contains(filename : str, word : str) -> bool:
         words = content.split()
         return word in words
 
-test_cases = [
-    ("test1.fakeletters", "b"),
-    ("test1.fakeletters", "d"),
-    ("test2.fakeletters", "wor"),
-    ("test2.fakeletters", "hello"),
-    ("test3.fakeletters", ""),
-]
+if __name__ == "__main__":
+    test_cases = [
+        ("test1.fakeletters", "b"),
+        ("test1.fakeletters", "d"),
+        ("test2.fakeletters", "wor"),
+        ("test2.fakeletters", "hello"),
+        ("test3.fakeletters", ""),
+    ]
 
-for i in range(len(test_cases)):
-    print(contains(f"fakeletters/{test_cases[i][0]}", test_cases[i][1]))
+    for i in range(len(test_cases)):
+        print(contains(f"fakeletters/{test_cases[i][0]}", test_cases[i][1]))
