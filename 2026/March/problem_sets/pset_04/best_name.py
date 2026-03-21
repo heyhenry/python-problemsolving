@@ -29,21 +29,33 @@ def best_name(filename : str) -> str:
                 names[line[0]] = []
             if line[2] not in names:
                 names[line[2]] = []
-            if line[1] == ">":
-                names[line[0]].append(line[2])
-            elif line[1] == "<":
-                names[line[2]].append([0])
+            # since we know it's always > sign
+            names[line[0]].append(line[2])
 
-        return names
+        best_names = []
+        for key_name in names.keys():
+            best_names.append(key_name)
+
+        for key, _ in names.items():
+            for beaten_names in names.values():
+                if key in beaten_names and key in best_names:
+                    best_names.remove(key)
+        
+        if len(best_names) == 1:
+            return best_names[0]
+        elif len(best_names) > 1:
+            return "UNKNOWN"
+        else:
+            return "INVALID"
 
 test_cases = [
     "test_cases/3/input1.txt",
-    # "test_cases/3/input2.txt",
-    # "test_cases/3/input3.txt",
-    # "test_cases/3/input4.txt",
-    # "test_cases/3/input5.txt",
-    # "test_cases/3/input6.txt",
-    # "test_cases/3/input7.txt"
+    "test_cases/3/input2.txt",
+    "test_cases/3/input3.txt",
+    "test_cases/3/input4.txt",
+    "test_cases/3/input5.txt",
+    "test_cases/3/input6.txt",
+    "test_cases/3/input7.txt"
 ]
 
 for test in test_cases:
