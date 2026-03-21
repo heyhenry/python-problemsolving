@@ -23,6 +23,7 @@ def best_name(filename : str) -> str:
                 temp.append(i)
             updated_content.append(temp)
         
+        # create dictionary that uses each name as the key, and the value as a list of names that were beaten by respective key
         names = {}
         for line in updated_content:
             if line[0] not in names:
@@ -32,15 +33,18 @@ def best_name(filename : str) -> str:
             # since we know it's always > sign
             names[line[0]].append(line[2])
 
+        # create a list of names found in file
         best_names = []
         for key_name in names.keys():
             best_names.append(key_name)
 
+        # compare and eliminate names from best_name's list that had been beaten by other names
         for key, _ in names.items():
             for beaten_names in names.values():
                 if key in beaten_names and key in best_names:
                     best_names.remove(key)
         
+        # return the correct output based on results and requirements
         if len(best_names) == 1:
             return best_names[0]
         elif len(best_names) > 1:
