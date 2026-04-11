@@ -6,7 +6,20 @@ File format: a single line consisting only of (, [, ), or ]
 Output: either true or false
 """
 def is_valid(filename : str) -> bool:
-    pass
+    with open(filename, "r") as file:
+        content = file.read()
+        stack = []
+        p_dict = {")": "(", "]": "["}
+        for i in content:
+            if i in p_dict.values():
+                stack.append(i)
+            elif stack and stack[-1] == p_dict[i]:
+                stack.pop()
+            else:
+                return False
+        if stack:
+            return False
+        return True
 
 test_cases = [
     "test_cases/1/input1.txt", # true
