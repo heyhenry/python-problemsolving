@@ -11,8 +11,19 @@ Examples:
     row_sum("data4.csv") -> [6, 9, 12, 15] 
 """
 def row_sum(filename : str) -> list[int]:
-    pass
-        
+    with open(filename, "r") as file:
+        content = file.read()
+        if not content:
+            return []
+        content = content.splitlines()
+        results = []
+        for row in content:
+            total_val = 0
+            for i in row.split(","):
+                total_val += int(i)
+            results.append(total_val)
+        return results
+
 test_cases = [
     "csv_data/data1.csv",
     "csv_data/data2.csv",
