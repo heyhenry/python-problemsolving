@@ -11,8 +11,30 @@ Examples:
     column_mean("data3.csv") -> [3, 1, 0] 
     column_mean("data4.csv") -> [2.5, 3.5, 4.5] 
 """
-def column_mean(filename : str) -> list[float]: 
-    pass
+def column_mean(filename : str) -> list[float]:
+    with open(filename, "r") as file:
+        content = file.read()
+        if not content:
+            return []
+        content = content.splitlines()
+        updated_content = []
+        for row in content:
+            temp = []
+            for i in row.split(","):
+                temp.append(int(i))
+            updated_content.append(temp)
+        max_rows = len(max(updated_content, key=len))
+        for row in updated_content:
+            while len(row) < max_rows:
+                row.append(0)
+        results = []
+        for col in range(len(updated_content[0])):
+            mean_val = 0
+            for row in range(len(updated_content)):
+                mean_val += updated_content[row][col]
+            mean_val = mean_val / len(updated_content)
+            results.append(mean_val)
+        return results
 
 test_cases = [
     "csv_data/data1.csv",
