@@ -12,7 +12,12 @@ Examples:
     count_words("test4.fakeletters") -> 69
 """ 
 def count_words(filename : str) -> int: 
-    pass
+    with open(filename, "r") as file:
+        content = file.read()
+        if not content:
+            return 0
+        content = content.split(" ")
+        return len(content)
 
 if __name__ == "__main__":
     fakeletters = [
