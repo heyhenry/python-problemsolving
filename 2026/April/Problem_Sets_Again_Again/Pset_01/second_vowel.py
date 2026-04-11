@@ -9,7 +9,14 @@ Examples:
     second_vowel('yip') -> -1 
 """
 def second_vowel(s : str) -> int:
-    pass
+    vowels = "aeiou"
+    counter = 0
+    for c in range(len(s)):
+        if s[c] in vowels or (c != 0 and s[c] == "y"):
+            counter += 1
+            if counter == 2:
+                return c
+    return -1
 
 print(second_vowel('test'))
 print(second_vowel('aeiou'))
