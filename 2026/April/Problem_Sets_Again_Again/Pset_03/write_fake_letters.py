@@ -14,8 +14,16 @@ Example:
     contains("output.fakeletters", "other") -> False 
     count_words("output.fakeletters") -> 2 
 """
+from contains import contains
+from count_words import count_words
+
 def write_fake(filename : str, words : list[str]):
-    pass
+    with open(filename, "w") as outfile:
+        for w in range(len(words)):
+            if w != len(words) - 1:
+                outfile.write(f"{words[w]} ")
+            else:
+                outfile.write(words[w])
 
 write_fake("fakeletters/output.fakeletters", ["test", "out"])
 print(contains("fakeletters/output.fakeletters", "test"))
