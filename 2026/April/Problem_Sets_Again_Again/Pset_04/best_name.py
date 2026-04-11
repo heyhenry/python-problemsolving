@@ -10,7 +10,38 @@ Output: one of three things:
 3. if there's a contradiction (Name1 > Name2, but Name2 > Name1), then "INVALID"
 """
 def best_name(filename : str) -> str:
-    pass
+    with open(filename, "r") as file:
+        content = file.read()
+        content = content.splitlines()
+        updated_content = []
+        for row in content:
+            temp = []
+            for i in row.split(" "):
+                temp.append(i)
+            updated_content.append(temp)
+        names_dict = {}
+        for row in updated_content:
+            if row[0] not in names_dict:
+                names_dict[row[0]] = [row[2]]
+            elif row[2] not in names_dict[row[0]]:
+                names_dict[row[0]].append(row[2])
+        available_names = []
+        for name in names_dict.keys():
+            available_names.append(name)
+        names_to_remove = []
+        for val in names_dict.values():
+            for name in available_names:
+                if name in val:
+                    names_to_remove.append(name)
+        best_names = []
+        for name in available_names:
+            if name not in names_to_remove:
+                best_names.append(name)
+        if not best_names:
+            return "INVALID"
+        elif len(best_names) > 1:
+            return "UNKNOWN"
+        return best_names[0]
 
 test_cases = [
     "test_cases/3/input1.txt",
