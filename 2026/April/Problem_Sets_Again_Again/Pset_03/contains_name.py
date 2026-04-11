@@ -11,7 +11,27 @@ Examples:
     contains_name("table3.csv", "Sabaton") -> False 
 """
 def contains_name(filename : str, name : str) -> bool:
-    pass
+    with open(filename, "r") as file:
+        content = file.read()
+        content = content.splitlines()
+        updated_content = []
+        for row in content:
+            temp = []
+            for i in row.split(','):
+                temp.append(i)
+            updated_content.append(temp)
+        column_names = updated_content[0]
+        updated_content.pop(0)
+        name_index = None
+        for col in range(len(column_names)):
+            if column_names[col] == "name":
+                name_index = col
+        if name_index is None:
+            return False
+        for row in updated_content:
+            if row[name_index] == name:
+                return True
+        return False
 
 test_cases = [
     ("table_data/table1.csv", "goblin"),
