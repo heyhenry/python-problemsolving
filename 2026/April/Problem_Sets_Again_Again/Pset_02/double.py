@@ -7,7 +7,9 @@ Modifies table in place to double each number
     double([[]]) does "nothing" 
 """
 def double(table : list[list[int]]):
-    pass
+    for row in table:
+        for i in range(len(row)):
+            row[i] *= 2
 
 test_case_01 = [[1, 2], [3, 4, 5]]
 test_case_02 = [[-1], [-2], [0, 0]]
