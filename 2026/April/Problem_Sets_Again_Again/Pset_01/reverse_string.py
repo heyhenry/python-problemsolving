@@ -6,7 +6,7 @@
     reverse_string('abab') -> 'baba' 
 """
 def reverse_string(s : str) -> str:
-    pass
+    return s[::-1]
 
 print(reverse_string('abc'))
 print(reverse_string(''))
