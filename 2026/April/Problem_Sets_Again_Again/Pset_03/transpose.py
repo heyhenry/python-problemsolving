@@ -20,8 +20,44 @@ Examples:
     2,3,4,5 
     3,4,5,6 
 """
-def transpose(filename : str): 
-    pass
+def transpose(filename : str):
+    period_index = filename.rfind(".")
+    transposed_filename = f"{filename[:period_index]}_transpose.csv"
+    with open(filename, "r") as file:
+        content = file.read()
+        # create an empty transpose file and end program if input file was empty
+        if not content:
+            with open(transposed_filename, "w") as outfile:
+                outfile.write("")
+                return
+        content = content.splitlines()
+        updated_content = []
+        check_row_length = None
+        for row in content:
+            temp = []
+            for i in row.split(","):
+                temp.append(i)
+            # check is rows have same length (i.e same amount of columns), if not - end program without producing transpose file
+            if check_row_length is None:
+                check_row_length = len(temp)
+            elif check_row_length != len(temp):
+                return
+            updated_content.append(temp)
+        transposed_data = []
+        for col in range(len(updated_content[0])):
+            temp = []
+            for row in range(len(updated_content)):
+                temp.append(updated_content[row][col])
+            transposed_data.append(temp)
+        with open(transposed_filename, "w") as outfile:
+            for row in range(len(transposed_data)):
+                for i in range(len(transposed_data[row])):
+                    if i != len(transposed_data[row]) - 1:
+                        outfile.write(f"{transposed_data[row][i]},")
+                    else:
+                        outfile.write(transposed_data[row][i])
+                if row != len(transposed_data) - 1:
+                    outfile.write("\n")
 
 test_cases = [
     "csv_data/data1.csv",
