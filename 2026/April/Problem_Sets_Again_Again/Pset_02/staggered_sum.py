@@ -7,7 +7,14 @@ staggered_sum([[1, 2], 3, [4, 5]]) -> 15
 staggered_sum([-4, [-3, 2, 1], 6, 8, [-1]]) -> 9
 """
 def staggered_sum(lst : list[int | list[int]]) -> int:
-    pass
+    result = 0
+    for val in lst:
+        if isinstance(val, list):
+            for i in val:
+                result += i
+        else:
+            result += val
+    return result
 
 print(staggered_sum([1, 2, 3]))
 print(staggered_sum([[], [], []]))
