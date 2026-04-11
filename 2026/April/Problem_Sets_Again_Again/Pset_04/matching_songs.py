@@ -8,7 +8,22 @@ Output: a list of songs in alphabetical order that match the given request order
 Note that capitalization doesn't matter, so a matches both A and a
 """
 def matches_found(filename : str) -> list[str]:
-    pass
+    with open(filename, "r") as file:
+        content = file.read()
+        content = content.splitlines()
+        filter = content[0]
+        content.pop(0)
+        results = []
+        for song_name in content:
+            check_filter = list(filter)
+            for c in song_name.lower():
+                if check_filter and c == check_filter[0]:
+                    check_filter.pop(0)
+                if not check_filter:
+                    break
+            if not check_filter:
+                results.append(song_name)
+        return results
 
 test_cases = [
     "test_cases/4/input1.txt",
