@@ -10,7 +10,21 @@ max_prime([[]]) -> -1
 # Reference used for prime validation formula: https://www.geeksforgeeks.org/python/python-program-to-check-whether-a-number-is-prime-or-not/
 
 def max_prime(table : list[list[int]]) -> int:
-    pass
+    
+    def is_prime(n : int) -> bool:
+        if n <= 1:
+            return False
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    
+    max_num = -1
+    for row in table:
+        for i in row:
+            if is_prime(i) and i > max_num:
+                max_num = i
+    return max_num
 
 print(max_prime([[1, 4, 8], [0, -5]]))
 print(max_prime([[3, 7, 1, 4], [8, 4, 12, 221]]))
