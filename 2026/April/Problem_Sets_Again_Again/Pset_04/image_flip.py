@@ -9,7 +9,18 @@ If you're feeling fancy, you can try and visualize these images! Pillow's Image 
 out images in the format we're using, so you can make a png or whatever of them!
 """
 def flip_image(filename : str):
-    pass
+    period_index = filename.rfind(".")
+    solution_filename = f"{filename[:period_index]}.solution"
+    with open(filename, "r") as file:
+        content = file.read()
+        content = content.splitlines()
+        content = content[::-1]
+        with open(solution_filename, "w") as outfile:
+            for row in range(len(content)):
+                if row != len(content) - 1:
+                    outfile.write(f"{content[row]}\n")
+                else:
+                    outfile.write(content[row])
 
 test_cases = [
     "test_cases/2/input1.txt",
