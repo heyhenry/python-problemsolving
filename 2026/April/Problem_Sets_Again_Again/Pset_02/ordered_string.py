@@ -8,7 +8,10 @@ Examples:
     ordered_string({'z' : 5, 'd' : 2, 'a' : 3, 'x' : 2}) -> "aaaddxxzzzzz" 
 """
 def ordered_string(d : dict[str, int]) -> str: 
-    pass
+    result = ""
+    for key, val in sorted(d.items()):
+        result += key*val
+    return result
 
 test_cases = [
     {},
