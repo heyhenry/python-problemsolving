@@ -11,7 +11,14 @@ Examples:
     contains("test3.fakeletters", "") -> False 
 """
 def contains(filename : str, word : str) -> bool: 
-    pass
+    with open(filename, "r") as file:
+        content = file.read()
+        if not content:
+            return False
+        content = content.split(" ")
+        if word in content:
+            return True
+        return False
 
 if __name__ == "__main__":
     test_cases = [
