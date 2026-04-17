@@ -8,13 +8,13 @@
     max_even([0]) -> 0 
 """
 def max_even(lst : list[int]) -> int | None:
-   result = None
-   for i in lst:
-      if i % 2 == 0 and result is None:
-         result = i
-      elif i % 2 == 0 and i > result:
-         result = i
-   return result
+    result = None
+    for i in lst:
+        if i % 2 == 0 and result is None:
+            result = i
+        elif i % 2 == 0 and i > result:
+            result = i
+    return result
 
 print(max_even([1, 2, 3]))
 print(max_even([-4, 3, -1, -6]))

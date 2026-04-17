@@ -6,7 +6,7 @@
     in_celsius(-40.0) ~> -40.0 
 """
 def in_celsius(temp : float) -> float:
-  return (temp - 32) * 5/9
+    return (temp - 32) * 5/9
 
 print(in_celsius(32.0))
 print(in_celsius(212.0))
